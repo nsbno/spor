@@ -66,7 +66,7 @@ Then run `oxlint` (for example `"lint": "oxlint"` in your `package.json`).
    + // oxlint-disable-next-line typescript/no-explicit-any
    ```
 
-   `spor/use-semantic-tokens` keeps the same name.
+   `spor/use-semantic-tokens` keeps the same name. `unicorn/prevent-abbreviations` is the exception on the unicorn side: it runs through the JS plugin, so it is named `unicorn-js/prevent-abbreviations`. An existing `eslint-disable` comment for `unicorn/prevent-abbreviations` will not silence it, so rename those comments.
 
 5. Remove `eslint.config.mjs` and the `eslint` and `@vygruppen/eslint-config` dependencies.
 6. Keep Prettier as it is. Neither tool handles formatting for the other.
@@ -91,6 +91,9 @@ Run `oxlint` once after migrating. Expect some differences from ESLint, listed u
 Differences from the ESLint config:
 
 - `unicorn/filename-case` and `unicorn/no-null` are off, as in the ESLint config.
+- `unicorn/no-nested-ternary`, `unicorn/empty-brace-spaces`, `unicorn/number-literal-case` and `unicorn/template-indent` are off. `eslint-config-prettier` turns them off in the ESLint config, since Prettier handles formatting.
+- `unicorn/consistent-function-scoping` is off. The ESLint version skips functions that contain JSX, Oxlint's version does not, and flags most components defined inside stories and render functions.
+- A few rules are implemented more strictly than their ESLint counterparts, for example `jsx-a11y/role-has-required-aria-props` and `jsx-a11y/aria-proptypes`, so you may see new accessibility findings.
 - `react/prop-types`, `react/no-deprecated`, `no-dupe-args` and `no-octal` have no Oxlint implementation.
 - Oxlint's default `correctness` category is enabled on top of the rules above, so you may see a few extra diagnostics (for example from the `oxc` plugin).
 - Type-aware rules are not enabled. Opt in with `options.typeAware` and install `oxlint-tsgolint` if you want them.

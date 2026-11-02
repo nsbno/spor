@@ -168,8 +168,15 @@ const jsxA11yRecommended = [
 
 /**
  * Equivalent of `eslint-plugin-unicorn`'s recommended config, for the rules
- * that Oxlint implements natively. `filename-case` and `no-null` are left out,
- * as in `@vygruppen/eslint-config`.
+ * that Oxlint implements natively.
+ *
+ * Left out, as in `@vygruppen/eslint-config`:
+ * - `filename-case` and `no-null`, which are turned off explicitly there.
+ * - `empty-brace-spaces`, `no-nested-ternary` and `number-literal-case`,
+ *   which `eslint-config-prettier` turns off.
+ * - `consistent-function-scoping`. The ESLint version skips functions that
+ *   contain JSX, Oxlint's doesn't, so it flags most React components that are
+ *   defined inside other functions (stories, render props, etc.).
  */
 const unicornRecommended = [
   "catch-error-name",
@@ -177,8 +184,6 @@ const unicornRecommended = [
   "consistent-date-clone",
   "consistent-empty-array-spread",
   "consistent-existence-index-check",
-  "consistent-function-scoping",
-  "empty-brace-spaces",
   "error-message",
   "escape-case",
   "explicit-length-check",
@@ -207,7 +212,6 @@ const unicornRecommended = [
   "no-magic-array-flat-depth",
   "no-negated-condition",
   "no-negation-in-equality-check",
-  "no-nested-ternary",
   "no-new-array",
   "no-new-buffer",
   "no-object-as-default-parameter",
@@ -232,7 +236,6 @@ const unicornRecommended = [
   "no-useless-switch-case",
   "no-useless-undefined",
   "no-zero-fractions",
-  "number-literal-case",
   "numeric-separators-style",
   "prefer-add-event-listener",
   "prefer-array-find",
@@ -300,13 +303,13 @@ const unicornRecommended = [
 /**
  * Unicorn recommended rules that Oxlint doesn't implement natively yet. These
  * run through the JS version of `eslint-plugin-unicorn`, registered as
- * `unicorn-js`.
+ * `unicorn-js`. `template-indent` is left out because `eslint-config-prettier`
+ * turns it off.
  */
 const unicornJsRecommended = [
   "no-for-loop",
   "no-named-default",
   "prefer-switch",
-  "template-indent",
 ];
 
 /** @type {import("oxlint").OxlintConfig} */

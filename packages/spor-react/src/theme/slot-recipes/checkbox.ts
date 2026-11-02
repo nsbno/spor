@@ -23,15 +23,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       },
     },
     indicator: {
-      width: "100%",
-      height: "100%",
       marginTop: -1,
-      transform: "scale(1)",
-      opacity: 0,
-      _checked: {
-        opacity: 1,
-        transition: "opacity 300ms cubic-bezier(0.65, 0.25, 0.56, 0.96)",
-      },
     },
     control: {
       width: 4,
@@ -44,6 +36,18 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       borderRadius: "xs",
 
       _checked: {
+        color: "icon.brand",
+        borderColor: "surface.brand",
+        background: "surface.brand",
+        _focus: {
+          borderColor: "surface.brand.active",
+        },
+        _invalid: {
+          backgroundColor: "outline.error",
+          borderColor: "outline.error",
+        },
+      },
+      _indeterminate: {
         color: "icon.brand",
         borderColor: "surface.brand",
         background: "surface.brand",

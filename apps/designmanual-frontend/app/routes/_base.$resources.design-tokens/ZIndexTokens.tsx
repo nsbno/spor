@@ -29,7 +29,7 @@ const ZIndexTokensTable = () => {
 
   return (
     <Box>
-      <Table colorPalette="white">
+      <Table disableHover>
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Token</TableColumnHeader>

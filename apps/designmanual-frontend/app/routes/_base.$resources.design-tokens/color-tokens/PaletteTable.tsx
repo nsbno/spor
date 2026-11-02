@@ -39,7 +39,7 @@ export const PaletteTable = ({
   );
 
   return (
-    <Table size="md" colorPalette="white">
+    <Table size="md" colorPalette="white" disableHover>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>

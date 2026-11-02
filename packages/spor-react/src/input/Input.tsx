@@ -122,10 +122,7 @@ export const Input = ({
       id={props.id}
       labelAsChild={labelAsChild}
       label={
-        <Flex
-          id={labelId}
-          paddingX={startElement && size === "sm" ? 1 : undefined}
-        >
+        <Flex id={labelId} gap={startElement && size === "sm" ? 1 : undefined}>
           <Box visibility="hidden">{startElement}</Box>
           {label}
         </Flex>

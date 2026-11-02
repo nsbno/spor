@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 4.0.2
+
+### Patch Changes
+
+- ffb3a52: Update tracks-fill-18x18-icon
+
 ## 4.0.1
 
 ### Patch Changes

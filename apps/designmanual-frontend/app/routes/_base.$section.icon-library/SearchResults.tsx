@@ -13,7 +13,6 @@ import {
   Stack,
   StaticCard,
   Text,
-  useColorModeValue,
 } from "@vygruppen/spor-react";
 import { memo } from "react";
 
@@ -186,11 +185,10 @@ type IconBoxProps = {
 function IconBox({ icon }: IconBoxProps) {
   const { copy, copied } = useClipboard({ value: icon.importName });
   const IconComponent = iconComponentMap[icon.importName];
-  const colorPalette = useColorModeValue("grey", "white");
   return (
     <StaticCard
       display="flex"
-      data-color={colorPalette}
+      data-color="neutral"
       borderRadius="sm"
       flexDirection="column"
       alignItems="center"

@@ -31,7 +31,7 @@ export const ColorTable = ({ name, colorKey }: Props) => {
   const colors = getFlattenedColors(colorKey);
 
   return (
-    <Table size="md" colorPalette="white" tableLayout="auto">
+    <Table size="md" colorPalette="white" tableLayout="auto" disableHover>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>

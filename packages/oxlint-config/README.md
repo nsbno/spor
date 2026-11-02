@@ -5,13 +5,13 @@ A shared [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) configuration for
 ## Features
 
 - TypeScript recommended rules
-- React and React Hooks best practices (including the React Compiler rules)
+- React and React Hooks best practices (including most React Compiler rules)
 - Accessibility checks with jsx-a11y
 - Modern JavaScript standards (ESLint recommended + Unicorn)
 - Custom rule for semantic design tokens
 - Automatic import sorting
 
-Prettier compatibility needs no configuration, as Oxlint doesn't ship formatting rules.
+Oxlint has no formatting rules, so it doesn't need a Prettier config. The few Unicorn rules that `eslint-config-prettier` turns off in the ESLint config are turned off here too.
 
 ## Installation
 
@@ -66,35 +66,36 @@ Then run `oxlint` (for example `"lint": "oxlint"` in your `package.json`).
    + // oxlint-disable-next-line typescript/no-explicit-any
    ```
 
-   `spor/use-semantic-tokens` keeps the same name. `unicorn/prevent-abbreviations` is the exception on the unicorn side: it runs through the JS plugin, so it is named `unicorn-js/prevent-abbreviations`. An existing `eslint-disable` comment for `unicorn/prevent-abbreviations` will not silence it, so rename those comments.
+   `spor/use-semantic-tokens` and the `unicorn/*` rules keep the same names.
 
 5. Remove `eslint.config.mjs` and the `eslint` and `@vygruppen/eslint-config` dependencies.
 6. Keep Prettier as it is. Neither tool handles formatting for the other.
-7. Install Oxlint's editor extension (`oxc` in VS Code) so diagnostics and autofix on save work in your editor. JS plugin rules (import sorting, `spor/use-semantic-tokens`, `unicorn-js/*`) are alpha and may behave differently in the editor than on the command line.
+7. Install Oxlint's editor extension (`oxc` in VS Code) so diagnostics and autofix on save work in your editor. JS plugin rules (import sorting and `spor/use-semantic-tokens`) are alpha and may behave differently in the editor than on the command line.
 
 Run `oxlint` once after migrating. Expect some differences from ESLint, listed under [What's included](#whats-included).
 
 ## What's included
 
-| ESLint config                        | In this package                                                                            |
-| ------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `@eslint/js` recommended             | Native `eslint/*` rules                                                                    |
-| `typescript-eslint` recommended      | Native `typescript/*` rules (non type-aware)                                               |
-| `eslint-plugin-react` recommended    | Native `react/*` rules                                                                     |
-| `eslint-plugin-react-hooks`          | Native `react/rules-of-hooks`, `react/exhaustive-deps` and the React Compiler rules        |
-| `eslint-plugin-jsx-a11y` recommended | Native `jsx-a11y/*` rules                                                                  |
-| `eslint-plugin-unicorn` recommended  | Native `unicorn/*` rules, plus a few rules from the JS plugin (registered as `unicorn-js`) |
-| `eslint-plugin-simple-import-sort`   | JS plugin, `simple-import-sort/imports` and `simple-import-sort/exports`                   |
-| `eslint-config-prettier`             | Not needed                                                                                 |
-| `spor/use-semantic-tokens`           | JS plugin, the same rule as in `@vygruppen/eslint-config`                                  |
+| ESLint config                        | In this package                                                                             |
+| ------------------------------------ | ------------------------------------------------------------------------------------------- |
+| `@eslint/js` recommended             | Native `eslint/*` rules                                                                     |
+| `typescript-eslint` recommended      | Native `typescript/*` rules (non type-aware)                                                |
+| `eslint-plugin-react` recommended    | Native `react/*` rules                                                                      |
+| `eslint-plugin-react-hooks`          | Native `react/rules-of-hooks`, `react/exhaustive-deps` and most of the React Compiler rules |
+| `eslint-plugin-jsx-a11y` recommended | Native `jsx-a11y/*` rules                                                                   |
+| `eslint-plugin-unicorn` recommended  | Native `unicorn/*` rules, except the few Oxlint doesn't implement (see below)               |
+| `eslint-plugin-simple-import-sort`   | JS plugin, `simple-import-sort/imports` and `simple-import-sort/exports`                    |
+| `eslint-config-prettier`             | The conflicting rules are turned off, see below                                             |
+| `spor/use-semantic-tokens`           | JS plugin, the same rule as in `@vygruppen/eslint-config`                                   |
 
 Differences from the ESLint config:
 
 - `unicorn/filename-case` and `unicorn/no-null` are off, as in the ESLint config.
-- `unicorn/no-nested-ternary`, `unicorn/empty-brace-spaces`, `unicorn/number-literal-case` and `unicorn/template-indent` are off. `eslint-config-prettier` turns them off in the ESLint config, since Prettier handles formatting.
+- `no-unexpected-multiline`, `unicorn/no-nested-ternary`, `unicorn/empty-brace-spaces`, `unicorn/number-literal-case` and `unicorn/template-indent` are off. `eslint-config-prettier` turns them off in the ESLint config, since Prettier handles formatting.
 - `unicorn/consistent-function-scoping` is off. The ESLint version skips functions that contain JSX, Oxlint's version does not, and flags most components defined inside stories and render functions.
 - A few rules are implemented more strictly than their ESLint counterparts, for example `jsx-a11y/role-has-required-aria-props` and `jsx-a11y/aria-proptypes`, so you may see new accessibility findings.
-- `react/prop-types`, `react/no-deprecated`, `no-dupe-args` and `no-octal` have no Oxlint implementation.
+- These rules have no Oxlint implementation: `no-dupe-args`, `no-octal`, `react/prop-types`, `react/no-deprecated`, and the React Compiler rules `react-hooks/component-hook-factories`, `react-hooks/config` and `react-hooks/gating`.
+- These Unicorn rules have no Oxlint implementation either, and are left out to avoid loading `eslint-plugin-unicorn` as a JS plugin: `unicorn/expiring-todo-comments`, `unicorn/no-for-loop`, `unicorn/no-named-default`, `unicorn/no-unnecessary-polyfills`, `unicorn/prefer-switch` and `unicorn/prevent-abbreviations`. You can remove `eslint-disable` comments for them.
 - Oxlint's default `correctness` category is enabled on top of the rules above, so you may see a few extra diagnostics (for example from the `oxc` plugin).
 - Type-aware rules are not enabled. Opt in with `options.typeAware` and install `oxlint-tsgolint` if you want them.
 - JS plugins are in alpha in Oxlint, and may not be supported by every editor integration.
@@ -107,7 +108,7 @@ Enforces the use of semantic color tokens in Chakra UI components to facilitate 
 
 ```jsx
 // ✅ Good - semantic tokens
-<Box bg="bg" color="text.secondary" />
+<Box bg="bg" color="text.subtle" />
 
 // ❌ Bad - hardcoded colors
 <Box bg="blue.500" color="greenHaze" />

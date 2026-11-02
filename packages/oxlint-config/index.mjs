@@ -7,13 +7,19 @@ import { fileURLToPath } from "node:url";
  * loaded. When this config is consumed from another package, that would be the
  * consumer's config file, so we resolve to absolute paths ourselves.
  */
-const resolve = (specifier) => fileURLToPath(import.meta.resolve(specifier));
+const resolveAbsolute = (specifier) =>
+  fileURLToPath(import.meta.resolve(specifier));
 
 /** Turns a list of rule names into an `{ "<scope>/<name>": severity }` object. */
 const enable = (scope, names, severity = "error") =>
   Object.fromEntries(names.map((name) => [`${scope}/${name}`, severity]));
 
-/** Equivalent of `js.configs.recommended` from `@eslint/js`. */
+/**
+ * Equivalent of `js.configs.recommended` from `@eslint/js`.
+ *
+ * `no-unexpected-multiline` is left out because `eslint-config-prettier` turns
+ * it off. `no-dupe-args` and `no-octal` have no Oxlint implementation.
+ */
 const eslintRecommended = [
   "constructor-super",
   "for-direction",
@@ -58,7 +64,6 @@ const eslintRecommended = [
   "no-shadow-restricted-names",
   "no-sparse-arrays",
   "no-this-before-super",
-  "no-unexpected-multiline",
   "no-undef",
   "no-unreachable",
   "no-unsafe-finally",
@@ -76,15 +81,46 @@ const eslintRecommended = [
   "valid-typeof",
 ];
 
-/** Equivalent of `tseslint.configs.recommended`. */
-const eslintTypescriptRecommended = [
-  "no-array-constructor",
-  "no-unused-expressions",
+/**
+ * Core rules that `tseslint.configs.recommended` turns on for all files. It
+ * uses its own versions of them, which Oxlint's core rules already cover.
+ */
+const tseslintCoreRules = ["no-array-constructor", "no-unused-expressions"];
+
+/**
+ * Core rules that `tseslint`'s `eslint-recommended` config turns off for
+ * TypeScript files, because the TypeScript compiler already checks them.
+ * `no-dupe-args` and `no-new-symbol` have no Oxlint implementation.
+ */
+const checkedByTypescript = [
+  "constructor-super",
+  "getter-return",
+  "no-class-assign",
+  "no-const-assign",
+  "no-dupe-class-members",
+  "no-dupe-keys",
+  "no-func-assign",
+  "no-import-assign",
+  "no-new-native-nonconstructor",
+  "no-obj-calls",
+  "no-redeclare",
+  "no-setter-return",
+  "no-this-before-super",
+  "no-undef",
+  "no-unreachable",
+  "no-unsafe-negation",
+  "no-with",
+];
+
+/** Core rules that `tseslint`'s `eslint-recommended` config turns on for TypeScript files only. */
+const typescriptOnlyCoreRules = [
   "no-var",
   "prefer-const",
   "prefer-rest-params",
   "prefer-spread",
 ];
+
+/** Equivalent of `tseslint.configs.recommended`. */
 const typescriptRecommended = [
   "ban-ts-comment",
   "no-duplicate-enum-values",
@@ -106,9 +142,9 @@ const typescriptRecommended = [
 ];
 
 /**
- * Equivalent of `eslint-plugin-react`'s `recommended` + `jsx-runtime` configs
- * and `eslint-plugin-react-hooks`' recommended config.
+ * Equivalent of `eslint-plugin-react`'s `recommended` + `jsx-runtime` configs.
  * `react-in-jsx-scope` is left out because of the automatic JSX runtime.
+ * `prop-types` and `no-deprecated` have no Oxlint implementation.
  */
 const reactRecommended = [
   "display-name",
@@ -127,8 +163,33 @@ const reactRecommended = [
   "no-unescaped-entities",
   "no-unknown-property",
   "require-render-return",
+];
+
+/**
+ * Equivalent of `eslint-plugin-react-hooks`' `recommended-latest` config,
+ * including the React Compiler rules. `component-hook-factories`, `config`
+ * and `gating` have no Oxlint implementation.
+ */
+const reactHooksRecommended = [
   "rules-of-hooks",
+  "static-components",
+  "use-memo",
+  "void-use-memo",
+  "preserve-manual-memoization",
+  "immutability",
+  "globals",
+  "refs",
+  "set-state-in-effect",
+  "error-boundaries",
+  "purity",
+  "set-state-in-render",
+];
+
+/** Rules that `eslint-plugin-react-hooks`' `recommended-latest` config sets to warn. */
+const reactHooksRecommendedWarnings = [
   "exhaustive-deps",
+  "incompatible-library",
+  "unsupported-syntax",
 ];
 
 /** Equivalent of `eslint-plugin-jsx-a11y`'s recommended config. */
@@ -167,13 +228,103 @@ const jsxA11yRecommended = [
 ];
 
 /**
+ * Rule options that `eslint-plugin-jsx-a11y`'s recommended config passes.
+ * Without them Oxlint uses each rule's defaults, which are stricter.
+ */
+const jsxA11yRecommendedOptions = {
+  "interactive-supports-focus": {
+    tabbable: [
+      "button",
+      "checkbox",
+      "link",
+      "searchbox",
+      "spinbutton",
+      "switch",
+      "textbox",
+    ],
+  },
+  "no-interactive-element-to-noninteractive-role": {
+    tr: ["none", "presentation"],
+    canvas: ["img"],
+  },
+  "no-noninteractive-element-interactions": {
+    handlers: [
+      "onClick",
+      "onError",
+      "onLoad",
+      "onMouseDown",
+      "onMouseUp",
+      "onKeyPress",
+      "onKeyDown",
+      "onKeyUp",
+    ],
+    alert: ["onKeyUp", "onKeyDown", "onKeyPress"],
+    body: ["onError", "onLoad"],
+    dialog: ["onKeyUp", "onKeyDown", "onKeyPress"],
+    iframe: ["onError", "onLoad"],
+    img: ["onError", "onLoad"],
+  },
+  "no-noninteractive-element-to-interactive-role": {
+    ul: [
+      "listbox",
+      "menu",
+      "menubar",
+      "radiogroup",
+      "tablist",
+      "tree",
+      "treegrid",
+    ],
+    ol: [
+      "listbox",
+      "menu",
+      "menubar",
+      "radiogroup",
+      "tablist",
+      "tree",
+      "treegrid",
+    ],
+    li: [
+      "menuitem",
+      "menuitemradio",
+      "menuitemcheckbox",
+      "option",
+      "row",
+      "tab",
+      "treeitem",
+    ],
+    table: ["grid"],
+    td: ["gridcell"],
+    fieldset: ["radiogroup", "presentation"],
+  },
+  "no-noninteractive-tabindex": {
+    tags: [],
+    roles: ["tabpanel"],
+    allowExpressionValues: true,
+  },
+  "no-static-element-interactions": {
+    allowExpressionValues: true,
+    handlers: [
+      "onClick",
+      "onMouseDown",
+      "onMouseUp",
+      "onKeyPress",
+      "onKeyDown",
+      "onKeyUp",
+    ],
+  },
+};
+
+/**
  * Equivalent of `eslint-plugin-unicorn`'s recommended config, for the rules
- * that Oxlint implements natively.
+ * that Oxlint implements natively. The ones it doesn't implement
+ * (`expiring-todo-comments`, `no-for-loop`, `no-named-default`,
+ * `no-unnecessary-polyfills`, `prefer-switch` and `prevent-abbreviations`)
+ * are left out, rather than loading `eslint-plugin-unicorn` as a JS plugin.
  *
  * Left out, as in `@vygruppen/eslint-config`:
  * - `filename-case` and `no-null`, which are turned off explicitly there.
- * - `empty-brace-spaces`, `no-nested-ternary` and `number-literal-case`,
- *   which `eslint-config-prettier` turns off.
+ * - `empty-brace-spaces`, `no-nested-ternary`, `number-literal-case` and
+ *   `template-indent`, which `eslint-config-prettier` turns off.
  * - `consistent-function-scoping`. The ESLint version skips functions that
  *   contain JSX, Oxlint's doesn't, so it flags most React components that are
  *   defined inside other functions (stories, render props, etc.).
@@ -300,68 +451,39 @@ const unicornRecommended = [
   "throw-new-error",
 ];
 
-/**
- * Unicorn recommended rules that Oxlint doesn't implement natively yet. These
- * run through the JS version of `eslint-plugin-unicorn`, registered as
- * `unicorn-js`. `template-indent` is left out because `eslint-config-prettier`
- * turns it off.
- */
-const unicornJsRecommended = [
-  "no-for-loop",
-  "no-named-default",
-  "prefer-switch",
-];
-
 /** @type {import("oxlint").OxlintConfig} */
 const config = {
   plugins: ["eslint", "typescript", "unicorn", "react", "jsx-a11y", "oxc"],
   jsPlugins: [
-    { name: "spor", specifier: resolve("./plugin.js") },
+    { name: "spor", specifier: resolveAbsolute("./plugin.js") },
     {
       name: "simple-import-sort",
-      specifier: resolve("eslint-plugin-simple-import-sort"),
+      specifier: resolveAbsolute("eslint-plugin-simple-import-sort"),
     },
-    { name: "unicorn-js", specifier: resolve("eslint-plugin-unicorn") },
   ],
   categories: {
     correctness: "error",
   },
-  env: {
-    browser: true,
-    node: true,
-    es2024: true,
-  },
   rules: {
     ...enable("eslint", eslintRecommended),
-    ...enable("eslint", eslintTypescriptRecommended),
+    ...enable("eslint", tseslintCoreRules),
     ...enable("typescript", typescriptRecommended),
     ...enable("react", reactRecommended),
+    ...enable("react", reactHooksRecommended),
+    ...enable("react", reactHooksRecommendedWarnings, "warn"),
     ...enable("jsx-a11y", jsxA11yRecommended),
+    ...Object.fromEntries(
+      Object.entries(jsxA11yRecommendedOptions).map(([name, options]) => [
+        `jsx-a11y/${name}`,
+        ["error", options],
+      ]),
+    ),
     ...enable("unicorn", unicornRecommended),
-    ...enable("unicorn-js", unicornJsRecommended),
 
     // On by default in Oxlint's `correctness` category, but not part of
     // `eslint-plugin-jsx-a11y`'s recommended config
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/prefer-tag-over-role": "off",
-
-    "unicorn-js/prevent-abbreviations": [
-      "warn",
-      {
-        allowList: {
-          props: true,
-          Props: true,
-          ref: true,
-          Ref: true,
-          utils: true,
-          Utils: true,
-          env: true,
-          Env: true,
-          Docs: true,
-          docs: true,
-        },
-      },
-    ],
 
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
@@ -373,12 +495,20 @@ const config = {
   },
   overrides: [
     {
-      // TypeScript already checks for undefined variables and redeclarations
+      // Oxlint drops a top-level `env` when a config is used through
+      // `extends`, but keeps the ones in `overrides`
+      files: ["**/*"],
+      env: {
+        browser: true,
+        node: true,
+        es2024: true,
+      },
+    },
+    {
       files: ["**/*.{ts,tsx,mts,cts}"],
       rules: {
-        "eslint/no-undef": "off",
-        "eslint/no-redeclare": "off",
-        "eslint/no-dupe-class-members": "off",
+        ...enable("eslint", checkedByTypescript, "off"),
+        ...enable("eslint", typescriptOnlyCoreRules),
       },
     },
   ],

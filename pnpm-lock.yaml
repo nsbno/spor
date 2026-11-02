@@ -633,9 +633,6 @@ importers:
       eslint-plugin-simple-import-sort:
         specifier: ^12.1.1
         version: 12.1.1(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))
-      eslint-plugin-unicorn:
-        specifier: ^62.0
-        version: 62.0.0(eslint@9.39.1(jiti@2.7.0)(supports-color@8.1.1))
     devDependencies:
       oxlint:
         specifier: 1.89.0

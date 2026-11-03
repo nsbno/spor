@@ -10,7 +10,7 @@ import type { SanityImage } from "~/features/cms/sanity/query";
 import type { ImageSize } from "~/features/portable-text/components/ResponsiveImage";
 import { ResponsiveImage } from "~/features/portable-text/components/ResponsiveImage";
 
-export type ImageItem = {
+type ImageItem = {
   href?: string;
   title?: string;
   image: SanityImage;

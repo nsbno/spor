@@ -11,15 +11,15 @@ import {
 
 import { createEmotionCache } from "./emotion-cache";
 
-export interface ClientStyleContextData {
+interface ClientStyleContextData {
   reset: () => void;
 }
 
-export const ClientStyleContext = createContext<ClientStyleContextData>({
+const ClientStyleContext = createContext<ClientStyleContextData>({
   reset: () => {},
 });
 
-export const useClientStyleContext = () => {
+const useClientStyleContext = () => {
   return useContext(ClientStyleContext);
 };
 

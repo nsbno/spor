@@ -23,9 +23,9 @@ export const LinkableHeading = ({
   const location = useLocation();
   const text = getChildrenAsString(props.children);
   const id = props.id || slugify(text as string);
-  const { onCopy, hasCopied } = useClipboard(
-    `https://spor.vy.no${location.pathname}#${id}`,
-  );
+  const { copy, copied } = useClipboard({
+    value: `https://spor.vy.no${location.pathname}#${id}`,
+  });
   return (
     <Flex
       position="relative"
@@ -36,10 +36,10 @@ export const LinkableHeading = ({
     >
       <Heading {...props} marginLeft={6} id={id} />
       <IconButton
-        aria-label={hasCopied ? "Kopiert" : "Kopiér"}
-        onClick={onCopy}
+        aria-label={copied ? "Kopiert" : "Kopiér"}
+        onClick={copy}
         variant="ghost"
-        icon={hasCopied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}
+        icon={copied ? <SuccessOutline24Icon /> : <CopyOutline24Icon />}
         size="sm"
         visibility="hidden"
         opacity="0"

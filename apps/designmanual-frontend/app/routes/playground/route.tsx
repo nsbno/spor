@@ -1,5 +1,5 @@
 import { Stack } from "@vygruppen/spor-react";
-import { StrictMode, useState } from "react";
+import { StrictMode, useSyncExternalStore } from "react";
 import { LivePreview } from "react-live";
 
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
@@ -15,15 +15,35 @@ const defaultCode = `<Stack textAlign="center">
   </Text>
 </Stack>`;
 
-export default function PlaygroundPage() {
-  const [playgroundData, setPlaygroundData] = useState(() => {
-    return localStorage.getItem("playgroundData") ?? defaultCode;
-  });
+const storageKey = "playgroundData";
+const listeners = new Set<() => void>();
 
-  const handleChange = (newCode: string) => {
-    setPlaygroundData(newCode);
-    localStorage.setItem("playgroundData", newCode);
+const subscribe = (listener: () => void) => {
+  listeners.add(listener);
+  globalThis.addEventListener("storage", listener);
+  return () => {
+    listeners.delete(listener);
+    globalThis.removeEventListener("storage", listener);
   };
+};
+
+const getSnapshot = () => localStorage.getItem(storageKey) ?? defaultCode;
+
+// localStorage doesn't exist on the server. React uses this snapshot for the
+// server render and the first client render, then switches to getSnapshot.
+const getServerSnapshot = () => defaultCode;
+
+const saveCode = (code: string) => {
+  localStorage.setItem(storageKey, code);
+  for (const listener of listeners) listener();
+};
+
+export default function PlaygroundPage() {
+  const playgroundData = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
+  );
 
   return (
     <StrictMode>
@@ -32,7 +52,7 @@ export default function PlaygroundPage() {
           <LiveEditor
             borderRadius="none"
             minHeight="200px"
-            onChange={handleChange}
+            onChange={saveCode}
           />
           <LiveError />
           <LivePreview />

@@ -1,5 +1,5 @@
-import { groq } from "@sanity/groq-store";
 import { Box } from "@vygruppen/spor-react";
+import groq from "groq";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 
 import {

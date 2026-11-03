@@ -58,7 +58,7 @@ export function useInjectStyles(cache: EmotionCache) {
   useSafeLayoutEffect(() => {
     if (!injectRef.current) return;
 
-    // eslint-disable-next-line react-hooks/immutability
+    // oxlint-disable-next-line react/immutability
     cache.sheet.container = document.head;
 
     const tags = cache.sheet.tags;

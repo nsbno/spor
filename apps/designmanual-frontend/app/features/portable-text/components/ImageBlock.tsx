@@ -1,4 +1,4 @@
-/* eslint-disable spor/use-semantic-tokens */
+/* oxlint-disable spor/use-semantic-tokens */
 import {
   Box,
   Flex,

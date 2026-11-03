@@ -16,7 +16,7 @@ export const isValidPreviewRequest = (request: Request) => {
  *
  * Borrowed from https://www.sanity.io/docs/presenting-block-text#ac67a867dd69
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 export function blockContentToPlainText(blocks: any[] = []) {
   if (!blocks || blocks.length === 0) {
     return "";

@@ -9,7 +9,7 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "lint": "eslint . --ignore-pattern '.build/*'"
+    "lint": "oxlint --max-warnings=0"
   },
   "dependencies": {
     "@ark-ui/react": "5.39.3",
@@ -56,9 +56,9 @@
     "@types/node": "22.20.5",
     "@types/react": "19.2.3",
     "@types/react-dom": "19.2.3",
-    "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/oxlint-config": "workspace:*",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "9.39.1",
+    "oxlint": "1.90.0",
     "typescript": "7.0.2",
     "vite": "8.3.5",
     "vite-plugin-babel": "1.7.3"

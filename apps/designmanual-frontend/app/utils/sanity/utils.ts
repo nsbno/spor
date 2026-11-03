@@ -12,27 +12,6 @@ export const isValidPreviewRequest = (request: Request) => {
   return requestUrl?.searchParams?.get("preview") === VITE_SANITY_SECRET;
 };
 
-/**
- * Returns the correct item based on whether or not we're in preview mode
- **/
-export const filterDataToSingleItem = <T extends { _id: string }>(
-  data: T[] = [],
-  isPreview = false,
-): T => {
-  if (!Array.isArray(data)) {
-    return data;
-  }
-
-  if (isPreview) {
-    return (
-      (data.find((item) => item._id.startsWith(`drafts.`)) as T) ||
-      (data[0] as T)
-    );
-  }
-
-  return data[0] as T;
-};
-
 /** Turns portable text into a string
  *
  * Borrowed from https://www.sanity.io/docs/presenting-block-text#ac67a867dd69

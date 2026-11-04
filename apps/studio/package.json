@@ -28,6 +28,6 @@
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
     "prettier": "^3.3.1",
-    "typescript": "^5.4.3"
+    "typescript": "catalog:"
   }
 }

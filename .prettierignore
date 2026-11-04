@@ -3,4 +3,5 @@ dist
 build
 packages/spor-design-tokens/react-native
 apps/design-studio/.sanity
+apps/storybook/storybook-static
 packages/spor-react/scripts/colorTokens/transforms.js

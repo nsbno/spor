@@ -36,6 +36,15 @@ allowBuilds:
   esbuild: false
   style-dictionary: false
 
+# One React version across the workspace. A second copy duplicates Chakra and Emotion
+# for linked packages like spor-react. apps/studio stays on React 18 and only uses @types/react from here.
+# @types/node follows the Node major in the root package.json engines.
+catalog:
+  "@types/node": 22.20.5
+  react: 19.2.9
+  react-dom: 19.2.9
+  "@types/react": 19.2.18
+  "@types/react-dom": 19.2.7
+
 overrides:
   fast-xml-parser: 5.11.2
-  "@types/react": 19.2.3

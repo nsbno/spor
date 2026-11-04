@@ -4,7 +4,7 @@ This is the Sanity Studio for the Designmanual website. It runs on **Sanity Stud
 
 ## Prerequisites
 
-- **Node.js 22.12 or newer** is required (Sanity Studio v6 dropped Node 20, which is end-of-life). Run `nvm use` from the repo root to pick up the version pinned in `.nvmrc`.
+- **Node.js 22** is required (Sanity Studio v6 dropped Node 20, which is end-of-life). pnpm installs the exact version pinned in the root `package.json` (`devEngines.runtime`) and uses it for `pnpm` scripts.
 
 ## Setup
 

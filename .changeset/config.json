@@ -7,7 +7,6 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@vygruppen/studio",
     "@vygruppen/designmanual",
     "@vygruppen/designmanual-frontend"
   ]

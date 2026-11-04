@@ -42,7 +42,7 @@
   "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.13.4",
+    "@types/node": "catalog:",
     "@vygruppen/eslint-config": "workspace:*",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.39.1",

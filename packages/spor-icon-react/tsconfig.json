@@ -1,16 +1,10 @@
 {
+  "extends": "../../tsconfig.react-library.json",
   "include": [".", "tmp"],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "es2017",
     "outDir": "./dist",
     "rootDirs": ["bin", "tmp"],
-    "strict": true,
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "declaration": true,
     "declarationDir": "./dist",
     "types": ["react", "react-dom", "./dist/types"],
     "paths": {

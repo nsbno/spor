@@ -25,7 +25,6 @@
     "dev": "tsup --watch"
   },
   "devDependencies": {
-    "@vygruppen/tsconfig": "workspace:*",
     "tsup": "^7.2.0"
   }
 }

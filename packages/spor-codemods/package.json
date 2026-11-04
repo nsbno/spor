@@ -30,7 +30,6 @@
   },
   "devDependencies": {
     "@vygruppen/eslint-config": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@types/jscodeshift": "^0.11.11",
     "@types/node": "^22.13.4",
     "@types/react": "19.2.3",

@@ -31,7 +31,6 @@
     "@svgr/plugin-svgo": "^6.2.0",
     "@types/fs-extra": "^11.0.4",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
     "eslint": "^9.39.1",

@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "React Library",
-  "extends": "./tsconfig.base.json",
+  "extends": "./tsconfig.library.json",
   "compilerOptions": {
-    "lib": ["DOM", "es2024"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.library.json",
   "include": ["index.ts"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {

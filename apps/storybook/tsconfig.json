@@ -1,19 +1,9 @@
 {
+  "extends": "../../tsconfig.react.json",
   "compilerOptions": {
-    "target": "es2024",
-    "useDefineForClassFields": true,
-    "lib": ["es2024", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
   "include": ["stories", ".storybook"]

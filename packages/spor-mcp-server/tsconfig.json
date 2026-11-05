@@ -3,7 +3,6 @@
   "include": ["index.ts", "sdk-client.ts"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-
     "rootDir": ".",
     "outDir": "dist",
     "types": ["node"]

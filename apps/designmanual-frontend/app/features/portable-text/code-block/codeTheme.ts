@@ -34,7 +34,7 @@ export const codeThemeCssVariables = {
 /** Prism theme that references the CSS variables above */
 export const theme: PrismTheme = {
   plain: {
-    // eslint-disable-next-line spor/use-semantic-tokens
+    // oxlint-disable-next-line spor/use-semantic-tokens
     color: "var(--code-plain)",
     backgroundColor: "transparent",
   },

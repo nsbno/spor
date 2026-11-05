@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 const sanitySecret = import.meta.env.VITE_SANITY_SECRET || "";
 

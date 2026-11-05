@@ -3,10 +3,8 @@
   "display": "Library",
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    // Libraries built with tsup emit ES2022 syntax. The esbuild bundled with
-    // tsup 7 doesn't recognise newer targets. `lib` is inherited (ESNext), since
-    // it only affects type-checking and esbuild ignores it.
-    "module": "ES2022",
-    "target": "es2022"
+    // Pins the syntax level of the published tsup output. `lib` stays ESNext
+    // from the base, since it only affects type-checking and esbuild ignores it.
+    "target": "es2024"
   }
 }

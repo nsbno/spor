@@ -58,3 +58,14 @@ catalog:
 
 overrides:
   fast-xml-parser: 5.11.2
+
+# Task graph for "pnpm -r run". A task without an entry here waits for the same task
+# in its workspace dependencies, so build waits for ^build.
+tasks:
+  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
+  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  dev:
+    dependsOn:
+      - ^build
+  lint:
+    dependsOn: []

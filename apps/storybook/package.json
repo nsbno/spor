@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-storybook",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,15 +15,15 @@
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "framer-motion": "^11.11.17",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8",
     "@storybook/react": "^8",
     "@storybook/react-vite": "^8",
-    "@types/react": "19.2.3",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "^4",
     "storybook": "^8",
     "typescript": "^5.7.3",

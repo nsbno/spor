@@ -1,5 +1,11 @@
 # @vygruppen/eslint-config
 
+## 3.0.0
+
+### Major Changes
+
+- 14db68e: Update eslint-rules to match new tokenstructure after updating spor-design-tokens to v7.0.0
+
 ## 2.2.0
 
 ### Minor Changes

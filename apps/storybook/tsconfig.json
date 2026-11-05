@@ -6,5 +6,7 @@
     "noEmit": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["stories", ".storybook"]
+  // tsc skips dot-directories unless they are matched by a wildcard. The stories
+  // themselves live in spor-react and are type-checked there.
+  "include": [".storybook/**/*"]
 }

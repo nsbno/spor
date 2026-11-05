@@ -56,10 +56,10 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
+    "@typescript/native": "catalog:",
     "@vygruppen/oxlint-config": "workspace:*",
     "babel-plugin-react-compiler": "1.0.0",
     "oxlint": "1.90.0",
-    "typescript": "7.0.2",
     "vite": "catalog:",
     "vite-plugin-babel": "1.7.3"
   },

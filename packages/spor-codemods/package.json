@@ -36,7 +36,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "tsup": "^8.3.5",
-    "typescript": "^5.7.3",
+    "typescript": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
   },

@@ -4,7 +4,7 @@ import { sanityConfig } from "./config";
 
 const sanityClient = createClient(sanityConfig);
 
-export const previewClient = sanityClient.withConfig({
+const previewClient = sanityClient.withConfig({
   perspective: "previewDrafts",
 });
 

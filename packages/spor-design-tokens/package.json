@@ -52,6 +52,6 @@
     "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
     "tsx": "^4.19.2",
-    "typescript": "^5.8.2"
+    "typescript": "catalog:"
   }
 }

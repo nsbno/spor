@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/sidespor-config",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -21,6 +21,7 @@
     "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
-    "tsup": "^8.5.1"
+    "tsup": "^8.5.1",
+    "typescript": "catalog:"
   }
 }

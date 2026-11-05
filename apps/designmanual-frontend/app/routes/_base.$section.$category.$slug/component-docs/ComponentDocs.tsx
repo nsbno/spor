@@ -16,7 +16,7 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 
-export type Component = {
+type Component = {
   name: string;
   content: unknown[];
   props: {

@@ -1,20 +1,18 @@
 import { useMatches } from "react-router";
 
+import type { SanityImage } from "~/features/cms/sanity/query";
+
 import { ArticleHeader } from "../components/ArticleHeader";
 
 type ArticleHeaderSerializerProps = {
   value: {
     subheading: string;
-    illustration: {
-      src: string;
-      alt?: string;
-      [key: string]: unknown;
-    };
+    illustration?: SanityImage;
     leadShortcuts?: { items: ShortcutType[] };
   };
 };
 
-export type ShortcutType = {
+type ShortcutType = {
   _key: string;
   linkText: string;
   anchor: string;

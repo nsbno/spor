@@ -17,7 +17,7 @@ export const LinkButtonSerializer = ({ value }: LinkButtonSerializerProps) => {
 };
 
 /** Turns Sanity's representation of a link button into our own representation of it */
-export function serializeSanityLinkButtonData(
+function serializeSanityLinkButtonData(
   value: LinkButtonSerializerProps["value"],
 ) {
   return {

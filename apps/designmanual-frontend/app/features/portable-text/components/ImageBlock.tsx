@@ -1,4 +1,4 @@
-/* eslint-disable spor/use-semantic-tokens */
+/* oxlint-disable spor/use-semantic-tokens */
 import {
   Box,
   Flex,
@@ -13,7 +13,7 @@ import type { ImageSize } from "~/features/portable-text/components/ResponsiveIm
 import { ResponsiveImage } from "~/features/portable-text/components/ResponsiveImage";
 import { getIcon } from "~/utils/getIcon";
 
-export type ImageItem = {
+type ImageItem = {
   href?: string;
   title?: string;
   image: SanityImage;

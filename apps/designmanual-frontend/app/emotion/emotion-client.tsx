@@ -11,15 +11,15 @@ import {
 
 import { createEmotionCache } from "./emotion-cache";
 
-export interface ClientStyleContextData {
+interface ClientStyleContextData {
   reset: () => void;
 }
 
-export const ClientStyleContext = createContext<ClientStyleContextData>({
+const ClientStyleContext = createContext<ClientStyleContextData>({
   reset: () => {},
 });
 
-export const useClientStyleContext = () => {
+const useClientStyleContext = () => {
   return useContext(ClientStyleContext);
 };
 
@@ -58,7 +58,7 @@ export function useInjectStyles(cache: EmotionCache) {
   useSafeLayoutEffect(() => {
     if (!injectRef.current) return;
 
-    // eslint-disable-next-line react-hooks/immutability
+    // oxlint-disable-next-line react/immutability
     cache.sheet.container = document.head;
 
     const tags = cache.sheet.tags;

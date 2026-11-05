@@ -30,7 +30,6 @@ async function sendRecordToMetabase(
   const recordUserId = "NO_PERSONAL_DATA";
   const recordModelVersion = Number(parameters.recordModelVersion);
 
-  let recordId;
   const record = { ...parameters.record };
 
   const generalData = {
@@ -42,7 +41,7 @@ async function sendRecordToMetabase(
 
   const message: MetabaseMessage = {
     record: { ...record, ...generalData },
-    recordId: recordId ?? crypto.randomUUID(),
+    recordId: crypto.randomUUID(),
     messageId: crypto.randomBytes(16).toString("hex"),
     messageSentAt: new Date().toISOString(),
     messageFormat: "frontend-v3",

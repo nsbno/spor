@@ -29,7 +29,7 @@ export type BoxList = {
   boxes: Box[];
 };
 
-export type Box = {
+type Box = {
   _key?: string;
   title?: string;
   description?: PortableTextBlock[];
@@ -46,7 +46,7 @@ export type Box = {
   }[];
 };
 
-export const NonClickableBox = ({
+const NonClickableBox = ({
   _key,
   title,
   description,

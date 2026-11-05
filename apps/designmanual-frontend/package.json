@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@react-router/dev": "7.14.0",
+    "@babel/preset-typescript": "7.29.7",
     "@react-router/fs-routes": "7.14.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:",

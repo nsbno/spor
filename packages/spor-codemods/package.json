@@ -25,11 +25,11 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jscodeshift": "^17.3.0",
-    "@vygruppen/spor-react": "workspace:*"
+    "jscodeshift": "^17.3.0"
   },
   "devDependencies": {
     "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/spor-react": "workspace:*",
     "@vygruppen/tsconfig": "workspace:*",
     "@types/jscodeshift": "^0.11.11",
     "@types/node": "catalog:",
@@ -39,8 +39,5 @@
     "typescript": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"
-  },
-  "peerDependencies": {
-    "jscodeshift": ">=0.14.0"
   }
 }

@@ -27,7 +27,7 @@ export type VideoPlayerValue = {
   caption?: string;
 };
 
-export type Video = {
+type Video = {
   assetId: string;
   playbackId: string;
   status: string;
@@ -39,7 +39,7 @@ export type Video = {
   data: VideoDataType;
 };
 
-export type VideoDataType = {
+type VideoDataType = {
   aspect_ratio: string;
   created_at: string;
   duration: number;
@@ -62,21 +62,21 @@ export type VideoDataType = {
   video_quality: string;
 };
 
-export interface NonStandardInputReasons {
+interface NonStandardInputReasons {
   video_resolution: string;
 }
 
-export interface PlaybackId {
+interface PlaybackId {
   id: string;
   policy: string;
 }
 
-export interface Progress {
+interface Progress {
   progress: number;
   state: string;
 }
 
-export interface Track {
+interface Track {
   duration: number;
   id: string;
   max_frame_rate: number;

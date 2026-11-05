@@ -23,7 +23,7 @@ export type SanityImage = {
   };
 };
 
-export function resolveImageGroq() {
+function resolveImageGroq() {
   return groq`
     (_type == 'image') => @ {
       _type,
@@ -66,7 +66,7 @@ export function resolveLinkButtonGroq() {
     }`;
 }
 
-export function resolveMarkdefsLinkGroq() {
+function resolveMarkdefsLinkGroq() {
   return groq`
     type == "fileLink" => @ {
         "href": fileLink.asset -> url
@@ -84,7 +84,7 @@ export function resolveDividerGroq() {
     }`;
 }
 
-export function resolveTableChartGroq() {
+function resolveTableChartGroq() {
   return groq`
     (_type == "table") => @ {
       _type,
@@ -134,21 +134,6 @@ export function resolveVideoPlayerGroq() {
     transcript
     }
   `;
-}
-
-export function resolveTextBlockGroq() {
-  return groq`
-    (_type == "textBlock") => @ {
-      ...,
-      content[] {
-        ...,
-        ${resolveLinkButtonGroq()},
-        markDefs[] {
-          ...,
-          ${resolveMarkdefsLinkGroq()},
-        },
-      }
-    }`;
 }
 
 export function resolveArticleHeaderGroq() {
@@ -369,53 +354,3 @@ export function resolveFileListGroq() {
 }
 
 // settings til pages
-
-export function resolveSeoGroq() {
-  return groq`
-    seo {
-      title,
-      description,
-      keywords,
-      image {
-        asset
-      },
-      status
-  }`;
-}
-
-export function resolveBreadcrumbsGroq() {
-  return groq`
-    "crumbs": {
-      "currentPage": {
-        "title": coalesce(shortTitle, title),
-        "slug": slug.current
-      },
-      ...(category-> {
-        "mainCategory": {
-            title,
-            "slug": slug.current
-          },
-        "parentCategory": {
-          ...(parent -> {
-            title,
-            "slug": slug.current
-          })
-        },
-        "grandParentCategory": {
-          ...(parent -> {
-            ...(parent -> {
-              title,
-              "slug": slug.current
-            })
-          })
-        }
-      })
-    }`;
-}
-
-export function resolveSettingsGroq() {
-  return groq`
-    settings {
-      breadcrumbs
-    }`;
-}

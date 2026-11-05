@@ -14,7 +14,7 @@ type ArticleHeaderSerializerProps = {
   };
 };
 
-export type ShortcutType = {
+type ShortcutType = {
   _key: string;
   linkText: string;
   anchor: string;

@@ -31,21 +31,6 @@ export const toTitleCase = (input: string): string => {
     .join(" ");
 };
 
-/**
- * Turns most strings into to Capital case.
- *
- * @example
- * toCapitalCase("hello world") // "Hello world"
- * toCapitalCase("helloWorld") // "Hello world"
- * toCapitalCase("hello-world") // "Hello world"
- * toCapitalCase("hello.world") // "Hello world"
- * toCapitalCase("hello.world.fooBar") // "Hello world foo bar"
- */
-export const toCapitalCase = (input: string): string => {
-  const titleCase = toTitleCase(input);
-  return titleCase.charAt(0).toUpperCase() + titleCase.slice(1).toLowerCase();
-};
-
 /** Makes a slug out of a string
  * @see https://gist.github.com/mathewbyrne/1280286
  */

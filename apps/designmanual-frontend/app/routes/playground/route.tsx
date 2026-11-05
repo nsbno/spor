@@ -28,9 +28,8 @@ export const HydrateFallback = () => (
 );
 
 export default function PlaygroundPage() {
-  const [playgroundData, setPlaygroundData] = useState(
-    useLoaderData<typeof clientLoader>(),
-  );
+  const [playgroundData, setPlaygroundData] =
+    useState(useLoaderData<typeof clientLoader>());
 
   const handleChange = (newCode: string) => {
     setPlaygroundData(newCode);

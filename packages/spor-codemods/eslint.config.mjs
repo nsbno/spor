@@ -1,1 +1,9 @@
-export { default } from "@vygruppen/eslint-config";
+import config from "@vygruppen/eslint-config";
+
+/** @type {import("eslint").Linter.Config} */
+export default [
+  ...config,
+  {
+    ignores: ["./dist/*"],
+  },
+];

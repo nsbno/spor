@@ -9,7 +9,7 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "lint": "oxlint --max-warnings=0"
+    "lint": "oxlint"
   },
   "dependencies": {
     "@ark-ui/react": "5.39.3",

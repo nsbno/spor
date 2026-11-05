@@ -22,15 +22,14 @@ export const clientLoader = () =>
 
 export const HydrateFallback = () => (
   <Stack gap={2} role="status" aria-label="Loading playground">
-    <Skeleton height="200px" />
-    <Skeleton height="120px" />
+    <Skeleton height={13} />
+    <Skeleton height={11} />
   </Stack>
 );
 
 export default function PlaygroundPage() {
-  const [playgroundData, setPlaygroundData] = useState(
-    useLoaderData<typeof clientLoader>(),
-  );
+  const [playgroundData, setPlaygroundData] =
+    useState(useLoaderData<typeof clientLoader>());
 
   const handleChange = (newCode: string) => {
     setPlaygroundData(newCode);

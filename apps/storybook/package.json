@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-storybook",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,25 +8,19 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.30.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
+    "@chakra-ui/react": "3.38.0",
+    "@emotion/react": "11.14.0",
     "@vygruppen/spor-react": "workspace:*",
-    "@vygruppen/spor-icon-react": "workspace:*",
-    "@vygruppen/spor-design-tokens": "workspace:*",
-    "framer-motion": "^11.11.17",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8",
-    "@storybook/react": "^8",
-    "@storybook/react-vite": "^8",
-    "@types/react": "19.2.3",
-    "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "^4",
-    "storybook": "^8",
+    "@storybook/addon-docs": "10.6.5",
+    "@storybook/react-vite": "10.6.5",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "storybook": "10.6.5",
     "typescript": "catalog:",
-    "vite": "^6"
+    "vite": "catalog:"
   }
 }

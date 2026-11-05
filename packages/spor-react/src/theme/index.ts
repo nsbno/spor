@@ -16,6 +16,7 @@ import { globalCss } from "./tokens/global-css";
 import { keyframes } from "./tokens/keyframes";
 import { textStyles } from "./tokens/text-styles";
 
+export type { SporStatusToken } from "./tokens/global-css";
 export { createSystem, defineConfig } from "@chakra-ui/react";
 
 const generateTheme = (brand: Brand) => {

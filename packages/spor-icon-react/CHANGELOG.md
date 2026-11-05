@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon-react
 
+## 5.1.2
+
+### Patch Changes
+
+- d697199: Fix `createToast({ variant: "critical" })` crashing by requiring `@chakra-ui/react` 3.38 or newer. The `@zag-js/toast` version bundled with Chakra 3.35–3.37 threw on toast types it didn't know, and `critical` is a Spor-only type.
+
 ## 5.1.1
 
 ### Patch Changes

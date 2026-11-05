@@ -27,7 +27,8 @@
     "prebuild": "pnpm clean",
     "build": "tsx bin/generate.ts && tsup",
     "dev": "chokidar 'bin/**/*' -c 'pnpm build'",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=19.0.0",

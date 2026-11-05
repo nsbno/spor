@@ -24,7 +24,8 @@
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
     "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {

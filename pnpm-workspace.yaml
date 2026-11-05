@@ -1,7 +1,6 @@
 packages:
   - "packages/**"
   - "apps/storybook"
-  - "apps/studio"
   - "apps/design-studio"
   - "apps/designmanual-frontend"
 
@@ -16,10 +15,9 @@ savePrefix: ""
 trustPolicy: no-downgrade
 # Lockfile entries whose trust level dropped compared to an earlier release.
 # They were in the lockfile before pnpm enforced trustPolicy (pnpm 10.4.1 ignored it).
-# Most come from apps/studio and Storybook, which Part 1 deletes; the prune setting
-# removes an entry here once the lockfile no longer has that version.
+# Some of these came from the retired apps/studio and others come from Storybook;
+# the prune setting removes an entry here once the lockfile no longer has that version.
 trustPolicyExclude:
-  - "@sanity/template-validator@2.4.6"
   - chokidar@4.0.3
   - groq@3.88.1-typegen-experimental.0
   - reselect@5.1.1
@@ -36,6 +34,15 @@ allowBuilds:
   esbuild: false
   style-dictionary: false
 
+# One React version across the workspace. A second copy duplicates Chakra and Emotion
+# for linked packages like spor-react.
+# @types/node follows the Node major in the root package.json engines.
+catalog:
+  "@types/node": 22.20.5
+  react: 19.2.9
+  react-dom: 19.2.9
+  "@types/react": 19.2.18
+  "@types/react-dom": 19.2.7
+
 overrides:
   fast-xml-parser: 5.11.2
-  "@types/react": 19.2.3

@@ -1,11 +1,12 @@
 # Base node image
-FROM node:20-alpine AS base
+FROM node:22.23.4-alpine AS base
 
 # Set environment variables
 ENV NODE_ENV=production
 
-# Install pnpm globally
-RUN npm install -g pnpm
+# Install the pnpm version pinned in the root package.json "packageManager" field
+COPY package.json /tmp/package.json
+RUN npm install -g "$(node -p "require('/tmp/package.json').packageManager")" && rm /tmp/package.json
 
 # Install all node_modules, including dev dependencies
 FROM base AS deps

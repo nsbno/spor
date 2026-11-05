@@ -22,8 +22,8 @@ export const clientLoader = () =>
 
 export const HydrateFallback = () => (
   <Stack gap={2} role="status" aria-label="Loading playground">
-    <Skeleton height="200px" />
-    <Skeleton height="120px" />
+    <Skeleton height={13} />
+    <Skeleton height={11} />
   </Stack>
 );
 

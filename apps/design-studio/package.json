@@ -4,9 +4,6 @@
   "version": "1.0.4",
   "main": "package.json",
   "license": "UNLICENSED",
-  "engines": {
-    "node": ">=22.12"
-  },
   "scripts": {
     "dev": "sanity dev --port 4444",
     "start": "sanity start",
@@ -23,8 +20,8 @@
     "@sanity/vision": "^6.3.0",
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "react-icons": "^5.5.0",
     "sanity": "^6.3.0",
     "sanity-plugin-iframe-pane": "^5.0.19",
@@ -34,7 +31,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^6.0.0",
-    "@types/react": "19.2.5",
+    "@types/react": "catalog:",
     "@vygruppen/eslint-config": "workspace:*",
     "canvas": "^3.2.3",
     "eslint": "^9.39.1",

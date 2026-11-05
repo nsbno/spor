@@ -3,8 +3,8 @@
   "display": "Library",
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    // Pins the syntax level of the published tsup output. `lib` stays ESNext
-    // from the base, since it only affects type-checking and esbuild ignores it.
+    // Pins the syntax level of published packages (built by tsup or tsc). `lib`
+    // stays ESNext from the base, since it only affects type-checking.
     "target": "es2024"
   }
 }

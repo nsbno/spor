@@ -4,10 +4,10 @@ import * as React from "react";
 
 import { CloseButton } from "../button";
 import { DataColorProvider, useDataColor } from "../data-color-context";
-import { SporSemantic } from "../theme/tokens/global-css";
+import { SporStatusToken } from "../theme/tokens/global-css";
 
 interface DialogRootProps extends ChakraDialog.RootProps {
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 }
 
 export const DialogRoot = ({
@@ -26,7 +26,7 @@ interface DialogContentProps extends ChakraDialog.ContentProps {
   backdrop?: boolean;
   children?: React.ReactNode;
   positionerProps?: ChakraDialog.PositionerProps;
-  "data-color"?: SporSemantic;
+  "data-color"?: SporStatusToken;
 }
 
 export const DialogContent = ({

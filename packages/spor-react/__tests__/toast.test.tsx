@@ -105,4 +105,19 @@ describe("Toast", () => {
     await user.click(screen.getByRole("button", { name: "Undo" }));
     expect(onButtonClick).toHaveBeenCalled();
   });
+
+  // @zag-js/toast 1.39–1.46 (Chakra < 3.38) crashed on types it doesn't
+  // know, and "critical" is a Spor-only type
+  test.each(["critical", "success", "info"] as const)(
+    "shows a %s toast",
+    async (variant) => {
+      render(<SporProvider>{null}</SporProvider>);
+
+      createToast({ variant, text: `${variant} toast` });
+
+      await waitFor(() => {
+        expect(screen.getByText(`${variant} toast`)).toBeInTheDocument();
+      });
+    },
+  );
 });

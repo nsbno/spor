@@ -501,7 +501,7 @@ const config = {
       env: {
         browser: true,
         node: true,
-        es2024: true,
+        builtin: true,
       },
     },
     {

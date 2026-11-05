@@ -11,7 +11,7 @@ export const semanticColors = [
   "service",
 ] as const;
 
-export type SporSemantic = (typeof semanticColors)[number];
+export type SporStatusToken = (typeof semanticColors)[number];
 
 // Override Chakra's own CSS variables for each data-color value.
 // Because these variables are set on `:where(:root, :host)` (specificity 0,0,0)

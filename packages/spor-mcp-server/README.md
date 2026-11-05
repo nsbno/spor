@@ -23,13 +23,13 @@ The server runs over stdio and can be used from tools like GitHub Copilot CLI, V
 
 ## Prerequisites
 
-- Node.js 22.12+ (matches the monorepo requirement; see the root `.nvmrc`)
+- Node.js 22.12+ (the monorepo pins its version in the root `package.json` `engines`)
 
 For runtime usage in MCP clients, you can run this server directly with `npx`.
 
 For local development in this monorepo, you also need:
 
-- pnpm 9+
+- pnpm (the version is pinned in the root `package.json` `packageManager`)
 - Dependencies installed in the Spor monorepo
 
 From repository root:

@@ -21,7 +21,7 @@ import {
 import { ReactNode, Ref } from "react";
 import { createContext, useContext } from "react";
 
-import { SporSemantic } from "@/theme/tokens/global-css";
+import { SporStatusToken } from "@/theme/tokens/global-css";
 
 import {
   Button,
@@ -60,7 +60,7 @@ export const Menu = ({
   children,
   "data-color": dataColor,
   ...props
-}: MenuRootProps & { "data-color"?: SporSemantic }) => {
+}: MenuRootProps & { "data-color"?: SporStatusToken }) => {
   const dataColorFromContext = useDataColor();
   return (
     <DataColorProvider data-color={dataColor ?? dataColorFromContext}>

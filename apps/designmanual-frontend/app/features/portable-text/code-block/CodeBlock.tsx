@@ -113,7 +113,7 @@ function getPreviousFocusableElement() {
 }
 
 type CopyCodeButtonProps = { code: string };
-export const CopyCodeButton = ({ code }: CopyCodeButtonProps) => {
+const CopyCodeButton = ({ code }: CopyCodeButtonProps) => {
   return (
     <Clipboard value={code}>
       <ClipboardButton variant="floating" />

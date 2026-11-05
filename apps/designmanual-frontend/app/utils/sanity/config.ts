@@ -2,7 +2,7 @@
 const projectId = import.meta.env.VITE_SANITY_TOKEN || "r4xpzxak";
 const sanitySecret = import.meta.env.VITE_SANITY_SECRET || "";
 
-export function getRuntimeEnv(key: string): string | undefined {
+function getRuntimeEnv(key: string): string | undefined {
   // Client: window.__ENV__ injected by server
   if (globalThis.window !== undefined && (globalThis as any).__ENV__) {
     return (globalThis as any).__ENV__[key];
@@ -15,13 +15,10 @@ export function getRuntimeEnv(key: string): string | undefined {
   return (import.meta as any).env?.[key];
 }
 
-export const VITE_ENVIRONMENT = getRuntimeEnv("VITE_ENVIRONMENT") || "local";
+const VITE_ENVIRONMENT = getRuntimeEnv("VITE_ENVIRONMENT") || "local";
 export const VITE_SANITY_TOKEN = getRuntimeEnv("VITE_SANITY_TOKEN") || "";
 export const VITE_SANITY_SECRET = getRuntimeEnv("VITE_SANITY_SECRET") || "";
-export const VITE_PUBLIC_SANITY_STUDIO_URL =
-  getRuntimeEnv("VITE_PUBLIC_SANITY_STUDIO_URL") || "";
-export const VITE_SANITY_STUDIO_URL =
-  getRuntimeEnv("VITE_SANITY_STUDIO_URL") || "";
+const VITE_SANITY_STUDIO_URL = getRuntimeEnv("VITE_SANITY_STUDIO_URL") || "";
 
 const environment = VITE_ENVIRONMENT;
 

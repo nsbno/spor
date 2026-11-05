@@ -1,19 +1,15 @@
 import { PortableTextBlock } from "@portabletext/react";
-import { groq } from "@sanity/groq-store";
-import { sidesporConfig } from "@vygruppen/sidespor-config";
 import { LinkOutOutline18Icon } from "@vygruppen/spor-icon-react";
 import {
   Badge,
   Box,
   Button,
-  createSystem,
   Flex,
   Heading,
-  SporProvider,
   Stack,
   Text,
-  themes,
 } from "@vygruppen/spor-react";
+import groq from "groq";
 import { type ComponentProps, PropsWithChildren } from "react";
 import {
   Link,
@@ -73,11 +69,6 @@ type ComponentSection = {
   codeExamples: CodeExample[];
 };
 
-export const extendedSystemConfigWithSidespor = createSystem(
-  themes.VyDigital._config,
-  sidesporConfig,
-);
-
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   invariant(params.category, "Expected params.category");
   invariant(params.slug, "Expected params.slug");
@@ -97,7 +88,7 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
       "slug": slug.current
     },
     badges[] {
-      badgeType, 
+      badgeType,
       description
     },
     resourceLinks[linkType == "react" || linkType == "react-native" || linkType == "figma" || linkType == "custom"] {
@@ -271,10 +262,6 @@ export default function ArticlePage() {
                 component={article.title}
               />
             </Flex>
-          ) : article.title.includes("Sidespor") ? (
-            <SporProvider theme={extendedSystemConfigWithSidespor}>
-              <PortableText value={article.content} />
-            </SporProvider>
           ) : (
             <Box>
               <PortableText value={article.content} />

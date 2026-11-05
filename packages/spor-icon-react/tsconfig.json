@@ -3,6 +3,7 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "module": "ESNext",
+    "moduleResolution": "bundler",
     "target": "es2017",
     "outDir": "./dist",
     "rootDirs": ["bin", "tmp"],
@@ -12,7 +13,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": "./dist",
-    "types": ["react", "react-dom", "./dist/types"],
+    "types": ["node", "react", "react-dom", "./dist/types"],
     "paths": {
       "@vygruppen/spor-icon-react": ["./dist/types.d.ts"]
     }

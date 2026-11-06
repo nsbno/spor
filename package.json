@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "rimraf packages/*/dist --glob",
-    "build": "turbo run build",
-    "test": "turbo run test --parallel",
-    "dev": "turbo run dev",
-    "storybook": "turbo run storybook",
-    "lint": "turbo run lint -- --max-warnings=0",
+    "prebuild": "rm -rf packages/*/dist",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "dev": "pnpm -r --workspace-concurrency=16 run dev",
+    "storybook": "pnpm --filter @vygruppen/spor-storybook run storybook",
+    "lint": "pnpm -r run lint --max-warnings=0",
     "changeset": "npx changeset",
     "prerelease": "pnpm build",
-    "release": "turbo run build && changeset publish",
+    "release": "changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\""
   },
@@ -19,9 +19,7 @@
     "@changesets/cli": "^2.27.5",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
-    "prettier": "^3.3.1",
-    "rimraf": "^5.0.7",
-    "turbo": "2.11.7"
+    "prettier": "^3.3.1"
   },
   "engines": {
     "node": "22.23.4"

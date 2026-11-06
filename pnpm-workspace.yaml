@@ -62,3 +62,14 @@ overrides:
   # proxy-addr < 2.0.8 is vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnets.
   # Pulled in by express 4 and 5. Remove once both require proxy-addr >= 2.0.8.
   proxy-addr: 2.0.8
+
+# Task graph for "pnpm -r run". A task without an entry here waits for the same task
+# in its workspace dependencies, so build waits for ^build.
+tasks:
+  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
+  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  dev:
+    dependsOn:
+      - ^build
+  lint:
+    dependsOn: []

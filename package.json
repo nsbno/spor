@@ -22,12 +22,12 @@
     "prettier": "^3.3.1"
   },
   "engines": {
-    "node": "22.23.4"
+    "node": "26.13.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22.23.4",
+      "version": "26.13.0",
       "onFail": "download"
     }
   },

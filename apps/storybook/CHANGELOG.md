@@ -1,5 +1,13 @@
 # @vygruppen/spor-storybook
 
+## 0.0.15
+
+### Patch Changes
+
+- Updated dependencies [c37ec21]
+- Updated dependencies [46d6a65]
+  - @vygruppen/spor-react@14.1.2
+
 ## 0.0.14
 
 ### Patch Changes

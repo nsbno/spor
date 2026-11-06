@@ -98,7 +98,7 @@ export const AccordionItemTrigger = function AccordionItemTrigger({
         css={{ ...styles.itemTrigger, ...css }}
       >
         <HStack flex="1" gap={1} textAlign="start" width="full">
-          {startElement && startElement}
+          {startElement}
           {children}
         </HStack>
         {showChevron && (

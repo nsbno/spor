@@ -9,7 +9,7 @@
     "dev": "turbo run dev",
     "storybook": "turbo run storybook",
     "lint": "turbo run lint -- --max-warnings=0",
-    "changeset": "npx changeset",
+    "changeset": "changeset",
     "prerelease": "pnpm build",
     "release": "turbo run build && changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",

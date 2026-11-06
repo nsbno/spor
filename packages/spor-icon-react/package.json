@@ -25,7 +25,7 @@
   "scripts": {
     "clean": "rimraf tmp dist react",
     "prebuild": "pnpm clean",
-    "build": "tsx bin/generate.ts && tsup",
+    "build": "node bin/generate.ts && tsup",
     "dev": "chokidar 'bin/**/*' -c 'pnpm build'",
     "lint": "eslint ."
   },
@@ -51,9 +51,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "rimraf": "^3.0.2",
-    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
     "typescript": "catalog:"
   }
 }

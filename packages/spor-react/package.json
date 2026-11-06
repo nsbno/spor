@@ -24,7 +24,8 @@
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
     "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
   "repository": {
@@ -72,14 +73,13 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "^6.0.2",
     "@vygruppen/eslint-config": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "clsx": "^2.1.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.39.1",
     "jsdom": "^29.1.1",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tsup": "^7.2.0",
+    "tsup": "catalog:",
     "typescript": "catalog:",
     "vitest": "^4.1.8"
   },

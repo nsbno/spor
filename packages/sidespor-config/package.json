@@ -21,7 +21,7 @@
     "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

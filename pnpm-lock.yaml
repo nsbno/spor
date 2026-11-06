@@ -164,6 +164,12 @@ settings:
 
 catalogs:
   default:
+    '@chakra-ui/react':
+      specifier: ^3.38.0
+      version: 3.38.0
+    '@emotion/react':
+      specifier: ^11.14.0
+      version: 11.14.0
     '@types/node':
       specifier: 22.20.5
       version: 22.20.5
@@ -298,13 +304,13 @@ importers:
         specifier: 5.39.3
         version: 5.39.3(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@chakra-ui/react':
-        specifier: 3.38.0
+        specifier: 'catalog:'
         version: 3.38.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@emotion/cache':
         specifier: 11.14.0
         version: 11.14.0
       '@emotion/react':
-        specifier: 11.14.0
+        specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
       '@internationalized/date':
         specifier: 3.12.4
@@ -443,10 +449,10 @@ importers:
   apps/storybook:
     dependencies:
       '@chakra-ui/react':
-        specifier: 3.38.0
+        specifier: 'catalog:'
         version: 3.38.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@emotion/react':
-        specifier: 11.14.0
+        specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
       '@vygruppen/spor-react':
         specifier: workspace:*
@@ -628,7 +634,7 @@ importers:
   packages/spor-icon-react:
     devDependencies:
       '@chakra-ui/react':
-        specifier: ^3.38.0
+        specifier: 'catalog:'
         version: 3.38.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@svgr/core':
         specifier: ^8.1.0
@@ -797,7 +803,7 @@ importers:
         specifier: ^3.30.0
         version: 3.34.0(@chakra-ui/react@3.38.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(react-dom@19.2.9(react@19.2.9))(react@19.2.9))(supports-color@8.1.1)(typescript@5.9.3)
       '@chakra-ui/react':
-        specifier: ^3.38.0
+        specifier: 'catalog:'
         version: 3.38.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(react-dom@19.2.9(react@19.2.9))(react@19.2.9)
       '@chakra-ui/react-use-size':
         specifier: ^2.1.0
@@ -818,7 +824,7 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2(react@19.2.9)
       '@emotion/react':
-        specifier: ^11.14.0
+        specifier: 'catalog:'
         version: 11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
       '@emotion/styled':
         specifier: ^11.14.1

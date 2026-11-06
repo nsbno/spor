@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-mcp-server",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "description": "MCP server for Spor Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -29,6 +29,6 @@
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "typescript": "^5.9.3"
+    "@typescript/native": "catalog:"
   }
 }

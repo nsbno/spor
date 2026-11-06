@@ -45,7 +45,7 @@ export const MenuItem = ({ url, title, badges, icon }: MenuItemProps) => {
         >
           <Stack direction="row" alignItems="center" width="100%">
             {title}
-            {icon && icon}
+            {icon}
             {badges && (
               <Stack direction="row">
                 {badges.map((badge) => (

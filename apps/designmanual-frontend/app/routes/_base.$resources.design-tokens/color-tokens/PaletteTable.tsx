@@ -1,4 +1,4 @@
-import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
+import tokensJSON from "@vygruppen/spor-design-tokens/tokens.json";
 import {
   Badge,
   Box,

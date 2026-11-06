@@ -1,5 +1,4 @@
 import { PortableTextBlock } from "@portabletext/types";
-import { groq } from "@sanity/groq-store";
 import { LinkOutOutline24Icon } from "@vygruppen/spor-icon-react";
 import {
   Box,
@@ -11,6 +10,7 @@ import {
   PressableCard,
   Stack,
 } from "@vygruppen/spor-react";
+import groq from "groq";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
 import invariant from "tiny-invariant";
 

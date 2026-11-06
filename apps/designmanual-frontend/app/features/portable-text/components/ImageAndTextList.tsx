@@ -14,7 +14,7 @@ import { BlockHeading } from "~/features/portable-text/components/BlockHeading";
 import { ResponsiveImage } from "~/features/portable-text/components/ResponsiveImage";
 import { PortableText } from "~/features/portable-text/PortableText";
 
-type ImageAndTextProps = {
+export type ImageAndTextProps = {
   _key?: string;
   image: SanityImage;
   content: PortableTextBlock[];

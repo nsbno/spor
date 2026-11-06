@@ -7,7 +7,6 @@
   "compilerOptions": {
     "module": "ESNext",
     "target": "es2024",
-    "downlevelIteration": true,
     "moduleResolution": "bundler",
     "rootDir": ".",
     "outDir": "dist",

@@ -1,15 +1,7 @@
-import type { PortableTextBlock } from "@portabletext/types";
-
-import type { SanityImage } from "~/features/cms/sanity/query";
-import { ImageAndTextList } from "~/features/portable-text/components/ImageAndTextList";
-
-type ImageAndTextProps = {
-  _key?: string;
-  image: { image: SanityImage; altText: string; attribution: string };
-  content: PortableTextBlock[];
-  listLayout: string;
-  listDirection: string;
-};
+import {
+  ImageAndTextList,
+  type ImageAndTextProps,
+} from "~/features/portable-text/components/ImageAndTextList";
 
 type ImageAndTextListSerializerProps = {
   value: {

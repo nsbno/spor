@@ -1,5 +1,5 @@
-/* eslint-disable simple-import-sort/imports */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable simple-import-sort/imports */
+/* oxlint-disable typescript/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
 import { vercelStegaClean } from "@vercel/stega";
 import {

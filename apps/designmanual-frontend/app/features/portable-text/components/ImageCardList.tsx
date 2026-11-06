@@ -90,7 +90,7 @@ const ImageCardLinkText = ({
   );
 };
 
-export const ImageCard = ({
+const ImageCard = ({
   title,
   headingLevel,
   description,

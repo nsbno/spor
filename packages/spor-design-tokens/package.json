@@ -28,7 +28,7 @@
     "./tokens.css": "./dist/tokens.css"
   },
   "scripts": {
-    "build": "tsx scripts/build.mts",
+    "build": "node scripts/build.mts",
     "prepare": "pnpm build",
     "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
     "lint": "eslint ."
@@ -49,9 +49,7 @@
     "eslint": "^9.39.1",
     "json-to-ts": "^1.7.0",
     "style-dictionary": "^4.3.3",
-    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
     "typescript": "catalog:"
   }
 }

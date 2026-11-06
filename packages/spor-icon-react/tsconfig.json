@@ -9,6 +9,10 @@
     "strict": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
+    // bin/generate.ts runs directly under Node's type stripping, which requires
+    // explicit .ts extensions and `import type` for type-only imports.
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": "./dist",

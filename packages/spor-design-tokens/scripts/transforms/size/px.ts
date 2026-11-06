@@ -1,4 +1,4 @@
-import { Transform } from "style-dictionary/types";
+import type { Transform } from "style-dictionary/types";
 
 /**
  * Adds px suffixes to all values in the size category

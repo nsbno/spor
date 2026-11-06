@@ -8,6 +8,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
   slots: checkboxAnatomy.keys(),
   base: {
     root: {
+      cursor: "pointer",
       whiteSpace: "normal",
       wordBreak: "break-word",
       display: "flex",
@@ -39,9 +40,6 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         color: "icon.brand",
         borderColor: "surface.brand",
         background: "surface.brand",
-        _focus: {
-          borderColor: "surface.brand.active",
-        },
         _invalid: {
           backgroundColor: "outline.error",
           borderColor: "outline.error",
@@ -51,9 +49,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
         color: "icon.brand",
         borderColor: "surface.brand",
         background: "surface.brand",
-        _focus: {
-          borderColor: "surface.brand.active",
-        },
+
         _invalid: {
           backgroundColor: "outline.error",
           borderColor: "outline.error",
@@ -67,7 +63,7 @@ export const checkboxSlotRecipe = defineSlotRecipe({
       _invalid: {
         borderColor: "outline.error",
       },
-      _focus: {
+      _focusVisible: {
         outlineStyle: "solid",
         outlineColor: "outline.focus",
         outlineOffset: tokens.size.stroke.md,

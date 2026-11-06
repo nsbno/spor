@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "rimraf packages/*/dist --glob",
+    "prebuild": "rm -rf packages/*/dist",
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "dev": "pnpm -r --workspace-concurrency=16 run dev",
@@ -21,8 +21,7 @@
     "eslint": "^9.39.1",
     "jscodeshift": "^17.3.0",
     "prettier": "^3.3.1",
-    "react-icons": "^5.4.0",
-    "rimraf": "^5.0.7"
+    "react-icons": "^5.4.0"
   },
   "engines": {
     "node": "22.23.4"

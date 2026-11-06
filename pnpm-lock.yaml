@@ -633,9 +633,9 @@ importers:
       '@svgr/plugin-svgo':
         specifier: ^8.1.0
         version: 8.1.0(@svgr/core@8.1.0(supports-color@8.1.1)(typescript@5.9.3))(typescript@5.9.3)
-      '@types/fs-extra':
-        specifier: ^11.0.4
-        version: 11.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.20.5
       '@types/react':
         specifier: 'catalog:'
         version: 19.2.18
@@ -660,9 +660,6 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.7.0)(supports-color@8.1.1)
-      fs-extra:
-        specifier: ^11.2.0
-        version: 11.3.2
       react:
         specifier: 'catalog:'
         version: 19.2.9
@@ -671,7 +668,7 @@ importers:
         version: 19.2.9(react@19.2.9)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@types/node@25.5.2)(typescript@5.9.3)
+        version: 10.9.2(@types/node@22.20.5)(typescript@5.9.3)
       tsup:
         specifier: ^8.3.6
         version: 8.5.1(jiti@2.7.0)(postcss@8.5.26)(supports-color@8.1.1)(tsx@4.20.5)(typescript@5.9.3)(yaml@2.9.0)
@@ -696,9 +693,9 @@ importers:
       '@svgr/plugin-svgo':
         specifier: ^6.2.0
         version: 6.5.1(@svgr/core@6.5.1(supports-color@8.1.1))
-      '@types/fs-extra':
-        specifier: ^11.0.4
-        version: 11.0.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.20.5
       '@vygruppen/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -714,9 +711,6 @@ importers:
       eslint:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.7.0)(supports-color@8.1.1)
-      fs-extra:
-        specifier: ^11.2.0
-        version: 11.3.2
       react:
         specifier: '>17.0.0'
         version: 18.3.1
@@ -731,7 +725,7 @@ importers:
         version: 2.3.0
       tsup:
         specifier: ^7.2.0
-        version: 7.3.0(postcss@8.5.26)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@25.5.2)(typescript@5.9.3))(typescript@5.9.3)
+        version: 7.3.0(postcss@8.5.26)(supports-color@8.1.1)(ts-node@10.9.2(@types/node@22.20.5)(typescript@5.9.3))(typescript@5.9.3)
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -6874,9 +6868,6 @@ packages:
   '@types/follow-redirects@1.14.4':
     resolution: {integrity: sha512-GWXfsD0Jc1RWiFmMuMFCpXMzi9L7oPDVwxUnZdg89kDNnqsRfUKXEtUYtA98A6lig1WXH/CYY/fvPW9HuN5fTA==}
 
-  '@types/fs-extra@11.0.4':
-    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
-
   '@types/google_interactive_media_ads_types@3.697.1':
     resolution: {integrity: sha512-gRjJoPKQRjjTuySHqZe8Pnu6a5B0bKbTUD2ioDLPSWlEuBaAc2p1mzUzy42SCeWkyYffo2Mnv+blUGuvVvx3dQ==}
 
@@ -6897,9 +6888,6 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
-
-  '@types/jsonfile@6.1.4':
-    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
   '@types/linkify-it@5.0.0':
     resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
@@ -10038,10 +10026,6 @@ packages:
 
   fs-constants@1.0.0:
     resolution: {integrity: sha512-y6OAwoSIf7FyjMIv94u+b5rdheZEjzR63GTyZJm5qh4Bi+2YgwLCcI/fPFZkL5PSixOt6ZNKm+w+Hfp/Bciwow==}
-
-  fs-extra@11.3.2:
-    resolution: {integrity: sha512-Xr9F6z6up6Ws+NjzMCZc6WXg2YFRlrLP9NQDO3VQrWrfiojdhS56TzueT88ze0uBdCTwEIhQ3ptnmKeWGFAe0A==}
-    engines: {node: '>=14.14'}
 
   fs-extra@7.0.1:
     resolution: {integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==}
@@ -22537,11 +22521,6 @@ snapshots:
     dependencies:
       '@types/node': 25.5.2
 
-  '@types/fs-extra@11.0.4':
-    dependencies:
-      '@types/jsonfile': 6.1.4
-      '@types/node': 25.5.2
-
   '@types/google_interactive_media_ads_types@3.697.1': {}
 
   '@types/hast@3.0.4':
@@ -22564,10 +22543,6 @@ snapshots:
       recast: 0.20.5
 
   '@types/json-schema@7.0.15': {}
-
-  '@types/jsonfile@6.1.4':
-    dependencies:
-      '@types/node': 25.5.2
 
   '@types/linkify-it@5.0.0': {}
 
@@ -26981,12 +26956,6 @@ snapshots:
 
   fs-constants@1.0.0: {}
 
-  fs-extra@11.3.2:
-    dependencies:
-      graceful-fs: 4.2.11
-      jsonfile: 6.2.0
-      universalify: 2.0.1
-
   fs-extra@7.0.1:
     dependencies:
       graceful-fs: 4.2.11
@@ -31123,6 +31092,7 @@ snapshots:
       typescript: 5.9.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
+    optional: true
 
   tsconfck@3.1.6(typescript@5.9.3):
     optionalDependencies:

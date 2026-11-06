@@ -16,8 +16,8 @@
     "directory": "packages/spor-icon"
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "prebuild": "pnpm clean",
+    "clean": "rm -rf dist",
+    "prebuild": "pnpm run clean",
     "build": "mkdir dist && bestzip dist/spor-icons.zip svg/*",
     "dev": "chokidar 'svg/**/*' -c 'pnpm build'"
   },

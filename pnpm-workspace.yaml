@@ -40,6 +40,7 @@ allowBuilds:
 
 # One React version across the workspace. A second copy duplicates Chakra and Emotion
 # for linked packages like spor-react.
+# Chakra and Emotion keep a caret range because spor-react publishes them as dependencies.
 # @types/node follows the Node major in the root package.json engines.
 # One Vite version for the apps that build with it.
 # TypeScript 7 has no JS API yet (expected in 7.1). Tools that import "typescript"
@@ -47,6 +48,8 @@ allowBuilds:
 # TypeScript 7 via @typescript/native.
 # https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0
 catalog:
+  "@chakra-ui/react": ^3.38.0
+  "@emotion/react": ^11.14.0
   "@types/node": 22.20.5
   react: 19.2.9
   react-dom: 19.2.9
@@ -58,3 +61,14 @@ catalog:
 
 overrides:
   fast-xml-parser: 5.11.2
+
+# Task graph for "pnpm -r run". A task without an entry here waits for the same task
+# in its workspace dependencies, so build waits for ^build.
+tasks:
+  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
+  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  dev:
+    dependsOn:
+      - ^build
+  lint:
+    dependsOn: []

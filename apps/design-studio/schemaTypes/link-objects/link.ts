@@ -8,7 +8,7 @@ export const link = defineType({
   title: "Link",
   icon: MdLink,
   validation: (Rule) =>
-    Rule.custom((value, context) => {
+    Rule.custom((value) => {
       if (value?.type === "internal") {
         return value.reference
           ? true

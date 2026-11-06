@@ -26,7 +26,6 @@ packages/spor-icon-react-native/react
 
 # Tooling and editor state
 .git
-**/.turbo
 **/.terraform
 **/*.tsbuildinfo
 **/*.log

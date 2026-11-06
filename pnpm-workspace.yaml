@@ -6,9 +6,7 @@ packages:
 
 minimumReleaseAge: 10080 # ensures that only packages released at least 7 days ago can be installed
 minimumReleaseAgeExclude:
-  # Came in with the fast-xml-parser 5.11.2 pin while pnpm 10.4.1 ignored minimumReleaseAge.
-  # It is 7 days old on 2026-10-17. Remove this entry then.
-  - strnum@2.5.1
+
   # 3.38.0 is the first Chakra whose @zag-js/toast doesn't crash on the "critical" toast type.
   # It is 7 days old on 2026-11-10. Remove this entry then.
   - "@chakra-ui/react@3.38.0"
@@ -27,7 +25,6 @@ trustPolicyExclude:
   - groq@3.88.1-typegen-experimental.0
   - reselect@5.1.1
   - semver@5.7.2 || 6.3.1
-  - undici-types@6.21.0
 trustPolicyExcludePrune: true
 
 # Dependency install scripts are blocked. A new one fails the install until someone sets it to true or false here.
@@ -40,6 +37,7 @@ allowBuilds:
 
 # One React version across the workspace. A second copy duplicates Chakra and Emotion
 # for linked packages like spor-react.
+# Chakra and Emotion keep a caret range because spor-react publishes them as dependencies.
 # @types/node follows the Node major in the root package.json engines.
 # One Vite version for the apps that build with it.
 # TypeScript 7 has no JS API yet (expected in 7.1). Tools that import "typescript"
@@ -47,7 +45,9 @@ allowBuilds:
 # TypeScript 7 via @typescript/native.
 # https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0
 catalog:
-  "@types/node": 22.20.5
+  "@chakra-ui/react": ^3.38.0
+  "@emotion/react": ^11.14.0
+  "@types/node": 26.6.6
   react: 19.2.9
   react-dom: 19.2.9
   "@types/react": 19.2.18
@@ -58,3 +58,17 @@ catalog:
 
 overrides:
   fast-xml-parser: 5.11.2
+  # proxy-addr < 2.0.8 is vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnets.
+  # Pulled in by express 4 and 5. Remove once both require proxy-addr >= 2.0.8.
+  proxy-addr: 2.0.8
+
+# Task graph for "pnpm -r run". A task without an entry here waits for the same task
+# in its workspace dependencies, so build waits for ^build.
+tasks:
+  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
+  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  dev:
+    dependsOn:
+      - ^build
+  lint:
+    dependsOn: []

@@ -20,6 +20,16 @@ import { Button, Input } from "@vygruppen/spor-react";
 
 Each component and function comes with extensive documentation that shows up once you use it. Just hover over the component to make it show up in your IDE. Documentation is also available on [the documentation website](https://spor.vy.no).
 
+### Fonts
+
+`SporProvider` injects the exported `fontFaces` CSS. The library bundles fonts from
+`@vygruppen/spor-design-tokens` as data URLs, without requests to vy.no or a separate
+font-copying step. Applications using a Content Security Policy must allow `data:`
+in `font-src`.
+
+Vy Sans is used for body text and headings, with variable normal weights 300–700
+and MediumItalic at weight 500.
+
 ## Development
 
 Please refer to the root readme for development notes.

@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Vy Sans";
+  src: url("./VySansVariable-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vy Sans";
+  src: url("./VySans-MediumItalic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+}

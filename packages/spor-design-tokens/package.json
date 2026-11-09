@@ -25,7 +25,9 @@
       "require": "./react-native/index.js"
     },
     "./tokens.json": "./dist/tokens.json",
-    "./tokens.css": "./dist/tokens.css"
+    "./tokens.css": "./dist/tokens.css",
+    "./fonts.css": "./assets/fonts/fonts.css",
+    "./assets/fonts/*": "./assets/fonts/*"
   },
   "scripts": {
     "build": "tsx scripts/build.mts",

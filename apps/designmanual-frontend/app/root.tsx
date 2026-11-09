@@ -1,5 +1,3 @@
-import "./styles/style-overrides.css";
-
 import { withEmotionCache } from "@emotion/react";
 import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import { type ReactNode } from "react";
@@ -8,7 +6,6 @@ import {
   data,
   isRouteErrorResponse,
   Links,
-  type LinksFunction,
   type LoaderFunctionArgs,
   Meta,
   type MetaFunction,
@@ -75,31 +72,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   }
 
   return meta;
-};
-
-export const links: LinksFunction = () => {
-  const fontNames = [
-    "VyDisplay-Medium",
-    "VySans-Regular",
-    "VySans-Light",
-    "VySans-Bold",
-  ];
-
-  const fonts = fontNames.map((fontName) => ({
-    rel: "preconnect",
-    href: `https://www.vy.no/styles/font/${fontName}.woff2`,
-    as: "font",
-    type: "font/woff2",
-  }));
-
-  return [
-    {
-      rel: "icon",
-      href: "/favicon.svg",
-      type: "image/svg+xml",
-    },
-    ...fonts,
-  ];
 };
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {

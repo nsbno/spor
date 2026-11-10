@@ -10,19 +10,14 @@
           "value": "assets/fonts/VySansVariable-Regular.ttf"
         }
       },
-      "vy-sans-variable-italic": {
-        "name": { "value": "Vy Sans" },
-        "woff2": {
-          "value": "assets/fonts/VySans-MediumItalic.woff2"
-        },
-        "ttf": {
-          "value": "assets/fonts/VySans-MediumItalic.ttf"
-        }
-      },
       "vy-sans-medium-italic": {
         "name": { "value": "Vy Sans" },
         "ttf": { "value": "assets/fonts/VySans-MediumItalic.ttf" },
         "woff2": { "value": "assets/fonts/VySans-MediumItalic.woff2" }
+      },
+      "vy-display-medium": {
+        "name": { "value": "Vy Display" },
+        "woff2": { "value": "assets/fonts/VyDisplay-Medium.woff2" }
       },
       "roboto-mono": {
         "medium": {

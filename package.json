@@ -9,7 +9,7 @@
     "dev": "pnpm -r --workspace-concurrency=16 run dev",
     "storybook": "pnpm --filter @vygruppen/spor-storybook run storybook",
     "lint": "pnpm -r run lint --max-warnings=0",
-    "changeset": "npx changeset",
+    "changeset": "changeset",
     "prerelease": "pnpm build",
     "release": "changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
@@ -22,12 +22,12 @@
     "prettier": "^3.3.1"
   },
   "engines": {
-    "node": "22.23.4"
+    "node": "26.13.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "22.23.4",
+      "version": "26.13.0",
       "onFail": "download"
     }
   },

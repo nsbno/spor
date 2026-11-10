@@ -24,7 +24,9 @@ export const dialogSlotRecipe = defineSlotRecipe({
         animationDuration: "moderate",
       },
       "&:has(~ [data-part='positioner'] [aria-modal='false'])": {
-        background: "transparent",
+        background: "none",
+        pointerEvents: "none",
+        animation: "none",
       },
     },
     positioner: {

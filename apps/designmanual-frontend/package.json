@@ -19,7 +19,6 @@
     "@internationalized/date": "3.12.4",
     "@mux/mux-video-react": "0.27.2",
     "@portabletext/react": "6.0.3",
-    "@portabletext/types": "4.0.2",
     "@react-router/node": "7.14.0",
     "@react-router/serve": "7.14.0",
     "@sanity/client": "7.20.0",
@@ -38,7 +37,6 @@
     "isbot": "5.2.2",
     "match-sorter": "8.3.0",
     "prism-react-renderer": "2.4.1",
-    "prismjs": "1.30.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-live": "5.0.1",
@@ -49,19 +47,21 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
-    "@babel/preset-typescript": "7.29.7",
+    "@babel/core": "7.29.7",
+    "@portabletext/types": "4.0.2",
     "@react-router/dev": "7.14.0",
     "@react-router/fs-routes": "7.14.0",
+    "@rolldown/plugin-babel": "0.3.0",
     "@types/archiver": "7.0.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@typescript/native": "catalog:",
+    "@vitejs/plugin-react": "6.2.0",
     "@vygruppen/oxlint-config": "workspace:*",
     "babel-plugin-react-compiler": "1.0.0",
     "oxlint": "1.90.0",
-    "vite": "catalog:",
-    "vite-plugin-babel": "1.7.3"
+    "vite": "catalog:"
   },
   "sideEffects": false
 }

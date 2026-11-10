@@ -13,7 +13,7 @@
     "dev": "tsc --watch",
     "start": "node dist/index.js",
     "test:smoke": "pnpm build && node dist/sdk-client.js",
-    "inspect": "pnpm build && npx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "pnpm build && pnpm dlx @modelcontextprotocol/inspector node dist/index.js"
   },
   "keywords": [
     "mcp",
@@ -22,7 +22,6 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",
-    "@sanity/client": "^7.12.0",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "zod": "^3.23.0"

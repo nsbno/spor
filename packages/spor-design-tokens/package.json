@@ -30,7 +30,7 @@
   "scripts": {
     "build": "node scripts/build.mts",
     "prepare": "pnpm build",
-    "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
+    "dev": "node --watch-path=scripts --watch-path=tokens scripts/build.mts",
     "lint": "eslint ."
   },
   "files": [
@@ -45,7 +45,6 @@
     "@types/node": "catalog:",
     "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "chokidar-cli": "^3.0.0",
     "eslint": "^9.39.1",
     "json-to-ts": "^1.7.0",
     "style-dictionary": "^4.3.3",

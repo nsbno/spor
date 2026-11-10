@@ -9,8 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@chakra-ui/react": "3.38.0",
-    "@emotion/react": "11.14.0",
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
     "@vygruppen/spor-react": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:"

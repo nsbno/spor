@@ -162,7 +162,7 @@ Spor follows **semantic versioning (SemVer)**, and new versions are released usi
 
 ### 📦 Steps to Release a New Version:
 
-1. **Run `npx changeset`** to document changes.
+1. **Run `pnpm changeset`** to document changes.
 2. **Select affected packages** and **choose a version bump** (major, minor, patch).
 3. **Commit the changeset** (this creates a file in `.changeset/`).
 4. **Merge the pull request**, triggering an automatic release.

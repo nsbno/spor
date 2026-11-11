@@ -95,11 +95,6 @@ export const lineIconSlotRecipe = defineSlotRecipe({
           color: "text",
         },
       },
-      other: {
-        iconContainer: {
-          backgroundColor: "linjetag.ferge", //Todo: update with new color
-        },
-      },
       custom: {
         iconContainer: {},
       },

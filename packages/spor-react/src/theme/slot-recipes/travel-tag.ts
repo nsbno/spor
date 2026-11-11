@@ -74,7 +74,6 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       subway: {},
       tram: {},
       "alt-transport": {},
-      other: {},
       walk: {
         container: {
           backgroundColor: "none",

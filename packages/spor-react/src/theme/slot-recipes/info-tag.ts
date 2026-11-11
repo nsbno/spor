@@ -38,7 +38,6 @@ export const infoTagSlotRecipe = defineSlotRecipe({
       "airport-express-train": {},
       "vy-bus": {},
       "local-bus": {},
-      other: {},
     },
     size: {
       ...travelTagSlotRecipe.variants?.size,

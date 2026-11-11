@@ -75,11 +75,6 @@ const icons: Record<Variant, Record<Size, React.ComponentType>> = {
     lg: AltTransportFill30Icon,
   },
   walk: { sm: WalkFill18Icon, md: WalkFill24Icon, lg: WalkFill30Icon },
-  other: {
-    sm: AltTransportFill18Icon,
-    md: AltTransportFill24Icon,
-    lg: AltTransportFill30Icon,
-  }, //Todo: update with new icon
 };
 
 type GetCorrectIconArguments = {

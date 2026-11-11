@@ -1068,6 +1068,12 @@
         },
         "transport": {
           "train": {
+            "DEFAULT": {
+              "value": {
+                "_light": "colors.linjetag.tog",
+                "_dark": "colors.linjetag.tog"
+              }
+            },
             "lokal": {
               "value": {
                 "_light": "colors.linjetag.lokaltog",

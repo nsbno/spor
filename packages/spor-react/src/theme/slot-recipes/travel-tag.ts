@@ -62,6 +62,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       none: {},
     },
     variant: {
+      train: {},
       "local-train": {},
       "region-train": {},
       "region-express-train": {},
@@ -73,6 +74,7 @@ export const travelTagSlotRecipe = defineSlotRecipe({
       subway: {},
       tram: {},
       "alt-transport": {},
+      other: {},
       walk: {
         container: {
           backgroundColor: "none",

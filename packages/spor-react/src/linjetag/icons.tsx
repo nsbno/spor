@@ -30,6 +30,11 @@ import React from "react";
 import type { Size, Variant } from "./types";
 
 const icons: Record<Variant, Record<Size, React.ComponentType>> = {
+  train: {
+    sm: TrainFill18Icon,
+    md: TrainFill24Icon,
+    lg: TrainFill30Icon,
+  },
   "local-train": {
     sm: TrainFill18Icon,
     md: TrainFill24Icon,
@@ -70,6 +75,11 @@ const icons: Record<Variant, Record<Size, React.ComponentType>> = {
     lg: AltTransportFill30Icon,
   },
   walk: { sm: WalkFill18Icon, md: WalkFill24Icon, lg: WalkFill30Icon },
+  other: {
+    sm: AltTransportFill18Icon,
+    md: AltTransportFill24Icon,
+    lg: AltTransportFill30Icon,
+  }, //Todo: update with new icon
 };
 
 type GetCorrectIconArguments = {

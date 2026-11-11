@@ -1,7 +1,7 @@
 import JsonToTS from "json-to-ts";
-import { Format } from "style-dictionary/types";
+import type { Format } from "style-dictionary/types";
 
-import { simplifyTokens } from "../../utils/simplifyTokens";
+import { simplifyTokens } from "../../utils/simplifyTokens.ts";
 
 /** Creates much more correct typescript typings than regular TS formatter */
 export const reactNativeTypescriptTypingsFormatter: Format = {

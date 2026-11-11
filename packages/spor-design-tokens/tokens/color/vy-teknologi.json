@@ -523,8 +523,8 @@
         "neutral": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.steel",
-              "_dark": "colors.iron"
+              "_light": "colors.carbon",
+              "_dark": "colors.silver"
             }
           },
           "highlight": {
@@ -537,8 +537,8 @@
         "info": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.sky",
-              "_dark": "colors.ocean"
+              "_light": "colors.ocean",
+              "_dark": "colors.cloudy"
             }
           },
           "highlight": {
@@ -551,8 +551,8 @@
         "success": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.blueGreen",
-              "_dark": "colors.greenHaze"
+              "_light": "colors.pine",
+              "_dark": "colors.coralGreen"
             }
           },
           "highlight": {
@@ -565,8 +565,8 @@
         "warning": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.banana",
-              "_dark": "colors.bronze"
+              "_light": "colors.bronze",
+              "_dark": "colors.primrose"
             }
           },
           "highlight": {
@@ -579,8 +579,8 @@
         "caution": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.rajah",
-              "_dark": "colors.russet"
+              "_light": "colors.russet",
+              "_dark": "colors.champagne"
             }
           },
           "highlight": {
@@ -593,8 +593,8 @@
         "critical": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.apricot",
-              "_dark": "colors.crimson"
+              "_light": "colors.crimson",
+              "_dark": "colors.lightRed"
             }
           },
           "highlight": {
@@ -607,8 +607,8 @@
         "notice": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.burntYellow",
-              "_dark": "colors.mustard"
+              "_light": "colors.cigar",
+              "_dark": "colors.primrose"
             }
           },
           "highlight": {
@@ -621,8 +621,8 @@
         "service": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.wisteria",
-              "_dark": "colors.amethyst"
+              "_light": "colors.amathyst",
+              "_dark": "colors.lilac"
             }
           },
           "highlight": {

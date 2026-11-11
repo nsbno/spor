@@ -844,8 +844,8 @@
           "other": {
             "DEFAULT": {
               "value": {
-                "_light": "colors.darkGrey",
-                "_dark": "colors.darkGrey"
+                "_light": "colors.linjetag.ukjent",
+                "_dark": "colors.linjetag.ukjent"
               }
             }
           }

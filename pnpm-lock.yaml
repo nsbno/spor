@@ -775,9 +775,6 @@ importers:
       '@chakra-ui/utils':
         specifier: ^2.2.2
         version: 2.2.2(react@19.2.9)
-      '@emotion/react':
-        specifier: 'catalog:'
-        version: 11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
       '@emotion/styled':
         specifier: ^11.14.1
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
@@ -830,6 +827,9 @@ importers:
         specifier: ^3.1.0
         version: 3.1.1(react@19.2.9)
     devDependencies:
+      '@emotion/react':
+        specifier: 'catalog:'
+        version: 11.14.0(@types/react@19.2.18)(react@19.2.9)(supports-color@8.1.1)
       '@storybook/react':
         specifier: 10.6.5
         version: 10.6.5(@types/react-dom@19.2.7(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.9(react@19.2.9))(react@19.2.9)(storybook@10.6.5(@types/react@19.2.18)(prettier@3.8.4)(react@19.2.9))(supports-color@8.1.1)(typescript@5.9.3)

@@ -57,38 +57,7 @@
         }
       ]
     },
-    "scss": {
-      "transforms": [
-        "attribute/cti",
-        "name/kebab",
-        "time/seconds",
-        "html/icon",
-        "size/pxToRem",
-        "color/css"
-      ],
-      "files": [
-        {
-          "format": "scss/variables",
-          "destination": "dist/_tokens.scss"
-        }
-      ]
-    },
-    "less": {
-      "transforms": [
-        "attribute/cti",
-        "name/kebab",
-        "time/seconds",
-        "html/icon",
-        "size/pxToRem",
-        "color/css"
-      ],
-      "files": [
-        {
-          "format": "less/variables",
-          "destination": "dist/tokens.less"
-        }
-      ]
-    },
+
     "jsondocs": {
       "transforms": [
         "attribute/cti",

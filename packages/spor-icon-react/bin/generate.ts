@@ -4,8 +4,8 @@ import path from "node:path";
 import { transform } from "@svgr/core";
 import Case from "case";
 
-import { componentTemplate } from "./componentTemplate";
-import { typeDefinitionTemplate } from "./typeDefinitionTemplate";
+import { componentTemplate } from "./componentTemplate.ts";
+import { typeDefinitionTemplate } from "./typeDefinitionTemplate.ts";
 
 const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";

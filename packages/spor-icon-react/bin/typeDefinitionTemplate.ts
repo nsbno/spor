@@ -1,4 +1,4 @@
-import { IconData } from "./generate";
+import type { IconData } from "./generate.ts";
 
 export const typeDefinitionTemplate = (iconsData: IconData[]) => {
   return `

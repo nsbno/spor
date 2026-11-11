@@ -1,13 +1,21 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+
 import { transform } from "@svgr/core";
 import Case from "case";
-import fs from "fs-extra";
 
-import { componentTemplate } from "./componentTemplate";
-import { typeDefinitionTemplate } from "./typeDefinitionTemplate";
+import { componentTemplate } from "./componentTemplate.ts";
+import { typeDefinitionTemplate } from "./typeDefinitionTemplate.ts";
 
 const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
 const DIST_PATH = "./dist";
+
+/** Writes a file, creating any missing parent directories first */
+async function outputFile(filePath: string, content: string) {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, content);
+}
 
 await run();
 
@@ -176,7 +184,7 @@ async function generateComponent(iconData: IconData) {
 }
 
 function createComponentFile(iconData: IconData, content: string) {
-  return fs.outputFile(
+  return outputFile(
     createFilePath(iconData.metadata.category, iconData.componentName),
     content,
   );
@@ -213,7 +221,7 @@ function generateCategoryIndexFile(icons: IconData[], category: string) {
     )
     .join("\n");
 
-  return fs.outputFile(`${TMP_PATH}/${category}/index.ts`, content);
+  return outputFile(`${TMP_PATH}/${category}/index.ts`, content);
 }
 
 function generateRootIndexFile(categories: string[]) {
@@ -221,12 +229,12 @@ function generateRootIndexFile(categories: string[]) {
     .map((category) => `export * from "./${category}";`)
     .join("\n");
 
-  return fs.outputFile(`${TMP_PATH}/index.ts`, content);
+  return outputFile(`${TMP_PATH}/index.ts`, content);
 }
 
 function generateTypeDefinitions(icons: IconData[]) {
   const typeDefinitionString = typeDefinitionTemplate(icons);
-  return fs.outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
+  return outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
 }
 
 function generateMetadataJson(icons: IconData[]) {
@@ -234,5 +242,8 @@ function generateMetadataJson(icons: IconData[]) {
   for (const entry of icons) {
     metadata[entry.componentName] = entry.metadata;
   }
-  return fs.outputJson(`${DIST_PATH}/metadata.json`, metadata);
+  return outputFile(
+    `${DIST_PATH}/metadata.json`,
+    JSON.stringify(metadata) + "\n",
+  );
 }

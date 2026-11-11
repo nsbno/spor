@@ -1,4 +1,4 @@
-import { PlatformConfig } from "style-dictionary/types";
+import type { PlatformConfig } from "style-dictionary/types";
 
 /** Returns the base pixel font size,
  * as specified in `platform.options.basePxFontSize` of the platform

@@ -5,6 +5,10 @@
   "compilerOptions": {
     "rootDir": ".",
     "module": "esnext", // or "node16", "nodenext", etc.
-    "target": "es2017" // or higher, e.g., "es2020"
+    "target": "es2017", // or higher, e.g., "es2020"
+    // The build scripts run directly under Node's type stripping, which requires
+    // explicit .ts extensions and `import type` for type-only imports.
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true
   }
 }

@@ -22,7 +22,8 @@
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "node bin/generate.ts",
     "build:step-2": "tsup",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@shopify/restyle": "^2.1.0",
@@ -31,14 +32,13 @@
     "@svgr/plugin-svgo": "^6.2.0",
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
     "eslint": "^9.39.1",
     "react": ">17.0.0",
     "react-native": "^0.74.2",
     "react-native-svg": "^12.3.0",
-    "tsup": "^7.2.0",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {

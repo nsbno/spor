@@ -31,7 +31,8 @@
     "build": "node scripts/build.mts",
     "prepare": "pnpm build",
     "dev": "node --watch-path=scripts --watch-path=tokens scripts/build.mts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "files": [
     "dist",
@@ -43,12 +44,11 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
     "json-to-ts": "^1.7.0",
     "style-dictionary": "^4.3.3",
-    "tsup": "^8.3.6",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

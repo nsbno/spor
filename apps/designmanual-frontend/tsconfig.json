@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.react.json",
   "include": [
     "env.d.ts",
     "types.d.ts",
@@ -11,22 +12,12 @@
   "compilerOptions": {
     "types": ["vite/client", "@react-router/node"],
     "rootDirs": [".", "./.react-router/types"],
-    "lib": ["DOM", "DOM.Iterable", "es2023"],
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
     "resolveJsonModule": true,
-    "target": "es2023",
-    "strict": true,
-
     "paths": {
       "~/*": ["./app/*"]
     },
     "noEmit": true,
-    "allowJs": false,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "declaration": false,
+    "declarationMap": false
   }
 }

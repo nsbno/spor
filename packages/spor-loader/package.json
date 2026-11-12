@@ -22,11 +22,11 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@vygruppen/tsconfig": "workspace:*",
-    "tsup": "^7.2.0",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

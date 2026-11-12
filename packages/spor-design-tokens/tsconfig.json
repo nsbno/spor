@@ -1,11 +1,9 @@
 {
-  "extends": "@vygruppen/tsconfig/react-library.json",
+  "extends": "../../tsconfig.react.json",
   "include": ["."],
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "rootDir": ".",
-    "module": "esnext", // or "node16", "nodenext", etc.
-    "target": "es2017", // or higher, e.g., "es2020"
     // The build scripts run directly under Node's type stripping, which requires
     // explicit .ts extensions and `import type` for type-only imports.
     "rewriteRelativeImportExtensions": true,

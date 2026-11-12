@@ -90,7 +90,7 @@ const ImageCardLinkText = ({
   );
 };
 
-export const ImageCard = ({
+const ImageCard = ({
   title,
   headingLevel,
   description,
@@ -140,7 +140,7 @@ export const ImageCard = ({
         _hover={{
           boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           backgroundColor: "surface.floating.hover",
-          borderColor: "outline.floating.hover",
+          borderColor: "outline.floating.highlight",
         }}
       >
         {content}

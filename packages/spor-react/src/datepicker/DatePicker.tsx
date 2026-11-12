@@ -11,7 +11,10 @@ import {
   useFieldContext,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
+import {
+  CalendarOutline18Icon,
+  CalendarOutline30Icon,
+} from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren, useId, useRef } from "react";
 import {
   AriaDatePickerProps,
@@ -24,6 +27,7 @@ import { useDatePickerState } from "react-stately";
 import { Field, FieldBaseProps } from "@/input/Field";
 
 import { datePickerSlotRecipe } from "../theme/slot-recipes/datepicker";
+import { SporStatusToken } from "../theme/tokens/global-css";
 import { Calendar } from "./Calendar";
 import { CalendarTriggerButton } from "./CalendarTriggerButton";
 import { DateField } from "./DateField";
@@ -48,6 +52,7 @@ type DatePickerProps = Omit<AriaDatePickerProps<DateValue>, "onChange"> &
     overrideBorderColor?: string;
     isActive?: boolean;
     onClick?: () => void;
+    "data-color"?: SporStatusToken;
   } & FieldBaseProps & {
     css?: SystemStyleObject;
   };
@@ -76,6 +81,7 @@ export const DatePicker = ({
   helperText,
   positioning,
   css,
+  "data-color": dataColor,
   ...props
 }: DatePickerProps & {
   ref?: React.Ref<HTMLDivElement>;
@@ -149,6 +155,7 @@ export const DatePicker = ({
         flexDirection="column"
         width={width}
         css={css}
+        data-color={dataColor}
       >
         <ChakraPopover.Root
           positioning={positioning}
@@ -177,14 +184,16 @@ export const DatePicker = ({
                 overrideBorderColor={props.overrideBorderColor}
               >
                 {props.noCalendar ? (
-                  <Box pr={3} pl={0.5} mr={0.5}>
-                    <CalendarOutline24Icon />
-                  </Box>
+                  size === "sm" ? (
+                    <CalendarOutline18Icon flexShrink={0} marginX="1.5" />
+                  ) : (
+                    <CalendarOutline30Icon flexShrink={0} marginX="0.5" />
+                  )
                 ) : (
                   <ChakraPopover.Trigger asChild>
                     <CalendarTriggerButton
-                      marginLeft={1}
                       variant={variant}
+                      size={size}
                       ref={ref}
                       {...buttonProps}
                     />

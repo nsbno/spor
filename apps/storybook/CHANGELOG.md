@@ -1,5 +1,61 @@
 # @vygruppen/spor-storybook
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [d697199]
+- Updated dependencies [aa582ae]
+  - @vygruppen/spor-react@14.1.1
+  - @vygruppen/spor-icon-react@5.1.2
+
+## 0.0.13
+
+### Patch Changes
+
+- Updated dependencies [cbc7d01]
+- Updated dependencies [7a92bed]
+- Updated dependencies [586073f]
+- Updated dependencies [fd052cb]
+  - @vygruppen/spor-design-tokens@7.0.1
+  - @vygruppen/spor-react@14.1.0
+  - @vygruppen/spor-icon-react@5.1.1
+
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies [7fbbc5c]
+  - @vygruppen/spor-design-tokens@7.0.0
+  - @vygruppen/spor-react@14.0.2
+
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [224c251]
+  - @vygruppen/spor-icon-react@5.1.1
+  - @vygruppen/spor-react@14.0.1
+
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [e09458f]
+- Updated dependencies [540ec49]
+  - @vygruppen/spor-design-tokens@6.0.0
+  - @vygruppen/spor-react@14.0.0
+  - @vygruppen/spor-icon-react@5.1.0
+
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [9812e49]
+- Updated dependencies [86d5ce7]
+  - @vygruppen/spor-icon-react@5.1.0
+  - @vygruppen/spor-react@13.8.2
+
 ## 0.0.8
 
 ### Patch Changes

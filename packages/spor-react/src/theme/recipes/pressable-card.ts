@@ -37,7 +37,7 @@ export const pressableCardRecipe = defineRecipe({
           boxShadow: "0px 2px 6px 0px var(--shadow-color)",
           backgroundColor: "surface.floating.hover",
 
-          borderColor: "outline.floating.hover",
+          borderColor: "outline.floating.highlight",
 
           _active: {
             boxShadow: "none",
@@ -52,7 +52,7 @@ export const pressableCardRecipe = defineRecipe({
         outlineStyle: "solid",
 
         _hover: {
-          outlineColor: "outline.core.hover",
+          outlineColor: "outline.core.highlight",
           outlineWidth: tokens.size.stroke.md,
           outlineStyle: "solid",
           _active: {
@@ -65,6 +65,9 @@ export const pressableCardRecipe = defineRecipe({
         boxShadow: "0px 1px 3px 0px var(--shadow-color)",
         shadowColor: "surface.disabled",
         background: "surface.accent",
+        outlineColor: "outline.accent",
+        outlineWidth: tokens.size.stroke.sm,
+        outlineStyle: "solid",
         _hover: {
           background: "surface.accent.hover",
 

@@ -26,7 +26,7 @@ const BreakpointTokensTable = () => {
   const breakpointTokens = Object.entries(designTokens.tokens.size.breakpoint);
   return (
     <Box>
-      <Table colorPalette="white">
+      <Table disableHover>
         <TableHeader>
           <TableRow>
             <TableColumnHeader>Token</TableColumnHeader>

@@ -1,17 +1,17 @@
 import styleDictionary from "style-dictionary";
 
-import { cjsModuleFormatter } from "./formatters/typescript/cjs-module";
-import { esModuleFormatter } from "./formatters/typescript/es-module";
-import { reactNativeTypescriptTypingsFormatter } from "./formatters/typescript/rn-typings";
-import { typescriptTypingsFormatter } from "./formatters/typescript/typings";
-import { pxTransformer } from "./transforms/size/px";
-import { pxToRemTransformer } from "./transforms/size/pxToRem";
+import { cjsModuleFormatter } from "./formatters/typescript/cjs-module.ts";
+import { esModuleFormatter } from "./formatters/typescript/es-module.ts";
+import { reactNativeTypescriptTypingsFormatter } from "./formatters/typescript/rn-typings.ts";
+import { typescriptTypingsFormatter } from "./formatters/typescript/typings.ts";
+import { pxTransformer } from "./transforms/size/px.ts";
+import { pxToRemTransformer } from "./transforms/size/pxToRem.ts";
 
 const sd = new styleDictionary("config.json");
 
 import { minifyDictionary } from "style-dictionary/utils";
 
-import { generateTokenModuleFromJson } from "./generateTokenModuleFromJson";
+import { generateTokenModuleFromJson } from "./generateTokenModuleFromJson.ts";
 
 // Register formatters
 // Read about formatters @ https://amzn.github.io/style-dictionary/#/formats

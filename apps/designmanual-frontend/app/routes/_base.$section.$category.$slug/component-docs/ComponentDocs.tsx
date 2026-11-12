@@ -16,7 +16,7 @@ import { PortableText } from "~/features/portable-text/PortableText";
 import { CodeBlock } from "../../../features/portable-text/code-block/CodeBlock";
 import { LinkableHeading } from "../../../features/portable-text/LinkableHeading";
 
-export type Component = {
+type Component = {
   name: string;
   content: unknown[];
   props: {
@@ -57,7 +57,7 @@ export const ComponentDocs = ({ component }: ComponentDocsProps) => {
             Props
           </Heading>
           <Box overflowX="auto" marginTop={3}>
-            <Table variant="core" colorPalette="grey" maxWidth="100%">
+            <Table maxWidth="100%">
               <TableHeader>
                 <TableRow>
                   <TableColumnHeader>Name</TableColumnHeader>

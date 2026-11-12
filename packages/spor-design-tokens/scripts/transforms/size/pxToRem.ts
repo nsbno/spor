@@ -1,6 +1,6 @@
-import { Transform } from "style-dictionary/types";
+import type { Transform } from "style-dictionary/types";
 
-import { getBaseFontSize } from "../../utils/getBaseFontSize";
+import { getBaseFontSize } from "../../utils/getBaseFontSize.ts";
 
 /** Turns a pixel value into rems
  *

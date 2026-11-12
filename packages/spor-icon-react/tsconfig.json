@@ -3,16 +3,21 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "module": "ESNext",
+    "moduleResolution": "bundler",
     "target": "es2017",
     "outDir": "./dist",
     "rootDirs": ["bin", "tmp"],
     "strict": true,
     "jsx": "react-jsx",
     "esModuleInterop": true,
+    // bin/generate.ts runs directly under Node's type stripping, which requires
+    // explicit .ts extensions and `import type` for type-only imports.
+    "rewriteRelativeImportExtensions": true,
+    "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": "./dist",
-    "types": ["react", "react-dom", "./dist/types"],
+    "types": ["node", "react", "react-dom", "./dist/types"],
     "paths": {
       "@vygruppen/spor-icon-react": ["./dist/types.d.ts"]
     }

@@ -36,7 +36,7 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 ### 🚀 Applications
 
 - **`designmanual-frontend`** – A Remix app for documentation and demos (this site).
-- **`design-studio`** – A Sanity Studio app for managing documentation ([spor.vy.no/studio](https://spor.vy.no/studio)).
+- **`design-studio`** – A Sanity Studio app for managing documentation ([vydesignmanual.sanity.studio](https://vydesignmanual.sanity.studio)).
 
 ### 📦 Key Packages
 
@@ -55,7 +55,7 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 
 Before you begin, ensure you have:
 
-- **Node.js 22.12 or newer** installed (required since the Sanity Studio moved to v6). Run `nvm use` to pick up the version pinned in `.nvmrc`.
+- **pnpm** installed. pnpm installs the Node.js version pinned in the root `package.json` (`devEngines.runtime`) and uses it for `pnpm` scripts, so you don't need nvm.
 - **Basic familiarity with Git** for version control.
 
 ### 📥 Cloning the Repository
@@ -162,7 +162,7 @@ Spor follows **semantic versioning (SemVer)**, and new versions are released usi
 
 ### 📦 Steps to Release a New Version:
 
-1. **Run `npx changeset`** to document changes.
+1. **Run `pnpm changeset`** to document changes.
 2. **Select affected packages** and **choose a version bump** (major, minor, patch).
 3. **Commit the changeset** (this creates a file in `.changeset/`).
 4. **Merge the pull request**, triggering an automatic release.

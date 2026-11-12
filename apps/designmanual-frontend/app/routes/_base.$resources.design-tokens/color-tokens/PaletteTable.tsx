@@ -1,4 +1,4 @@
-import tokensJSON from "@vygruppen/spor-design-tokens/dist/tokens.json";
+import tokensJSON from "@vygruppen/spor-design-tokens/tokens.json";
 import {
   Badge,
   Box,
@@ -39,7 +39,7 @@ export const PaletteTable = ({
   );
 
   return (
-    <Table size="md" colorPalette="white">
+    <Table size="md" colorPalette="white" disableHover>
       <TableHeader>
         <TableRow>
           <TableColumnHeader>
@@ -81,7 +81,7 @@ export const PaletteTable = ({
               </TableCell>
               <TableCell>
                 <CopyTokenToClipBoard copyValue={paletteValue ?? ""}>
-                  <Badge colorPalette="grey">{paletteValue}</Badge>
+                  <Badge data-color="neutral">{paletteValue}</Badge>
                 </CopyTokenToClipBoard>
               </TableCell>
             </TableRow>

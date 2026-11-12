@@ -23,13 +23,13 @@ The server runs over stdio and can be used from tools like GitHub Copilot CLI, V
 
 ## Prerequisites
 
-- Node.js 22.12+ (matches the monorepo requirement; see the root `.nvmrc`)
+- Node.js 22.12+ (the monorepo pins its version in the root `package.json` `engines`)
 
-For runtime usage in MCP clients, you can run this server directly with `npx`.
+For runtime usage in MCP clients, you can run this server directly with `npx` or `pnpm dlx`.
 
 For local development in this monorepo, you also need:
 
-- pnpm 9+
+- pnpm (the version is pinned in the root `package.json` `packageManager`)
 - Dependencies installed in the Spor monorepo
 
 From repository root:
@@ -38,9 +38,9 @@ From repository root:
 pnpm install
 ```
 
-## Quick start (npx)
+## Quick start (npx or pnpm)
 
-Use this MCP config:
+Use this MCP config if you have npm installed:
 
 ```json
 {
@@ -53,7 +53,22 @@ Use this MCP config:
 }
 ```
 
-This is the recommended setup for MCP clients that support stdio server commands.
+If you only have pnpm installed (`npx` ships with npm, not pnpm), use `pnpm dlx` instead:
+
+```json
+{
+  "servers": {
+    "spor": {
+      "command": "pnpm",
+      "args": ["dlx", "@vygruppen/spor-mcp-server"]
+    }
+  }
+}
+```
+
+Both are recommended setups for MCP clients that support stdio server commands.
+
+`pnpm dlx` respects your pnpm settings, such as `minimumReleaseAge`, so it may pick a slightly older release if the newest one is very recent.
 
 ## Quick start (local)
 
@@ -85,10 +100,13 @@ Spor MCP server is running on stdio...
 
 ## MCP client configuration examples
 
-Two setup options are supported:
+Three setup options are supported:
 
-- **Recommended:** `npx -y @vygruppen/spor-mcp-server`
+- **Recommended (npm):** `npx -y @vygruppen/spor-mcp-server`
+- **Recommended (pnpm):** `pnpm dlx @vygruppen/spor-mcp-server`
 - **Local development:** `node /absolute/path/to/spor/packages/spor-mcp-server/dist/index.js`
+
+The examples below use `npx`. If you use pnpm, replace `"command": "npx"` and `"args": ["-y", "@vygruppen/spor-mcp-server"]` with `"command": "pnpm"` and `"args": ["dlx", "@vygruppen/spor-mcp-server"]`.
 
 If using local development mode, build first:
 

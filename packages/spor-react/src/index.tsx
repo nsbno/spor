@@ -4,6 +4,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./calendar";
 export * from "./color-mode";
+export * from "./data-color-context";
 export * from "./datepicker";
 export * from "./dialog";
 export * from "./error-summary";

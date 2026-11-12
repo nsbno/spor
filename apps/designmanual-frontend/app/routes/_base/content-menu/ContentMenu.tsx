@@ -194,13 +194,13 @@ export const ContentMenu = ({ refreshKey, ref }: Props) => {
   );
 };
 
-export type SubItemsType = {
+type SubItemsType = {
   title: string;
   url: string;
   tags?: string[];
 };
 
-export type MenuItem = {
+type MenuItem = {
   _type: string;
   title: string;
   link?: string;
@@ -208,7 +208,7 @@ export type MenuItem = {
   subItems?: SubItemsType[];
 };
 
-export type MenuType = {
+type MenuType = {
   _type: string;
   relatedTo?: {
     _type: string;

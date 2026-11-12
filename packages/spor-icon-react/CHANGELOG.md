@@ -1,5 +1,23 @@
 # @vygruppen/spor-icon-react
 
+## 5.1.2
+
+### Patch Changes
+
+- d697199: Fix `createToast({ variant: "critical" })` crashing by requiring `@chakra-ui/react` 3.38 or newer. The `@zag-js/toast` version bundled with Chakra 3.35–3.37 threw on toast types it didn't know, and `critical` is a Spor-only type.
+
+## 5.1.1
+
+### Patch Changes
+
+- 224c251: Add caution icon
+
+## 5.1.0
+
+### Minor Changes
+
+- 9812e49: Add gift card icons (fill and outline, 18, 24, 30 sizes)
+
 ## 5.0.4
 
 ### Patch Changes

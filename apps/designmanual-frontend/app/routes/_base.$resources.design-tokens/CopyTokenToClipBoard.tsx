@@ -1,6 +1,9 @@
 import { Clipboard, ClipboardRootProps } from "@chakra-ui/react";
-import { CopyOutline18Icon } from "@vygruppen/spor-icon-react";
-import { Button, Text } from "@vygruppen/spor-react";
+import {
+  CheckmarkOutline18Icon,
+  CopyOutline18Icon,
+} from "@vygruppen/spor-icon-react";
+import { Button, Flex } from "@vygruppen/spor-react";
 
 type Props = {
   children: React.ReactNode;
@@ -20,30 +23,25 @@ export const CopyTokenToClipBoard = ({ children, copyValue }: Props) => {
           title="Click to copy token"
           width="100%"
           fontWeight="normal"
-          paddingLeft="0"
-          _hover={{
-            marginLeft: "-2",
-            paddingLeft: "2",
-          }}
+          size="sm"
           rounded="sm"
-          rightIcon={
+          justifyContent="space-between"
+          textAlign="left"
+          wordBreak="break-all"
+        >
+          {children}
+          <Flex minWidth="18px">
             <Clipboard.Indicator
               className="copy-icon"
               _groupHover={{
                 display: "block",
               }}
               display="none"
-              copied={
-                <Text variant="xs" color="text.subtle">
-                  copied
-                </Text>
-              }
+              copied={<CheckmarkOutline18Icon />}
             >
               <CopyOutline18Icon />
             </Clipboard.Indicator>
-          }
-        >
-          {children}
+          </Flex>
         </Button>
       </Clipboard.Trigger>
     </Clipboard.Root>

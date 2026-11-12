@@ -1,6 +1,9 @@
 {
   "color": {
     "linjetag": {
+      "tog": {
+        "value": "#123DA0"
+      },
       "lokaltog": {
         "value": "#65B152"
       },

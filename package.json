@@ -3,42 +3,34 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "rimraf packages/*/dist --glob",
-    "build": "turbo run build",
-    "test": "turbo run test --parallel",
-    "dev": "turbo run dev",
-    "storybook": "turbo run storybook",
-    "lint": "turbo run lint -- --max-warnings=0",
-    "postinstall": "turbo run postinstall",
-    "changeset": "npx changeset",
+    "prebuild": "rm -rf packages/*/dist",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "dev": "pnpm -r --workspace-concurrency=16 run dev",
+    "storybook": "pnpm --filter @vygruppen/spor-storybook run storybook",
+    "lint": "pnpm -r run lint --max-warnings=0",
+    "changeset": "changeset",
     "prerelease": "pnpm build",
-    "release": "turbo run build && changeset publish",
+    "release": "changeset publish",
     "format:fix": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\""
   },
-  "dependencies": {
+  "devDependencies": {
     "@changesets/cli": "^2.27.5",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
-    "jscodeshift": "^17.3.0",
-    "prettier": "^3.3.1",
-    "react-icons": "^5.4.0",
-    "rimraf": "^5.0.7",
-    "turbo": "^2.4.2"
+    "prettier": "^3.3.1"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": "26.13.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.13.0",
+      "onFail": "download"
+    }
   },
   "prettier": {},
-  "packageManager": "pnpm@10.4.1",
-  "pnpm": {
-    "overrides": {
-      "fast-xml-parser": "^5.3.5",
-      "typescript": "^5.9.3",
-      "@types/react": "19.2.3"
-    },
-    "patchedDependencies": {
-      "lottie-web": "patches/lottie-web.patch"
-    }
-  }
+  "packageManager": "pnpm@12.16.0"
 }

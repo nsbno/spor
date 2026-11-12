@@ -1,12 +1,74 @@
 packages:
   - "packages/**"
   - "apps/storybook"
-  - "apps/studio"
   - "apps/design-studio"
   - "apps/designmanual-frontend"
 
 minimumReleaseAge: 10080 # ensures that only packages released at least 7 days ago can be installed
+minimumReleaseAgeExclude:
+
+  # 3.38.0 is the first Chakra whose @zag-js/toast doesn't crash on the "critical" toast type.
+  # It is 7 days old on 2026-11-10. Remove this entry then.
+  - "@chakra-ui/react@3.38.0"
+  # Pinned by @chakra-ui/react 3.38.0. It is 7 days old on 2026-11-05. Remove this entry then.
+  - "@ark-ui/react@5.40.0"
 
 preferFrozenLockfile: true
 savePrefix: ""
 trustPolicy: no-downgrade
+# Lockfile entries whose trust level dropped compared to an earlier release.
+# They were in the lockfile before pnpm enforced trustPolicy (pnpm 10.4.1 ignored it).
+# Some of these came from the retired apps/studio and others come from Storybook;
+# the prune setting removes an entry here once the lockfile no longer has that version.
+trustPolicyExclude:
+  - chokidar@4.0.3
+  - groq@3.88.1-typegen-experimental.0
+  - reselect@5.1.1
+  - semver@5.7.2 || 6.3.1
+trustPolicyExcludePrune: true
+
+# Dependency install scripts are blocked. A new one fails the install until someone sets it to true or false here.
+strictDepBuilds: true
+allowBuilds:
+  "@bundled-es-modules/glob": false
+  canvas: false
+  esbuild: false
+  style-dictionary: false
+
+# One React version across the workspace. A second copy duplicates Chakra and Emotion
+# for linked packages like spor-react.
+# Chakra and Emotion keep a caret range because spor-react publishes them as dependencies.
+# @types/node follows the Node major in the root package.json engines.
+# One Vite version for the apps that build with it.
+# TypeScript 7 has no JS API yet (expected in 7.1). Tools that import "typescript"
+# (tsup dts, typescript-eslint, Storybook) get TypeScript 5, while the `tsc` binary comes from
+# TypeScript 7 via @typescript/native.
+# https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0
+catalog:
+  "@chakra-ui/react": ^3.38.0
+  "@emotion/react": ^11.14.0
+  "@types/node": 26.6.6
+  react: 19.2.9
+  react-dom: 19.2.9
+  "@types/react": 19.2.18
+  "@types/react-dom": 19.2.7
+  vite: 8.3.5
+  "@typescript/native": npm:typescript@7.0.2
+  typescript: 5.9.3
+
+overrides:
+  fast-xml-parser: 5.11.2
+  # proxy-addr < 2.0.8 is vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnets.
+  # Pulled in by express 4 and 5. Remove once both require proxy-addr >= 2.0.8.
+  proxy-addr: 2.0.8
+
+# Task graph for "pnpm -r run". A task without an entry here waits for the same task
+# in its workspace dependencies, so build waits for ^build.
+tasks:
+  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
+  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  dev:
+    dependsOn:
+      - ^build
+  lint:
+    dependsOn: []

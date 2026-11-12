@@ -1,10 +1,18 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+
 import { transform } from "@svgr/core";
 import Case from "case";
-import fs from "fs-extra";
 
 const SVG_PATH = "../spor-icon/svg";
 const TMP_PATH = "./tmp";
 const DIST_PATH = "./dist";
+
+/** Writes a file, creating any missing parent directories first */
+async function outputFile(filePath: string, content: string) {
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, content);
+}
 
 const typeDefinitionTemplate = (iconsData: IconData[]) => {
   return `
@@ -26,7 +34,7 @@ declare module "@vygruppen/spor-icon-react-native" {
 
 function generateTypeDefinitions(icons: IconData[]) {
   const typeDefinitionString = typeDefinitionTemplate(icons);
-  return fs.outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
+  return outputFile(`${DIST_PATH}/types.d.ts`, typeDefinitionString);
 }
 
 const run = async () => {
@@ -185,7 +193,7 @@ async function generateComponent(iconData: IconData) {
 }
 
 function createComponentFile(iconData: IconData, content: string) {
-  return fs.outputFile(createFilePath(iconData.componentName), content);
+  return outputFile(createFilePath(iconData.componentName), content);
 }
 
 function createFilePath(componentName: string) {
@@ -200,5 +208,5 @@ function generateRootIndexFile(icons: IconData[]) {
     )
     .join("\n");
 
-  return fs.outputFile(`${TMP_PATH}/index.ts`, content);
+  return outputFile(`${TMP_PATH}/index.ts`, content);
 }

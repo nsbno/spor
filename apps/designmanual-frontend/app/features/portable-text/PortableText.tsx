@@ -1,5 +1,5 @@
-/* eslint-disable simple-import-sort/imports */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable simple-import-sort/imports */
+/* oxlint-disable typescript/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
 import { vercelStegaClean } from "@vercel/stega";
 import {
@@ -320,7 +320,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <Box
           as="article"
-          backgroundColor="bg.brand"
+          backgroundColor="bg.highlight"
           color="text"
           marginTop={3}
           padding={4}
@@ -369,7 +369,7 @@ const components: Partial<PortableTextReactComponents> = {
           return (
             <StaticCard
               key={example._key}
-              colorPalette={getColorPalette(example.weight)}
+              data-color={getColorPalette(example.weight)}
               padding={[2, null, 4]}
             >
               <Flex gap={2} alignItems="center" marginBottom={2}>
@@ -378,14 +378,12 @@ const components: Partial<PortableTextReactComponents> = {
                   {getHeading(example.weight)}
                 </Heading>
               </Flex>
-
               <Box
                 css={{ "> :last-child": { marginBottom: 0 } }}
                 marginBottom={2}
               >
                 <PortableText value={example.content} />
               </Box>
-
               {example.image && (
                 <Box>
                   <Image

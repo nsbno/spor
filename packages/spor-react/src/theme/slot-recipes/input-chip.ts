@@ -25,12 +25,11 @@ export const inputChipSlotRecipe = defineSlotRecipe({
     variant: {
       core: {
         root: {
-          backgroundColor: "surface",
           border: "1px solid",
           borderColor: "outline",
           "&:hover": {
             outline: "2px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
           },
           "&:active": {
             outline: "none",
@@ -41,7 +40,7 @@ export const inputChipSlotRecipe = defineSlotRecipe({
       accent: {
         root: {
           backgroundColor: "surface.accent",
-          color: "text.highlight",
+          color: "text.accent",
           "& svg": {
             color: "icon.highlight",
           },

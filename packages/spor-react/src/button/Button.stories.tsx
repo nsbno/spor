@@ -30,7 +30,12 @@ export const Overview: Story = {
       {sizes.map((size) => (
         <Flex key={size} alignItems="center" gap={2}>
           {variants.map((variant) => (
-            <Button key={`${size}-${variant}`} size={size} variant={variant}>
+            <Button
+              key={`${size}-${variant}`}
+              size={size}
+              variant={variant}
+              data-color="info"
+            >
               {variant}
             </Button>
           ))}

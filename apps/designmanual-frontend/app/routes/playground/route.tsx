@@ -1,6 +1,7 @@
-import { Stack } from "@vygruppen/spor-react";
+import { Skeleton, Stack } from "@vygruppen/spor-react";
 import { StrictMode, useState } from "react";
 import { LivePreview } from "react-live";
+import { useLoaderData } from "react-router";
 
 import { LiveEditor } from "~/features/portable-text/interactive-code/LiveEditor";
 import { LiveError } from "~/features/portable-text/interactive-code/LiveError";
@@ -15,10 +16,20 @@ const defaultCode = `<Stack textAlign="center">
   </Text>
 </Stack>`;
 
+// localStorage only exists in the browser, so read it in a clientLoader.
+export const clientLoader = () =>
+  localStorage.getItem("playgroundData") ?? defaultCode;
+
+export const HydrateFallback = () => (
+  <Stack gap={2} role="status" aria-label="Loading playground">
+    <Skeleton height={13} />
+    <Skeleton height={11} />
+  </Stack>
+);
+
 export default function PlaygroundPage() {
-  const [playgroundData, setPlaygroundData] = useState(() => {
-    return localStorage.getItem("playgroundData") ?? defaultCode;
-  });
+  const [playgroundData, setPlaygroundData] =
+    useState(useLoaderData<typeof clientLoader>());
 
   const handleChange = (newCode: string) => {
     setPlaygroundData(newCode);

@@ -15,8 +15,8 @@ export const PageNotFound = () => {
           It looks like you found a dead link, or entered a wrong URL. Whatever
           happened, there&apos;s nothing here.
         </Text>
-        <Button variant="primary" as={Link} to="/">
-          Go back to the Spor front page
+        <Button variant="primary" asChild>
+          <Link to="/">Go back to the Spor front page</Link>
         </Button>
       </Box>
     </Center>

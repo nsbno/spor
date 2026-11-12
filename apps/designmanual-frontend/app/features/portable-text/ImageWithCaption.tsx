@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 import { Flex, Image, Stack } from "@vygruppen/spor-react";
 
 import { PortableText } from "./PortableText";

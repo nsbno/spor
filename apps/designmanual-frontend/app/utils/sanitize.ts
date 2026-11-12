@@ -8,7 +8,7 @@ export function stripHiddenChars(input?: string) {
 }
 
 // remove invisible/zero-width unicode chars
-export function removeZeroWidthChars(s: string) {
+function removeZeroWidthChars(s: string) {
   return s.replaceAll(/[\u200B-\u200F\uFEFF\u202A-\u202E\u2060-\u206F]/g, "");
 }
 

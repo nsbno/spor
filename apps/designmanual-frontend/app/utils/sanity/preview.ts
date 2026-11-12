@@ -1,6 +1,5 @@
 import crypto from "node:crypto";
 
-//import type { FilteredResponseQueryOptions } from "@sanity/client";
 import { createCookieSessionStorage } from "react-router";
 
 import { VITE_SANITY_TOKEN } from "~/utils/sanity/config";

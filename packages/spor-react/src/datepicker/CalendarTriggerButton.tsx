@@ -1,7 +1,10 @@
 "use client";
 
 import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
-import { CalendarOutline24Icon } from "@vygruppen/spor-icon-react";
+import {
+  CalendarOutline18Icon,
+  CalendarOutline30Icon,
+} from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 import { AriaButtonProps } from "react-aria";
 
@@ -22,6 +25,7 @@ type CalendarTriggerButtonProps = AriaButtonProps<"button"> &
 export const CalendarTriggerButton = ({
   ref,
   variant,
+  size,
   disabled,
   // onPress is extracted because it is not supported by chakra.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -40,11 +44,14 @@ export const CalendarTriggerButton = ({
   return (
     <PopoverAnchor {...buttonProps} ref={ref} asChild>
       <IconButton
-        icon={<CalendarOutline24Icon />}
+        icon={
+          size == "sm" ? <CalendarOutline18Icon /> : <CalendarOutline30Icon />
+        }
         aria-label={t(texts.openCalendar)}
         css={styles.calendarTriggerButton}
         variant="ghost"
         disabled={disabled}
+        size={size}
       />
     </PopoverAnchor>
   );

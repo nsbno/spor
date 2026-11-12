@@ -12,9 +12,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       borderRadius: "sm",
       display: "flex",
       flex: 1,
-      paddingY: 0.5,
       paddingX: 2,
-      gap: 1.5,
       alignItems: "center",
       _hover: {
         zIndex: "docked",
@@ -39,7 +37,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       },
     },
     inputLabel: {
-      fontSize: ["mobile.xs", "desktop.xs"],
       margin: 0,
       cursor: "text",
     },
@@ -60,7 +57,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       alignItems: "center",
       justifyContent: "center",
       transitionProperty: "box-shadow, background-color",
-      right: "0.5rem",
       _hover: {
         backgroundColor: "surface.ghost.hover",
       },
@@ -85,7 +81,6 @@ export const datePickerSlotRecipe = defineSlotRecipe({
       maxWidth: "100vw",
     },
     rangeCalendarPopover: {
-      width: "43rem",
       maxWidth: "100vw",
     },
     weekdays: {
@@ -162,7 +157,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
           _hover: {
             outline: "2px solid",
 
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",
@@ -192,7 +187,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
 
           _hover: {
             outline: "1px solid",
-            outlineColor: "outline.floating.hover",
+            outlineColor: "outline.floating.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",
@@ -217,7 +212,7 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         wrapper: {
           _hover: {
             outline: "2px solid",
-            outlineColor: "outline.core.hover",
+            outlineColor: "outline.core.highlight",
             _active: {
               backgroundColor: "surface.ghost.active",
               outline: "1px solid",
@@ -244,12 +239,16 @@ export const datePickerSlotRecipe = defineSlotRecipe({
         wrapper: {
           fontSize: ["mobile.xs", "desktop.xs"],
           paddingX: 1,
-          gap: 1,
+          paddingY: 0,
+          gap: 0.5,
         },
       },
       md: {
         wrapper: {
+          paddingTop: 0.5,
+          paddingBottom: 1,
           fontSize: ["mobile.sm", "desktop.sm"],
+          gap: 1.5,
         },
       },
     },

@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-design-tokens",
-  "version": "5.1.2",
+  "version": "7.0.1",
   "description": "All Vy's design tokens",
   "type": "module",
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-card-react",
@@ -28,8 +28,9 @@
     "./tokens.css": "./dist/tokens.css"
   },
   "scripts": {
-    "build": "tsx scripts/build.mts",
-    "dev": "chokidar 'scripts/**/*' 'tokens/**/*' -c 'pnpm build'",
+    "build": "node scripts/build.mts",
+    "prepare": "pnpm build",
+    "dev": "node --watch-path=scripts --watch-path=tokens scripts/build.mts",
     "lint": "eslint ."
   },
   "files": [
@@ -41,17 +42,13 @@
   "sideEffects": false,
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^22.13.4",
+    "@types/node": "catalog:",
     "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "chokidar-cli": "^3.0.0",
     "eslint": "^9.39.1",
     "json-to-ts": "^1.7.0",
-    "prettier": "^2.4.1",
     "style-dictionary": "^4.3.3",
-    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
-    "tsx": "^4.19.2",
-    "typescript": "^5.8.2"
+    "typescript": "catalog:"
   }
 }

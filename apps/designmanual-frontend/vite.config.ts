@@ -1,26 +1,13 @@
 import { reactRouter } from "@react-router/dev/vite";
+import babel from "@rolldown/plugin-babel";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import babel from "vite-plugin-babel";
-import tsconfigPaths from "vite-tsconfig-paths";
-
-const ReactCompilerConfig = {
-  /* ... */
-};
 
 export default defineConfig({
+  resolve: { tsconfigPaths: true },
   server: {
     port: 3008,
     open: true,
   },
-  plugins: [
-    reactRouter(),
-    tsconfigPaths(),
-    babel({
-      filter: /\.[jt]sx?$/,
-      babelConfig: {
-        presets: ["@babel/preset-typescript"], // if you use TypeScript
-        plugins: [["babel-plugin-react-compiler", ReactCompilerConfig]],
-      },
-    }),
-  ],
+  plugins: [reactRouter(), babel({ presets: [reactCompilerPreset()] })],
 });

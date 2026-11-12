@@ -1,0 +1,29 @@
+{
+  "name": "@vygruppen/oxlint-config",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.mjs",
+    "./plugin": "./plugin.js"
+  },
+  "scripts": {
+    "build": "node ./build-tokens.js",
+    "prepare": "pnpm build"
+  },
+  "files": [
+    "dist",
+    "index.mjs",
+    "plugin.js",
+    "custom-rules"
+  ],
+  "dependencies": {
+    "eslint-plugin-simple-import-sort": "^12.1.1"
+  },
+  "peerDependencies": {
+    "oxlint": ">=1.89.0"
+  },
+  "devDependencies": {
+    "@vygruppen/spor-design-tokens": "workspace:*",
+    "oxlint": "1.89.0"
+  }
+}

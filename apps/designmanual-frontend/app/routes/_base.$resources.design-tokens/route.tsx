@@ -77,7 +77,7 @@ export default function DesignTokensPage() {
 
           {brand === Brand.VyUtvikling && (
             <Alert
-              variant="important"
+              data-color="warning"
               icon={WarningOutline24Icon}
               title="Vy Utvikling is deprecated"
               role="status"

@@ -38,7 +38,7 @@ export type ArticleBadgeType = {
   badgeType: "new" | "updated" | "beta" | "deprecated";
   description?: string;
 };
-export type Menu = {
+type Menu = {
   slug: string;
   menuItems: MenuItem[];
   components: Component[];

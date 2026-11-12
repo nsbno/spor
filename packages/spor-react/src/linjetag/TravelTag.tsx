@@ -101,24 +101,24 @@ function renderDeviationLevelIcon(
   switch (deviationLevel) {
     case "critical": {
       return size === "lg" ? (
-        <ErrorFill24Icon css={css} />
+        <ErrorFill24Icon color="icon.critical.highlight" css={css} />
       ) : (
-        <ErrorFill18Icon css={css} />
+        <ErrorFill18Icon color="icon.critical.highlight" css={css} />
       );
     }
     case "major":
     case "minor": {
       return size === "lg" ? (
-        <WarningFill24Icon css={css} />
+        <WarningFill24Icon color="icon.warning.highlight" css={css} />
       ) : (
-        <WarningFill18Icon css={css} />
+        <WarningFill18Icon color="icon.warning.highlight" css={css} />
       );
     }
     case "info": {
       return size === "lg" ? (
-        <InformationFill24Icon css={css} />
+        <InformationFill24Icon color="icon.info.highlight" css={css} />
       ) : (
-        <InformationFill18Icon css={css} />
+        <InformationFill18Icon color="icon.info.highlight" css={css} />
       );
     }
     default: {

@@ -44,7 +44,6 @@
     "@chakra-ui/theme": "^3.4.6",
     "@chakra-ui/theme-tools": "^2.2.6",
     "@chakra-ui/utils": "^2.2.2",
-    "@emotion/react": "catalog:",
     "@emotion/styled": "^11.14.1",
     "@internationalized/date": "^3.6.0",
     "@react-types/datepicker": "^3.10.0",
@@ -64,6 +63,7 @@
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
+    "@emotion/react": "catalog:",
     "@storybook/react": "10.6.5",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -85,6 +85,7 @@
     "vitest": "^4.1.8"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.14.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"
   }

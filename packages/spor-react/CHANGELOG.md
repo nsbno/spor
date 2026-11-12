@@ -1,5 +1,49 @@
 # @vygruppen/spor-react
 
+## 14.2.0
+
+### Minor Changes
+
+- 3369b8e: Make `@emotion/react` a peer dependency instead of a regular dependency.
+
+  Previously `spor-react` could load its own copy of `@emotion/react`, separate from the app's copy. When that happened, `SporProvider` and Chakra used a different Emotion context than the app's `CacheProvider`, so SSR style extraction and custom Emotion caches silently missed spor's styles.
+
+  If your app does not already depend on `@emotion/react`, add it:
+
+  ```sh
+  npm install @emotion/react
+  ```
+
+  npm 7+ and pnpm 8+ install missing peer dependencies automatically.
+
+- b26eb75: Add optional "useSporFonts" prop to the SporProvider that will decide whether font-faces are defined or not in the provider. Default value is true.
+
+### Patch Changes
+
+- 1983ec0: Build with tsup 8 and target ES2024. The output was previously built for `node16` (`spor-icon-react`: ES2017, `spor-icon-react-native`: ES2020).
+- f36ec90: Design tokens: Update all status outlines (outline.[status].default) to become darker in lightmode, and lighter in darkmode. This is to prevent the colors to blend in with the surface.[status].hover colors
+
+  Badge and Alert: Update styling from using outline.default to outline.core.highlight
+
+- c37ec21: Clean up package dependencies.
+  - **`@vygruppen/spor-react`**: Move `@react-types/datepicker` and `@react-types/shared` to `dependencies`. The published type declarations import from them, so consumers need them to type-check.
+  - **`@vygruppen/spor-codemods`**: Stop installing `@vygruppen/spor-react` with the codemods, since only the test fixtures use it. Remove the `jscodeshift` peer dependency, since the package already depends on `jscodeshift` directly.
+  - **`@vygruppen/spor-mcp-server`**: Remove the unused `@sanity/client` dependency.
+  - **`@vygruppen/oxlint-config`**: Add `@vygruppen/spor-design-tokens` as a dev dependency.
+
+- 46d6a65: Checkbox: Cursor becomes a pointer on hover. Remove focus-outline after interacting with the element.
+- 6d1383e: Change Input to use minHeight instead of height to improve accessibility
+- 06b024d: StaticCard: spread the css-prop with the recipe styling
+- dc51ede: Dialog: remove pointerevents on DialogPositioner and animation if dialog is non-modal
+- Updated dependencies [1983ec0]
+- Updated dependencies [ce24281]
+- Updated dependencies [f36ec90]
+- Updated dependencies [f4e458b]
+- Updated dependencies [3cb26f9]
+  - @vygruppen/spor-loader@0.7.1
+  - @vygruppen/spor-icon-react@5.2.0
+  - @vygruppen/spor-design-tokens@8.0.0
+
 ## 14.1.1
 
 ### Patch Changes

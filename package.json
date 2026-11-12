@@ -9,6 +9,7 @@
     "dev": "pnpm -r --workspace-concurrency=16 run dev",
     "storybook": "pnpm --filter @vygruppen/spor-storybook run storybook",
     "lint": "pnpm -r run lint --max-warnings=0",
+    "typecheck": "pnpm -r run typecheck",
     "changeset": "changeset",
     "prerelease": "pnpm build",
     "release": "changeset publish",

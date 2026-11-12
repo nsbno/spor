@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-codemods",
   "repository": {
@@ -30,12 +31,11 @@
   "devDependencies": {
     "@vygruppen/eslint-config": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@types/jscodeshift": "^0.11.11",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "tsup": "^8.3.5",
+    "tsup": "catalog:",
     "typescript": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:"

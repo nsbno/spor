@@ -26,7 +26,8 @@
     "clean": "rm -rf tmp dist react",
     "prebuild": "pnpm run clean",
     "build": "node bin/generate.ts && tsup",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": ">=19.0.0",
@@ -41,13 +42,12 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "^1.6.3",
     "eslint": "^9.39.1",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tsup": "^8.3.6",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

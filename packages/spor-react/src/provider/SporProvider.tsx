@@ -24,6 +24,10 @@ type SporProviderProps = Omit<ChakraProviderProps, "value"> & {
    * If true, enables system color mode. If false, the default theme is light.
    */
   enableSystemColorMode?: boolean;
+  /**
+   * If true, includes the font-faces defined in the theme. Default is true.
+   */
+  useSporFonts?: boolean;
 };
 
 /**
@@ -67,6 +71,7 @@ export const SporProvider = ({
   language = Language.NorwegianBokmal,
   theme = system,
   enableSystemColorMode = true,
+  useSporFonts = true,
   children,
 }: SporProviderProps) => {
   return (
@@ -74,7 +79,7 @@ export const SporProvider = ({
       <ChakraProvider value={theme}>
         <ColorModeProvider enableSystem={enableSystemColorMode}>
           <Toaster />
-          <Global styles={fontFaces} />
+          {useSporFonts && <Global styles={fontFaces} />}
 
           {children}
         </ColorModeProvider>

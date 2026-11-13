@@ -30,6 +30,7 @@ export const infoTagSlotRecipe = defineSlotRecipe({
       ferry: {},
       subway: {},
       tram: {},
+      train: {},
       "local-train": {},
       "region-train": {},
       "region-express-train": {},

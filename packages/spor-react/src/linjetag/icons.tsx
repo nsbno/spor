@@ -30,6 +30,11 @@ import React from "react";
 import type { Size, Variant } from "./types";
 
 const icons: Record<Variant, Record<Size, React.ComponentType>> = {
+  train: {
+    sm: TrainFill18Icon,
+    md: TrainFill24Icon,
+    lg: TrainFill30Icon,
+  },
   "local-train": {
     sm: TrainFill18Icon,
     md: TrainFill24Icon,

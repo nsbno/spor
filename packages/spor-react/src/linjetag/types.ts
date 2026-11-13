@@ -1,6 +1,7 @@
 import type { BoxProps } from "@chakra-ui/react";
 
 export type Variant =
+  | "train"
   | "local-train"
   | "region-train"
   | "region-express-train"

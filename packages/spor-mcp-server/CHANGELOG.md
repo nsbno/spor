@@ -1,5 +1,29 @@
 # @vygruppen/spor-mcp-server
 
+## 2.2.12
+
+### Patch Changes
+
+- c37ec21: Clean up package dependencies.
+  - **`@vygruppen/spor-react`**: Move `@react-types/datepicker` and `@react-types/shared` to `dependencies`. The published type declarations import from them, so consumers need them to type-check.
+  - **`@vygruppen/spor-codemods`**: Stop installing `@vygruppen/spor-react` with the codemods, since only the test fixtures use it. Remove the `jscodeshift` peer dependency, since the package already depends on `jscodeshift` directly.
+  - **`@vygruppen/spor-mcp-server`**: Remove the unused `@sanity/client` dependency.
+  - **`@vygruppen/oxlint-config`**: Add `@vygruppen/spor-design-tokens` as a dev dependency.
+
+- Updated dependencies [1983ec0]
+- Updated dependencies [ce24281]
+- Updated dependencies [f36ec90]
+- Updated dependencies [c37ec21]
+- Updated dependencies [3369b8e]
+- Updated dependencies [b26eb75]
+- Updated dependencies [f4e458b]
+- Updated dependencies [46d6a65]
+- Updated dependencies [6d1383e]
+- Updated dependencies [06b024d]
+- Updated dependencies [dc51ede]
+  - @vygruppen/spor-react@14.2.0
+  - @vygruppen/spor-design-tokens@8.0.0
+
 ## 2.2.11
 
 ### Patch Changes

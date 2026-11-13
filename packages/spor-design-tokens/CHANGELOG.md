@@ -1,5 +1,18 @@
 # Changelog
 
+## 8.0.0
+
+### Major Changes
+
+- f4e458b: Remove the generated SCSS (`dist/_tokens.scss`) and Less (`dist/tokens.less`) token files. They were never exposed through the package `exports`. If you rely on them, use `@vygruppen/spor-design-tokens/tokens.css` (CSS variables) instead.
+
+### Minor Changes
+
+- ce24281: Add new tog linjetag color
+- f36ec90: Design tokens: Update all status outlines (outline.[status].default) to become darker in lightmode, and lighter in darkmode. This is to prevent the colors to blend in with the surface.[status].hover colors
+
+  Badge and Alert: Update styling from using outline.default to outline.core.highlight
+
 ## 7.0.1
 
 ### Patch Changes

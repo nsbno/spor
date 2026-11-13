@@ -25,7 +25,7 @@
     "@modelcontextprotocol/sdk": "^1.27.1",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
-    "zod": "^3.23.0"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@types/node": "catalog:",

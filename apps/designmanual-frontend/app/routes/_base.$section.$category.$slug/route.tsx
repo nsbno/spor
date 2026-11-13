@@ -17,7 +17,6 @@ import {
   type MetaFunction,
   useLoaderData,
 } from "react-router";
-import invariant from "tiny-invariant";
 
 import { ArticleAlert } from "~/features/portable-text/components/ArticleAlert";
 import { ArticleBadge } from "~/features/portable-text/components/ArticleBadge";
@@ -70,9 +69,15 @@ type ComponentSection = {
 };
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
-  invariant(params.category, "Expected params.category");
-  invariant(params.slug, "Expected params.slug");
-  invariant(params.section, "Expected params.slug");
+  if (!params.category) {
+    throw new Error("Expected params.category");
+  }
+  if (!params.slug) {
+    throw new Error("Expected params.slug");
+  }
+  if (!params.section) {
+    throw new Error("Expected params.section");
+  }
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===
     "drafts";

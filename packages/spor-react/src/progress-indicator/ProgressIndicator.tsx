@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   BoxProps,
   RecipeVariantProps,
   SystemStyleObject,
@@ -7,7 +8,8 @@ import {
 } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
 
-import { Box, createTexts, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+
 import { progressIndicatorRecipe } from "../theme/slot-recipes/progress-indicator";
 import { ProgressDot } from "./ProgressDot";
 

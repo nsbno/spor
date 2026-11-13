@@ -3,7 +3,8 @@ import { BoxProps, chakra, RecipeVariantProps, Text } from "@chakra-ui/react";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { useProgressBar } from "react-aria";
 
-import { createTexts, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+
 import { progressLoaderRecipe } from "../theme/recipes/progress-loader";
 import { useRotatingLabel } from "./useRotatingLabel";
 export type ProgressLoaderVariantProps = RecipeVariantProps<
@@ -46,10 +47,12 @@ const usePathLength = (value: number) => {
   const [pathLength, setPathLength] = useState(0);
 
   useEffect(() => {
-    if (pathRef.current) {
-      const totalLength = pathRef.current.getTotalLength();
-      setPathLength(totalLength);
+    if (!pathRef.current) {
+      return;
     }
+
+    const totalLength = pathRef.current.getTotalLength();
+    setPathLength(totalLength);
   }, []);
 
   const progressOffset = ((value - 100) / 100) * pathLength;

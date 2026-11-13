@@ -30,8 +30,7 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+    "react": ">=19.0.0"
   },
   "devDependencies": {
     "@chakra-ui/react": "catalog:",
@@ -40,13 +39,11 @@
     "@svgr/plugin-svgo": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   }

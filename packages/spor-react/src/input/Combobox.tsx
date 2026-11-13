@@ -3,7 +3,10 @@ import React, { ReactNode, useEffect, useId, useRef, useState } from "react";
 import { AriaComboBoxProps, useComboBox, useFilter } from "react-aria";
 import { useComboBoxState } from "react-stately";
 
-import { ColorSpinner, Input, InputProps, ListBox } from "..";
+import { ColorSpinner } from "@/loader";
+
+import { Input, InputProps } from "./Input";
+import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
 
 export type ComboboxProps<T> = Exclude<

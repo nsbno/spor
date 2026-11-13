@@ -23,8 +23,8 @@ import * as React from "react";
 
 import { CloseButton } from "@/button";
 import { SporStatusToken } from "@/theme/tokens/global-css";
+import { Badge } from "@/typography";
 
-import { Badge } from "..";
 import { Field, FieldProps } from "./Field";
 
 export type SelectProps = SelectRootProps &

@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   Flex,
   RecipeVariantProps,
   SystemStyleObject,
@@ -8,7 +9,10 @@ import {
 import { ArrowLeftFill24Icon } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
-import { Box, createTexts, IconButton, Text, useTranslation } from "..";
+import { IconButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
+import { Text } from "@/typography";
+
 import { stepperSlotRecipe } from "../theme/slot-recipes/stepper";
 import { SporStatusToken } from "../theme/tokens/global-css";
 import { StepperStep } from ".";

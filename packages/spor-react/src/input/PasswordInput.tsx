@@ -3,8 +3,10 @@
 import { Button, useControllableState } from "@chakra-ui/react";
 import React from "react";
 
-import { ButtonProps, Input, InputProps } from "..";
-import { createTexts, useTranslation } from "..";
+import { ButtonProps } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
+
+import { Input, InputProps } from "./Input";
 
 export interface PasswordVisibilityProps {
   /** Default visibility state */
@@ -16,8 +18,7 @@ export interface PasswordVisibilityProps {
 }
 
 export interface PasswordInputProps
-  extends InputProps,
-    PasswordVisibilityProps {
+  extends InputProps, PasswordVisibilityProps {
   rootProps?: InputProps;
 }
 

@@ -17,7 +17,8 @@ import {
 } from "react-aria";
 import { type ListState, type SelectState } from "react-stately";
 
-import { List } from "..";
+import { List } from "@/list";
+
 import { useColorModeValue } from "../color-mode";
 import { listBoxSlotRecipe } from "../theme/slot-recipes/listbox";
 

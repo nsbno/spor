@@ -6,7 +6,7 @@
     "prebuild": "rm -rf packages/*/dist",
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
-    "dev": "pnpm -r --workspace-concurrency=16 run dev",
+    "dev": "pnpm pipeline dev --full --workspace-concurrency=16",
     "storybook": "pnpm --filter @vygruppen/spor-storybook run storybook",
     "lint": "pnpm -r run lint --max-warnings=0",
     "typecheck": "pnpm -r run typecheck",

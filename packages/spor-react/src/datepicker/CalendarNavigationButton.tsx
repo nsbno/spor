@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { AriaButtonProps, useButton } from "react-aria";
 
-import { IconButton } from "..";
+import { IconButton } from "@/button";
 
 type CalendarButtonProps = AriaButtonProps<"button"> & {
   icon: React.ReactElement;

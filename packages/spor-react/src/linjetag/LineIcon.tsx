@@ -5,7 +5,6 @@ import {
   RecipeVariantProps,
   useSlotRecipe,
 } from "@chakra-ui/react";
-import clsx from "clsx";
 import { PropsWithChildren } from "react";
 
 import { lineIconSlotRecipe } from "../theme/slot-recipes/line-icon";
@@ -111,7 +110,11 @@ export const LineIcon = function LineIcon({
       borderColor={variant === "walk" ? "outline.core" : "transparent"}
       aria-label={label}
       ref={ref}
-      className={variant === "walk" ? undefined : clsx("light", rest.className)}
+      className={
+        variant === "walk"
+          ? undefined
+          : ["light", rest.className].filter(Boolean).join(" ")
+      }
     >
       <LinjeTagIcon size={size} css={styles.icon} variant={getIconVariant()} />
     </Box>

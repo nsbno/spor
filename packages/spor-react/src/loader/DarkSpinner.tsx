@@ -1,14 +1,15 @@
 "use client";
-import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
-
 import {
   Box,
   BoxProps,
   Center,
   ClientOnly,
-  useColorMode,
   VisuallyHidden,
-} from "..";
+} from "@chakra-ui/react";
+import { spinnerDarkData, spinnerLightData } from "@vygruppen/spor-loader";
+
+import { useColorMode } from "@/color-mode";
+
 import Lottie from "./Lottie";
 import { useGetLoadingText } from "./text";
 

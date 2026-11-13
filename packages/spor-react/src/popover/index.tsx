@@ -10,9 +10,8 @@ import React, { useEffect } from "react";
 
 import { CloseButton } from "@/button";
 import { useColorMode } from "@/color-mode";
+import { DataColorProvider, useDataColor } from "@/data-color-context";
 import { SporStatusToken } from "@/theme/tokens/global-css";
-
-import { DataColorProvider, useDataColor } from "..";
 
 export const Popover = ({
   children,

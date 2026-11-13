@@ -14,6 +14,8 @@ minimumReleaseAgeExclude:
   - "@ark-ui/react@5.40.0"
 
 preferFrozenLockfile: true
+# Without this, the react-native-svg peer of spor-icon-react-native pulls in all of react-native.
+autoInstallPeers: false
 savePrefix: ""
 trustPolicy: no-downgrade
 # Lockfile entries whose trust level dropped compared to an earlier release.
@@ -88,6 +90,7 @@ catalog:
   "@vitejs/plugin-react": 6.2.0
   babel-plugin-react-compiler: 1.0.0
   case: 1.6.3
+  defu: 6.1.7
   eslint: 9.39.1
   eslint-config-prettier: 10.1.8
   eslint-plugin-jsx-a11y: 6.10.2
@@ -95,6 +98,7 @@ catalog:
   eslint-plugin-react-hooks: 7.0.1
   eslint-plugin-simple-import-sort: 12.1.1
   eslint-plugin-unicorn: 62.0.0
+  fflate: 0.8.3
   globals: 16.5.0
   groq: 3.99.0
   isbot: 5.2.2
@@ -129,13 +133,26 @@ overrides:
   # Pulled in by express 4 and 5. Remove once both require proxy-addr >= 2.0.8.
   proxy-addr: 2.0.8
 
-# Task graph for "pnpm -r run". A task without an entry here waits for the same task
-# in its workspace dependencies, so build waits for ^build.
+# A task without an entry waits for the same task in its workspace dependencies.
 tasks:
-  # dev scripts are watchers that never exit, so they wait for builds and not for each other.
-  # The root dev script raises --workspace-concurrency so every watcher gets a slot.
+  # outputs makes build cacheable in `pnpm pipeline` (not in `pnpm run`). An unchanged
+  # package restores its outputs from the cache instead of building.
+  build:
+    dependsOn:
+      - ^build
+    outputs:
+      - "{dist,react-native}/**"
+  # In dev, designmanual-frontend reads spor-react and spor-loader from source
+  # ("@vygruppen/source" export condition), so they need no watcher.
+  # dev scripts never exit, so they wait for builds, not each other.
+  # The root dev script raises --workspace-concurrency to give each one a slot.
   dev:
     dependsOn:
       - ^build
   lint:
     dependsOn: []
+
+# Root `pnpm dev`. --full runs every project, not only those changed since origin/main.
+pipelines:
+  dev:
+    - dev

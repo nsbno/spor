@@ -1,4 +1,5 @@
-import { Autocomplete, Card, Flex, Label, Stack, Text } from "@sanity/ui";
+import { Card, Flex, Label, Stack, Text } from "@sanity/ui";
+import { Autocomplete } from "@sanity/ui/autocomplete";
 import { useCallback } from "react";
 import { StringInputProps, set, unset } from "sanity";
 import { getIcon } from "./getIcon";

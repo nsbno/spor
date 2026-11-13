@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "@vygruppen/spor-design-tokens": "workspace:*",
-    "oxlint": "1.89.0"
+    "oxlint": "catalog:"
   }
 }

@@ -1,5 +1,5 @@
 import { MdStar } from "react-icons/md";
-import { defineField, defineType, PreviewProps } from "sanity";
+import { defineField, defineType, type PreviewProps } from "sanity";
 
 export const tipsPanel = defineType({
   name: "tipsPanel",

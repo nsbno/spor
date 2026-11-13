@@ -12,11 +12,11 @@
     "lint": "oxlint"
   },
   "dependencies": {
-    "@ark-ui/react": "5.39.3",
+    "@ark-ui/react": "catalog:",
     "@chakra-ui/react": "catalog:",
     "@emotion/cache": "catalog:",
     "@emotion/react": "catalog:",
-    "@internationalized/date": "3.12.4",
+    "@internationalized/date": "catalog:",
     "@mux/mux-video-react": "catalog:",
     "@portabletext/react": "catalog:",
     "@react-router/node": "catalog:",
@@ -41,7 +41,7 @@
     "react-live": "catalog:",
     "react-router": "catalog:",
     "swr": "catalog:",
-    "zod": "4.6.7"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@babel/core": "catalog:",
@@ -56,7 +56,7 @@
     "@vitejs/plugin-react": "catalog:",
     "@vygruppen/oxlint-config": "workspace:*",
     "babel-plugin-react-compiler": "catalog:",
-    "oxlint": "1.90.0",
+    "oxlint": "catalog:",
     "vite": "catalog:"
   },
   "sideEffects": false

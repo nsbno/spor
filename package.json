@@ -20,7 +20,8 @@
     "@changesets/cli": "catalog:",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "catalog:",
-    "prettier": "catalog:"
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "engines": {
     "node": "26.13.0"

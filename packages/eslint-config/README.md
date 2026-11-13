@@ -15,8 +15,13 @@ A shared ESLint configuration for Vygruppen projects, enforcing code quality sta
 ## Installation
 
 ```bash
-pnpm install --save-dev @vygruppen/eslint-config
+pnpm add -D @vygruppen/eslint-config eslint typescript
 ```
+
+`eslint` and `typescript` are peer dependencies, so the config uses your project's copies. Supported ranges: `eslint` `^9.38.0` and `typescript` `>=4.8.4 <6.1.0` (the range `typescript-eslint` supports).
+
+> [!NOTE]
+> TypeScript 7 has no JS API yet, so `typescript-eslint` can't load it. If you use the TypeScript 7 `tsc`, keep `typescript` on 6.0.x for ESLint and install the new compiler under another name, for example `"@typescript/native": "npm:typescript@7"`.
 
 ## Usage
 

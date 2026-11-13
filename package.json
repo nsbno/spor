@@ -17,10 +17,10 @@
     "format:validate": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\""
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.5",
+    "@changesets/cli": "catalog:",
     "@vygruppen/eslint-config": "workspace:*",
-    "eslint": "^9.39.1",
-    "prettier": "^3.3.1"
+    "eslint": "catalog:",
+    "prettier": "catalog:"
   },
   "engines": {
     "node": "26.13.0"

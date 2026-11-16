@@ -24,7 +24,6 @@
     "typegen:watch": "npx @chakra-ui/cli typegen src/theme/index.ts --watch",
     "typegen:strict": "npx @chakra-ui/cli typegen /src/theme/index.ts --strict",
     "lint": "eslint .",
-    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-react",
@@ -65,24 +64,18 @@
   "devDependencies": {
     "@emotion/react": "catalog:",
     "@storybook/react": "10.6.5",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@vitejs/plugin-react": "^6.0.2",
     "@vygruppen/eslint-config": "workspace:*",
     "clsx": "^2.1.1",
     "concurrently": "^9.1.2",
     "eslint": "^9.39.1",
-    "jsdom": "^29.1.1",
     "react": "catalog:",
     "react-dom": "catalog:",
     "storybook": "10.6.5",
     "tsup": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "^4.1.8"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
     "@emotion/react": "^11.14.0",

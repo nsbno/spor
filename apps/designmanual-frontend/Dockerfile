@@ -1,6 +1,6 @@
 # Expects apps/designmanual-frontend/build and packages/spor-icon/dist in the
-# context. CI builds them in .github/workflows/deploy.yaml; locally, see the
-# build steps in that job.
+# context. CI builds them in .github/workflows/build-designmanual.yml; locally, see the
+# build steps in that file.
 
 FROM node:26.13.0-alpine AS production-deps
 ENV NODE_ENV=production

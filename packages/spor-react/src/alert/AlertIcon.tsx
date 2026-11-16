@@ -44,31 +44,31 @@ export const AlertIcon = ({
 export const BaseAlertIcon = ({ variant }: { variant: SporStatusToken }) => {
   switch (variant) {
     case "info": {
-      return <InformationFill24Icon color="icon" />;
+      return <InformationFill24Icon />;
     }
     case "success": {
-      return <SuccessFill24Icon color="icon" />;
+      return <SuccessFill24Icon />;
     }
     case "warning": {
-      return <WarningFill24Icon color="icon" />;
+      return <WarningFill24Icon />;
     }
     case "notice": {
-      return <AltTransportFill24Icon color="icon" />;
+      return <AltTransportFill24Icon />;
     }
     case "critical": {
-      return <ErrorFill24Icon color="icon" />;
+      return <ErrorFill24Icon />;
     }
     case "caution": {
-      return <CautionFill24Icon color="icon" />;
+      return <CautionFill24Icon />;
     }
     case "neutral": {
-      return <QuestionFill24Icon color="icon" />;
+      return <QuestionFill24Icon />;
     }
     case "service": {
-      return <ServiceFill24Icon color="icon" />;
+      return <ServiceFill24Icon />;
     }
     default: {
-      return <InformationFill24Icon color="icon" />;
+      return <InformationFill24Icon />;
     }
   }
 };

@@ -31,6 +31,9 @@ export const alertSlotRecipe = defineSlotRecipe({
       fontWeight: "bold",
       color: "text",
     },
+    indicator: {
+      color: "icon",
+    },
     closeButton: {
       color: `text`,
       _hover: {

@@ -10,6 +10,9 @@ COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN npm install -g "$(node -p "require('./package.json').packageManager")"
 
 COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
+# Without it, --frozen-lockfile fails: spor-icon's lockfile entry has no dependencies,
+# and pnpm can't check it against a package.json that isn't there.
+COPY packages/spor-icon/package.json packages/spor-icon/
 RUN pnpm install --frozen-lockfile --ignore-scripts --prod
 
 FROM node:26.13.0-alpine AS final

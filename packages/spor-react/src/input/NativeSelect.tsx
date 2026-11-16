@@ -1,4 +1,3 @@
-"use client";
 import {
   NativeSelect as ChakraNativeSelect,
   NativeSelectFieldProps as ChakraNativeSelectFieldProps,

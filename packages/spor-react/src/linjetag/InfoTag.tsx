@@ -1,4 +1,3 @@
-"use client";
 import { Box, RecipeVariantProps, useSlotRecipe } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 

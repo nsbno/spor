@@ -1,4 +1,3 @@
-"use client";
 import { BoxProps, Center, useSlotRecipe } from "@chakra-ui/react";
 import {
   NextMediaControllerFill30Icon,

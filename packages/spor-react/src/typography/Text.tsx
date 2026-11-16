@@ -1,4 +1,3 @@
-"use client";
 import {
   Text as ChakraText,
   TextProps as ChakraTextProps,

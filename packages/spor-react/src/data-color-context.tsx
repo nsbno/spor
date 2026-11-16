@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 
 import { SporStatusToken } from "./theme/tokens/global-css";

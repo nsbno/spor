@@ -1,5 +1,3 @@
-"use client";
-
 import { Button, useControllableState } from "@chakra-ui/react";
 import React from "react";
 

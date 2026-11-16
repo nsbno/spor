@@ -1,4 +1,3 @@
-"use client";
 import { Box, BoxProps, ClientOnly, VisuallyHidden } from "@chakra-ui/react";
 import { contentLoaderData } from "@vygruppen/spor-loader";
 

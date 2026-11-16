@@ -1,5 +1,3 @@
-"use client";
-
 import { createListCollection } from "@chakra-ui/react";
 import { useMemo } from "react";
 

@@ -1,4 +1,3 @@
-"use client";
 import { Box, Heading } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { AriaDialogProps, useDialog } from "react-aria";

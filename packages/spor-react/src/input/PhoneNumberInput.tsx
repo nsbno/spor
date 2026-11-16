@@ -1,4 +1,3 @@
-"use client";
 import { useControllableState } from "@chakra-ui/react";
 
 import { createTexts, useTranslation } from "@/i18n";

@@ -1,4 +1,3 @@
-"use client";
 import { BoxProps, chakra, RecipeVariantProps, Text } from "@chakra-ui/react";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { useProgressBar } from "react-aria";

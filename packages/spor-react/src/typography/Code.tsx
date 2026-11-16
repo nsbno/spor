@@ -1,5 +1,3 @@
-"use client";
-
 import {
   chakra,
   Code as ChakraCode,

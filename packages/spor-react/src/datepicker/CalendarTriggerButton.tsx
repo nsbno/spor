@@ -1,5 +1,3 @@
-"use client";
-
 import { BoxProps, PopoverAnchor, useSlotRecipe } from "@chakra-ui/react";
 import {
   CalendarOutline18Icon,

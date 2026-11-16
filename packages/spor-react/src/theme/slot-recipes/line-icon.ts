@@ -22,7 +22,7 @@ export const lineIconSlotRecipe = defineSlotRecipe({
     variant: {
       train: {
         iconContainer: {
-          backgroundColor: "linjetag.fjerntog", //Todo: update with new color
+          backgroundColor: "linjetag.tog",
         },
       },
       "local-train": {

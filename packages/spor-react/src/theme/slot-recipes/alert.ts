@@ -17,9 +17,6 @@ export const alertSlotRecipe = defineSlotRecipe({
       border: "sm",
       backgroundColor: "surface",
       borderColor: "outline.core.highlight",
-      "& svg": {
-        color: "icon",
-      },
     },
     description: {
       color: "text.subtle",

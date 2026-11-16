@@ -15,12 +15,15 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsdown"
+    "build": "tsdown",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
+    "@vygruppen/oxlint-config": "workspace:*",
+    "oxlint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   }

@@ -22,7 +22,7 @@
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "node bin/generate.ts",
     "build:step-2": "tsdown",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -30,9 +30,9 @@
     "@svgr/plugin-jsx": "catalog:",
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/oxlint-config": "workspace:*",
     "case": "catalog:",
-    "eslint": "catalog:",
+    "oxlint": "catalog:",
     "react": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"

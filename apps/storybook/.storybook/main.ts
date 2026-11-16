@@ -1,5 +1,6 @@
+import { fileURLToPath } from "node:url";
+
 import type { StorybookConfig } from "@storybook/react-vite";
-import { fileURLToPath } from "url";
 import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
@@ -39,7 +40,7 @@ const config: StorybookConfig = {
               /^(['"])use (client|server)\1;?\s*\n?/m,
               "",
             );
-            return cleaned !== code ? { code: cleaned, map: null } : null;
+            return cleaned === code ? null : { code: cleaned, map: null };
           },
         },
       ],

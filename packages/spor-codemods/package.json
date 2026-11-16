@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsdown",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "typecheck": "tsc --noEmit"
   },
   "homepage": "https://github.com/nsbno/spor/tree/main/packages/spor-codemods",
@@ -29,10 +29,10 @@
     "jscodeshift": "catalog:"
   },
   "devDependencies": {
-    "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/oxlint-config": "workspace:*",
     "@types/jscodeshift": "catalog:",
     "@types/node": "catalog:",
-    "eslint": "catalog:",
+    "oxlint": "catalog:",
     "react": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"

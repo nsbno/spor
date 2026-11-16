@@ -23,9 +23,12 @@
   },
   "scripts": {
     "build": "tsdown",
+    "lint": "oxlint",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@vygruppen/oxlint-config": "workspace:*",
+    "oxlint": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   }

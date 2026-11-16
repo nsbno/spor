@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.react.json",
   "include": ["."],
-  "exclude": ["dist", "node_modules"],
+  "exclude": ["dist", "node_modules", "oxlint.config.ts"],
   "compilerOptions": {
     "rootDir": ".",
     "types": ["node"],

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "build": "node ./build-tokens.js",
-    "prepare": "pnpm build"
+    "prepare": "pnpm build",
+    "lint": "oxlint"
   },
   "files": [
     "dist",
@@ -27,7 +28,9 @@
     "typescript-eslint": "catalog:"
   },
   "devDependencies": {
+    "@vygruppen/oxlint-config": "workspace:*",
     "eslint": "catalog:",
+    "oxlint": "catalog:",
     "typescript": "catalog:typescript6"
   },
   "peerDependencies": {

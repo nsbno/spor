@@ -31,7 +31,7 @@
     "build": "node scripts/build.mts",
     "prepare": "pnpm build",
     "dev": "node --watch-path=scripts --watch-path=tokens scripts/build.mts",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "typecheck": "tsc --noEmit"
   },
   "files": [
@@ -44,8 +44,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vygruppen/eslint-config": "workspace:*",
-    "eslint": "catalog:",
+    "@vygruppen/oxlint-config": "workspace:*",
+    "oxlint": "catalog:",
     "style-dictionary": "catalog:",
     "typescript": "catalog:"
   }

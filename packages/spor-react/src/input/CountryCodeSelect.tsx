@@ -75,6 +75,8 @@ export const CountryCodeSelect = ({
       aria-label={t(texts.countryCode)}
       sideRadiusVariant="rightSideSquare"
       size={props.size}
+      // Oxlint checks roles on components too, not only on DOM elements as ESLint did
+      // oxlint-disable-next-line jsx-a11y/role-has-required-aria-props
       role="combobox"
     >
       {filteredCallingCodes.items.map((code) => (

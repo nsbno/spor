@@ -1,10 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
-import {
-  Box,
-  ColorModeButton,
-  SporProvider,
-  themes,
-} from "@vygruppen/spor-react";
+import { Box, ColorModeButton, SporProvider } from "@vygruppen/spor-react";
 
 const preview: Preview = {
   parameters: {

@@ -41,3 +41,6 @@ yarn-error.log*
 # Terraform
 .terraform/
 .react-router/
+
+# pnpm pack output
+*.tgz

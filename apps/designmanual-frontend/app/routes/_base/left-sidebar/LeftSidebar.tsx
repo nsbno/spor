@@ -22,7 +22,7 @@ export const LeftSidebar = ({ headerOffset }: { headerOffset: number }) => {
       transition="all .3s linear"
       paddingBottom="14rem"
       borderRight="1px solid"
-      borderColor="outline.neutral"
+      borderColor="outline"
       paddingRight={2}
     >
       <ContentMenu

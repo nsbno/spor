@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.7.1
+
+### Patch Changes
+
+- 1983ec0: Build with tsup 8 and target ES2024. The output was previously built for `node16` (`spor-icon-react`: ES2017, `spor-icon-react-native`: ES2020).
+
 ## 0.7.0
 
 ### Minor Changes

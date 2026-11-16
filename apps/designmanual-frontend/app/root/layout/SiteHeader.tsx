@@ -113,8 +113,8 @@ export const SiteHeader = ({
           right: "0",
           zIndex: "1100",
         }}
-        border="1px solid"
-        borderColor="outline.neutral"
+        borderBottom="1px solid"
+        borderColor="outline"
       >
         <Flex
           as="header"

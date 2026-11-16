@@ -1,13 +1,8 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "SideSpor Config",
-  "extends": "../tsconfig/base.json",
+  "extends": "../../tsconfig.library.json",
   "include": ["index.ts", "sdk-client.ts"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "es2024",
-    "moduleResolution": "bundler",
     "rootDir": ".",
     "outDir": "dist",
     "types": ["node"]

@@ -1,5 +1,29 @@
 # @vygruppen/sidespor-config
 
+## 3.0.6
+
+### Patch Changes
+
+- Updated dependencies [e6116c9]
+- Updated dependencies [d5fa685]
+  - @vygruppen/spor-react@14.2.1
+
+## 3.0.5
+
+### Patch Changes
+
+- 1983ec0: Build with tsup 8 and target ES2024. The output was previously built for `node16` (`spor-icon-react`: ES2017, `spor-icon-react-native`: ES2020).
+- Updated dependencies [1983ec0]
+- Updated dependencies [f36ec90]
+- Updated dependencies [c37ec21]
+- Updated dependencies [3369b8e]
+- Updated dependencies [b26eb75]
+- Updated dependencies [46d6a65]
+- Updated dependencies [6d1383e]
+- Updated dependencies [06b024d]
+- Updated dependencies [dc51ede]
+  - @vygruppen/spor-react@14.2.0
+
 ## 3.0.4
 
 ### Patch Changes

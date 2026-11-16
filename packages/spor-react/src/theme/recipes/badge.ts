@@ -10,7 +10,7 @@ export const badgeRecipie = defineRecipe({
     backgroundColor: "surface",
     color: "text.core",
     outline: "1px solid",
-    outlineColor: "outline",
+    outlineColor: "outline.core.highlight",
   },
   variants: {
     size: {

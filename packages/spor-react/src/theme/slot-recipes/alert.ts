@@ -16,10 +16,7 @@ export const alertSlotRecipe = defineSlotRecipe({
       textStyle: "sm",
       border: "sm",
       backgroundColor: "surface",
-      borderColor: "outline",
-      "& svg": {
-        color: "icon",
-      },
+      borderColor: "outline.core.highlight",
     },
     description: {
       color: "text.subtle",
@@ -33,6 +30,9 @@ export const alertSlotRecipe = defineSlotRecipe({
     title: {
       fontWeight: "bold",
       color: "text",
+    },
+    indicator: {
+      color: "icon",
     },
     closeButton: {
       color: `text`,

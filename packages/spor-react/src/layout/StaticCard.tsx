@@ -47,6 +47,7 @@ export const StaticCard = ({
 }) => {
   const recipe = useRecipe({ key: "staticCard" });
   const styles = recipe();
+  const { css, ...rest } = props;
 
-  return <Box css={styles} {...props} ref={ref}></Box>;
+  return <Box css={{ ...styles, ...css }} {...rest} ref={ref}></Box>;
 };

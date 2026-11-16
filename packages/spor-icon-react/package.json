@@ -5,8 +5,7 @@
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.js"
     },
     "./dist/metadata.json": "./dist/metadata.json"
   },

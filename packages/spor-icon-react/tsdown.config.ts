@@ -2,7 +2,7 @@ import { defineConfig } from "tsdown";
 
 export default defineConfig({
   entry: ["tmp/index.ts"],
-  format: ["esm", "cjs"],
+  format: ["esm"],
   fixedExtension: false,
   // bin/generate.ts writes dist/types.d.ts and dist/metadata.json before bundling.
   clean: false,

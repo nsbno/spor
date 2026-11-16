@@ -25,7 +25,7 @@
   "scripts": {
     "clean": "rm -rf tmp dist react",
     "prebuild": "pnpm run clean",
-    "build": "node bin/generate.ts && tsup",
+    "build": "node bin/generate.ts && tsdown",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -44,7 +44,7 @@
     "case": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -17,6 +17,10 @@ peerDependencyRules:
   ignoreMissing:
     # Needed by @sanity/workflow-cli, not shipped by @sanity/cli. We don't use workflow commands.
     - "@sanity/workflow-blueprint"
+  allowedVersions:
+    # Workspace packages run @vygruppen/eslint-config's typescript-eslint, which gets
+    # TypeScript 6 from eslint-config's own devDependency, not from this peer.
+    "@vygruppen/eslint-config>typescript": "7"
 savePrefix: ""
 trustPolicy: no-downgrade
 trustPolicyExclude:
@@ -36,9 +40,6 @@ allowBuilds:
 #   @sanity/eslint-config-studio stays at 6.x until eslint is on 10.
 # One React and one Vite version across the workspace (a second React duplicates Chakra and Emotion).
 # @types/node follows the Node major in root engines.
-# TypeScript 7 has no JS API until 7.1, so tools importing "typescript" get 6.x
-# while the `tsc` binary comes from TypeScript 7 via @typescript/native.
-# https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0
 catalog:
   "@chakra-ui/react": 3.38.0
   "@emotion/react": 11.14.0
@@ -48,8 +49,7 @@ catalog:
   "@types/react": 19.3.0
   "@types/react-dom": 19.3.0
   vite: 8.3.5
-  "@typescript/native": npm:typescript@7.0.2
-  typescript: 6.0.3
+  typescript: 7.0.2
   "@ark-ui/react": 5.40.0
   "@babel/core": 7.29.7
   "@chakra-ui/cli": 3.37.0
@@ -124,11 +124,26 @@ catalog:
   style-dictionary: 4.4.0
   styled-components: 6.6.0
   swr: 2.5.1
-  tsup: 9.0.0
+  tsdown: 0.23.7
   typescript-eslint: 8.72.1
   usehooks-ts: 3.1.1
   vitest: 5.0.5
   zod: 4.6.7
+
+# TypeScript 7 has no JS API until 7.1, and typescript-eslint supports only TypeScript <6.1.
+# The ESLint configs get TypeScript 6 under the "typescript" name, so typescript-eslint
+# resolves its peer to it. Everything else uses TypeScript 7.
+# On TypeScript 7.0, tsdown emits types through the tsgo CLI, which rolldown-plugin-dts deprecates.
+# Move to TypeScript 7.1 before a tsdown bump that pulls in rolldown-plugin-dts 0.31.
+# https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-6.0
+catalogs:
+  typescript6:
+    typescript: npm:@typescript/typescript6@6.0.2
+
+packageExtensions:
+  "@sanity/eslint-config-studio":
+    dependencies:
+      typescript: npm:@typescript/typescript6@6.0.2
 
 overrides:
   # IP spoofing via IPv4-mapped IPv6 trust subnets in < 2.0.8. Pulled in by express 4 and 5.

@@ -15,13 +15,13 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup"
+    "build": "tsdown"
   },
   "dependencies": {
     "@vygruppen/spor-react": "workspace:*"
   },
   "devDependencies": {
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   }
 }

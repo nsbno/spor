@@ -21,7 +21,7 @@
     "prebuild": "pnpm run clean",
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "node bin/generate.ts",
-    "build:step-2": "tsup",
+    "build:step-2": "tsdown",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -34,7 +34,7 @@
     "case": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {

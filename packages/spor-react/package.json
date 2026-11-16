@@ -19,7 +19,7 @@
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "dev": "chakra typegen src/theme/index.ts --watch",
     "postinstall": "chakra typegen src/theme/index.ts",
     "typegen": "chakra typegen src/theme/index.ts",
@@ -67,7 +67,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "storybook": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },

@@ -26,6 +26,10 @@ Storybook starts on [http://localhost:6006](http://localhost:6006).
 pnpm build-storybook
 ```
 
+## Deployment
+
+Storybook is deployed to GitHub Pages at [nsbno.github.io/spor](https://nsbno.github.io/spor/) by `.github/workflows/deploy-storybook.yaml`. It runs on pushes to `main` that touch Storybook, `spor-react` or its workspace dependencies, and can also be triggered manually from the Actions tab.
+
 ## Testing
 
 Every story runs as a test in headless Chromium through [`@storybook/addon-vitest`](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon). A story without a `play` function checks that it renders without errors. A story with one also runs its interactions and assertions.

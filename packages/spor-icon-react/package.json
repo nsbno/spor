@@ -25,7 +25,7 @@
     "clean": "rm -rf tmp dist react",
     "prebuild": "pnpm run clean",
     "build": "node bin/generate.ts && tsdown",
-    "lint": "eslint .",
+    "lint": "oxlint",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -39,9 +39,9 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/eslint-config": "workspace:*",
+    "@vygruppen/oxlint-config": "workspace:*",
     "case": "catalog:",
-    "eslint": "catalog:",
+    "oxlint": "catalog:",
     "react": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:"

@@ -17,10 +17,6 @@ peerDependencyRules:
   ignoreMissing:
     # Needed by @sanity/workflow-cli, not shipped by @sanity/cli. We don't use workflow commands.
     - "@sanity/workflow-blueprint"
-  allowedVersions:
-    # Workspace packages run @vygruppen/eslint-config's typescript-eslint, which gets
-    # TypeScript 6 from eslint-config's own devDependency, not from this peer.
-    "@vygruppen/eslint-config>typescript": "7"
 savePrefix: ""
 trustPolicy: no-downgrade
 trustPolicyExclude:
@@ -37,7 +33,6 @@ allowBuilds:
 # Versions are exact, including those spor-react publishes as dependencies.
 # Sanity packages are bumped together, except:
 #   @sanity/vision stays at 6.19.0 (6.20+ fails trustPolicy).
-#   @sanity/eslint-config-studio stays at 6.x until eslint is on 10.
 # One React and one Vite version across the workspace (a second React duplicates Chakra and Emotion).
 # @types/node follows the Node major in root engines.
 catalog:
@@ -69,7 +64,6 @@ catalog:
   "@rolldown/plugin-babel": 0.3.0
   "@sanity/client": 8.14.1
   "@sanity/code-input": 7.3.14
-  "@sanity/eslint-config-studio": 6.0.0
   "@sanity/image-url": 2.1.1
   "@sanity/preview-url-secret": 4.1.5
   "@sanity/react-loader": 2.3.0
@@ -131,7 +125,7 @@ catalog:
   zod: 4.6.7
 
 # TypeScript 7 has no JS API until 7.1, and typescript-eslint supports only TypeScript <6.1.
-# The ESLint configs get TypeScript 6 under the "typescript" name, so typescript-eslint
+# @vygruppen/eslint-config gets TypeScript 6 under the "typescript" name, so typescript-eslint
 # resolves its peer to it. Everything else uses TypeScript 7.
 # On TypeScript 7.0, tsdown emits types through the tsgo CLI, which rolldown-plugin-dts deprecates.
 # Move to TypeScript 7.1 before a tsdown bump that pulls in rolldown-plugin-dts 0.31.
@@ -139,11 +133,6 @@ catalog:
 catalogs:
   typescript6:
     typescript: npm:@typescript/typescript6@6.0.2
-
-packageExtensions:
-  "@sanity/eslint-config-studio":
-    dependencies:
-      typescript: npm:@typescript/typescript6@6.0.2
 
 overrides:
   # IP spoofing via IPv4-mapped IPv6 trust subnets in < 2.0.8. Pulled in by express 4 and 5.

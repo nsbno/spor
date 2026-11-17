@@ -227,9 +227,6 @@ catalogs:
     '@sanity/code-input':
       specifier: 7.3.14
       version: 7.3.14
-    '@sanity/eslint-config-studio':
-      specifier: 6.0.0
-      version: 6.0.0
     '@sanity/image-url':
       specifier: 2.1.1
       version: 2.1.1
@@ -436,8 +433,6 @@ catalogs:
 overrides:
   proxy-addr: 2.0.8
 
-packageExtensionsChecksum: sha256-3aRsQZp55XKemG55TefspKtbR8F+LO9BqKAThsdGjms=
-
 importers:
 
   .:
@@ -445,12 +440,6 @@ importers:
       '@changesets/cli':
         specifier: 'catalog:'
         version: 3.0.3
-      '@vygruppen/eslint-config':
-        specifier: workspace:*
-        version: link:packages/eslint-config
-      eslint:
-        specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       node:
         specifier: runtime:26.13.0
         version: runtime:26.13.0
@@ -509,15 +498,12 @@ importers:
         specifier: 'catalog:'
         version: 6.6.0(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
     devDependencies:
-      '@sanity/eslint-config-studio':
-        specifier: 'catalog:'
-        version: 6.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
       '@types/react':
         specifier: 'catalog:'
         version: 19.3.0
-      eslint:
+      oxlint:
         specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: 1.90.0
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -688,6 +674,12 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.3.0(@types/react@19.3.0)
+      '@vygruppen/oxlint-config':
+        specifier: workspace:*
+        version: link:../../packages/oxlint-config
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       storybook:
         specifier: 'catalog:'
         version: 10.6.5(@types/react@19.3.0)(prettier@3.9.10)(react@19.3.1)
@@ -728,9 +720,15 @@ importers:
         specifier: 'catalog:'
         version: 8.72.1(@typescript/typescript6@6.0.2)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
     devDependencies:
+      '@vygruppen/oxlint-config':
+        specifier: workspace:*
+        version: link:../oxlint-config
       eslint:
         specifier: 'catalog:'
         version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       typescript:
         specifier: catalog:typescript6
         version: '@typescript/typescript6@6.0.2'
@@ -741,9 +739,6 @@ importers:
         specifier: 'catalog:'
         version: 14.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
     devDependencies:
-      '@vygruppen/spor-design-tokens':
-        specifier: workspace:*
-        version: link:../spor-design-tokens
       oxlint:
         specifier: 'catalog:'
         version: 1.90.0
@@ -754,6 +749,12 @@ importers:
         specifier: workspace:*
         version: link:../spor-react
     devDependencies:
+      '@vygruppen/oxlint-config':
+        specifier: workspace:*
+        version: link:../oxlint-config
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       tsdown:
         specifier: 'catalog:'
         version: 0.23.7(oxc-resolver@11.21.2)(tsx@4.23.15)(typescript@7.0.2)
@@ -773,12 +774,12 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
-      '@vygruppen/eslint-config':
+      '@vygruppen/oxlint-config':
         specifier: workspace:*
-        version: link:../eslint-config
-      eslint:
+        version: link:../oxlint-config
+      oxlint:
         specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: 1.90.0
       react:
         specifier: 'catalog:'
         version: 19.3.1
@@ -794,12 +795,12 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
-      '@vygruppen/eslint-config':
+      '@vygruppen/oxlint-config':
         specifier: workspace:*
-        version: link:../eslint-config
-      eslint:
+        version: link:../oxlint-config
+      oxlint:
         specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: 1.90.0
       style-dictionary:
         specifier: 'catalog:'
         version: 4.4.0
@@ -829,18 +830,18 @@ importers:
       '@types/react':
         specifier: 'catalog:'
         version: 19.3.0
-      '@vygruppen/eslint-config':
+      '@vygruppen/oxlint-config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../oxlint-config
       '@vygruppen/spor-icon':
         specifier: workspace:*
         version: link:../spor-icon
       case:
         specifier: 'catalog:'
         version: 1.6.3
-      eslint:
+      oxlint:
         specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: 1.90.0
       react:
         specifier: 'catalog:'
         version: 19.3.1
@@ -862,18 +863,18 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
-      '@vygruppen/eslint-config':
+      '@vygruppen/oxlint-config':
         specifier: workspace:*
-        version: link:../eslint-config
+        version: link:../oxlint-config
       '@vygruppen/spor-icon':
         specifier: workspace:*
         version: link:../spor-icon
       case:
         specifier: 'catalog:'
         version: 1.6.3
-      eslint:
+      oxlint:
         specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: 1.90.0
       react:
         specifier: 'catalog:'
         version: 19.3.1
@@ -886,6 +887,12 @@ importers:
 
   packages/spor-loader:
     devDependencies:
+      '@vygruppen/oxlint-config':
+        specifier: workspace:*
+        version: link:../oxlint-config
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       tsdown:
         specifier: 'catalog:'
         version: 0.23.7(oxc-resolver@11.21.2)(tsx@4.23.15)(typescript@7.0.2)
@@ -923,6 +930,12 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.6
+      '@vygruppen/oxlint-config':
+        specifier: workspace:*
+        version: link:../oxlint-config
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -999,15 +1012,15 @@ importers:
       '@types/react-dom':
         specifier: 'catalog:'
         version: 19.3.0(@types/react@19.3.0)
-      '@vygruppen/eslint-config':
+      '@vygruppen/oxlint-config':
         specifier: workspace:*
-        version: link:../eslint-config
-      eslint:
-        specifier: 'catalog:'
-        version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+        version: link:../oxlint-config
       jsdom:
         specifier: 'catalog:'
         version: 30.1.3(@noble/hashes@2.4.0)
+      oxlint:
+        specifier: 'catalog:'
+        version: 1.90.0
       react:
         specifier: 'catalog:'
         version: 19.3.1
@@ -3986,12 +3999,6 @@ packages:
   '@sanity/diff@6.21.0':
     resolution: {integrity: sha512-QkfeOAUlt67EsGgYWNg/Gt4sCoRJbbMLtvF348X2/V1qE4nW2pKlairuUSYuY5CpS7d8GgX3wiv9Rv5aY31rzw==}
     engines: {node: '>=22.12'}
-
-  '@sanity/eslint-config-studio@6.0.0':
-    resolution: {integrity: sha512-IfIItATVN5QhlwA3mWGBnWIHpfnQSa1XuTL1BOIZdzkcg02AAWjHcU40Z9WrWWCll1yPbmmAWvmSU4PX9DsBTA==}
-    engines: {node: '>=18.18'}
-    peerDependencies:
-      eslint: ^9.0.0
 
   '@sanity/eventsource@5.0.4':
     resolution: {integrity: sha512-NT6XrTJePJd7q1ZdTqB3NsTyNNOe9R2zMkg4Hlkqwb0LL6UmekVamAD46yjSJ+HbRyXAKLl1Rb65xZBdzC1f8Q==}
@@ -12864,17 +12871,6 @@ snapshots:
   '@sanity/diff@6.21.0':
     dependencies:
       '@sanity/diff-match-patch': 3.2.1
-
-  '@sanity/eslint-config-studio@6.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)':
-    dependencies:
-      eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
-      eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
-      eslint-plugin-react: 7.37.5(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
-      eslint-plugin-react-hooks: 7.1.1(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
-      typescript: '@typescript/typescript6@6.0.2'
-      typescript-eslint: 8.72.1(@typescript/typescript6@6.0.2)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
-    transitivePeerDependencies:
-      - supports-color
 
   '@sanity/eventsource@5.0.4':
     dependencies:

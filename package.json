@@ -18,8 +18,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "catalog:",
-    "@vygruppen/eslint-config": "workspace:*",
-    "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },

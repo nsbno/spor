@@ -110,6 +110,8 @@ export const CalendarNavigator = ({
         aria-label={`${t(texts.previous)} ${t(texts[unit])}`}
       />
       <Text
+        // Oxlint checks roles on components too, not only on DOM elements as ESLint did
+        // oxlint-disable-next-line jsx-a11y/role-has-required-aria-props
         role="heading"
         variant="md"
         fontWeight="bold"

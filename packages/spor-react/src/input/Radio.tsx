@@ -56,5 +56,7 @@ export const RadioGroup = ({
 }: RadioGroupProps & {
   ref?: React.Ref<HTMLDivElement>;
 }) => {
+  // Oxlint checks ARIA values on components too, not only on DOM elements as ESLint did
+  // oxlint-disable-next-line jsx-a11y/aria-proptypes
   return <ChakraRadioGroup.Root ref={ref} {...props} aria-labelledby="" />;
 };

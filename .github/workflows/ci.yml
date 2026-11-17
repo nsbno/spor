@@ -23,5 +23,6 @@ jobs:
       - run: pnpm lint
       - run: pnpm build
       - run: pnpm typecheck
+      - run: pnpm --filter @vygruppen/spor-storybook exec playwright install --with-deps chromium
       - run: pnpm test
       - run: pnpm format:validate

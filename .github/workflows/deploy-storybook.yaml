@@ -1,0 +1,72 @@
+name: "Deploy Storybook 📚"
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/storybook/**"
+      - "packages/spor-react/**"
+      - "packages/spor-design-tokens/**"
+      - "packages/spor-icon/**"
+      - "packages/spor-icon-react/**"
+      - "packages/spor-loader/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/deploy-storybook.yaml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: deploy-storybook
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Storybook reads spor-react from source, but its workspace dependencies
+      # (design tokens, icons, loader) must be built first.
+      - name: Build workspace dependencies
+        run: pnpm --filter "@vygruppen/spor-react^..." build
+
+      - name: Build Storybook
+        run: pnpm --filter @vygruppen/spor-storybook build-storybook
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: apps/storybook/storybook-static
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

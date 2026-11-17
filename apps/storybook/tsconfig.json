@@ -8,5 +8,5 @@
   },
   // tsc skips dot-directories unless they are matched by a wildcard. The stories
   // themselves live in spor-react and are type-checked there.
-  "include": [".storybook/**/*"]
+  "include": [".storybook/**/*", "vitest.config.ts"]
 }

@@ -19,7 +19,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@vygruppen/spor-react";
-import { useState } from "react";
+import { createRef, useState } from "react";
+import { expect, waitFor, within } from "storybook/test";
 
 const meta = {
   title: "Components/Table",
@@ -79,6 +80,24 @@ const sampleRows = [
 
 const dataColors = ["info", "warning", "alert", "critical"];
 
+const getTable = (canvasElement: HTMLElement) =>
+  within(canvasElement).getByRole<HTMLTableElement>("table");
+
+const getSortButtons = (canvasElement: HTMLElement) =>
+  within(getTable(canvasElement)).queryAllByRole("button");
+
+const expectDestinationOrder = (
+  canvasElement: HTMLElement,
+  destinations: string[],
+) =>
+  waitFor(() =>
+    expect(
+      [...getTable(canvasElement).tBodies[0].rows].map(
+        (row) => row.cells[0].textContent,
+      ),
+    ).toEqual(destinations),
+  );
+
 export const Default: Story = {
   render: (arguments_) => (
     <Table {...arguments_}>
@@ -110,7 +129,38 @@ export const Default: Story = {
       </TableFooter>
     </Table>
   ),
+  play: async ({ canvasElement }) => {
+    await expect(getTable(canvasElement)).toBeVisible();
+    await expect(getSortButtons(canvasElement)).toHaveLength(0);
+  },
 };
+
+const tableRef = createRef<HTMLTableElement>();
+
+export const ForwardsPropsAndRef: Story = {
+  tags: ["!dev"],
+  render: (arguments_) => (
+    <Table
+      {...arguments_}
+      ref={tableRef}
+      className="my-table"
+      data-custom="yes"
+    >
+      <TableBody>
+        <TableRow>
+          <TableCell>Cell</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  ),
+  play: async ({ canvasElement }) => {
+    const table = getTable(canvasElement);
+    await expect(table).toHaveClass("my-table");
+    await expect(table).toHaveAttribute("data-custom", "yes");
+    await expect(tableRef.current).toBe(table);
+  },
+};
+
 export const DataColors: Story = {
   render: (arguments_) => (
     <Table {...arguments_}>
@@ -153,6 +203,38 @@ export const Variants: Story = {
             {variant}
           </Box>
           <Table variant={variant}>
+            <TableHeader>
+              <TableRow>
+                <TableColumnHeader>Destination</TableColumnHeader>
+                <TableColumnHeader>Departure</TableColumnHeader>
+                <TableColumnHeader>Price</TableColumnHeader>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {sampleRows.slice(0, 3).map((row) => (
+                <TableRow key={row.destination}>
+                  <TableCell>{row.destination}</TableCell>
+                  <TableCell>{row.departure}</TableCell>
+                  <TableCell>{row.price}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      ))}
+    </Box>
+  ),
+};
+
+export const ColorPalettes: Story = {
+  render: () => (
+    <Box display="flex" flexDirection="column" gap={8}>
+      {(["grey", "green", "white"] as const).map((colorPalette) => (
+        <Box key={colorPalette}>
+          <Box fontWeight="bold" marginBottom={2}>
+            {colorPalette}
+          </Box>
+          <Table colorPalette={colorPalette}>
             <TableHeader>
               <TableRow>
                 <TableColumnHeader>Destination</TableColumnHeader>
@@ -253,6 +335,46 @@ export const Sortable: Story = {
       </TableBody>
     </Table>
   ),
+  play: async ({ canvasElement, step, userEvent }) => {
+    const sortButtons = getSortButtons(canvasElement);
+    const destination = sortButtons[0];
+    const price = sortButtons[3];
+    const original = ["Bergen", "Trondheim", "Stavanger", "Bodø"];
+    const ascending = ["Bergen", "Bodø", "Stavanger", "Trondheim"];
+
+    await step("one sort button per column", async () => {
+      await expect(getSortButtons(canvasElement)).toHaveLength(5);
+    });
+
+    await step("first click sorts ascending", async () => {
+      await userEvent.click(destination);
+      await expectDestinationOrder(canvasElement, ascending);
+    });
+
+    await step("second click sorts descending", async () => {
+      await userEvent.click(destination);
+      await expectDestinationOrder(canvasElement, ascending.toReversed());
+    });
+
+    await step("third click restores the original order", async () => {
+      await userEvent.click(destination);
+      await expectDestinationOrder(canvasElement, original);
+    });
+
+    await step(
+      "sorting another column replaces the previous sort",
+      async () => {
+        await userEvent.click(destination);
+        await userEvent.click(price);
+        await expectDestinationOrder(canvasElement, [
+          "Stavanger",
+          "Bergen",
+          "Trondheim",
+          "Bodø",
+        ]);
+      },
+    );
+  },
 };
 
 export const SortableWithNonSortableColumn: Story = {
@@ -281,6 +403,9 @@ export const SortableWithNonSortableColumn: Story = {
       </TableBody>
     </Table>
   ),
+  play: async ({ canvasElement }) => {
+    await expect(getSortButtons(canvasElement)).toHaveLength(3);
+  },
 };
 
 export const WithTooltip: Story = {

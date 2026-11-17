@@ -4,12 +4,38 @@ on:
     types: [opened, synchronize, closed]
 
 jobs:
+  # Images are only built for PRs that have asked for a preview with a `.preview` comment.
+  # The first build happens in pull-request-comment.yml; this keeps the preview up to date on new pushes.
+  preview-requested:
+    if: ${{ github.event.action == 'synchronize' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      pull-requests: read
+    outputs:
+      requested: ${{ steps.check.outputs.requested }}
+    steps:
+      - id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          MATCHES=$(gh api "repos/$REPO/issues/$PR_NUMBER/comments" --paginate \
+            --jq '.[] | select(.body | startswith(".preview")) | .id')
+          if [ -n "$MATCHES" ]; then
+            echo "requested=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No .preview comment on PR #$PR_NUMBER, skipping build and preview."
+            echo "requested=false" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
-    if: ${{ github.event.action != 'closed' }}
+    needs: preview-requested
+    if: ${{ needs.preview-requested.outputs.requested == 'true' }}
     uses: ./.github/workflows/build-designmanual.yml
 
   package:
-    if: ${{ github.event.action != 'closed' }}
     needs: build
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
@@ -28,7 +54,6 @@ jobs:
       working-directory: ./apps/designmanual-frontend
 
   preview-update:
-    if: ${{ github.event.action == 'synchronize' }}
     needs:
       - package
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.yml@v2

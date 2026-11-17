@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.0.1
+
+### Patch Changes
+
+- e6116c9: Update surface.service.highlight tokens for the vy-digital and cargonet theme. Also update the ServiceAlert to use surface.service.highlight token to make it darker
+
 ## 8.0.0
 
 ### Major Changes

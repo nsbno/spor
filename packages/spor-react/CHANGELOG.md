@@ -1,5 +1,15 @@
 # @vygruppen/spor-react
 
+## 14.2.1
+
+### Patch Changes
+
+- e6116c9: Update surface.service.highlight tokens for the vy-digital and cargonet theme. Also update the ServiceAlert to use surface.service.highlight token to make it darker
+- d5fa685: - Update the primary variant of TextLink to use the current text-color instead of text.core.
+  - Update AlertIcon to use the icon token for its color. Remove the styling that applies the icon token to all SVGs within Alert, as this overrides the styling of icons inside other components placed in the Alert.
+- Updated dependencies [e6116c9]
+  - @vygruppen/spor-design-tokens@8.0.1
+
 ## 14.2.0
 
 ### Minor Changes

@@ -5,7 +5,61 @@ on:
       - created
 
 jobs:
+  # PR pushes don't build an image unless a preview has been requested (see pull-request.yml),
+  # so `.preview` and `.deploy` build the image for the PR head before deploying it.
+  resolve-pr:
+    if: ${{ github.event.issue.pull_request && (startsWith(github.event.comment.body, '.preview') || startsWith(github.event.comment.body, '.deploy')) }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      sha: ${{ steps.pr.outputs.sha }}
+    steps:
+      # The build runs PR code with AWS credentials, so only build for collaborators with
+      # write access and for branches in this repository. branch-deploy checks this too,
+      # but only after the build.
+      - id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          ACTOR: ${{ github.event.comment.user.login }}
+        run: |
+          PERMISSION=$(gh api "repos/$REPO/collaborators/$ACTOR/permission" --jq '.permission')
+          if [ "$PERMISSION" != "admin" ] && [ "$PERMISSION" != "write" ]; then
+            echo "::error::$ACTOR has '$PERMISSION' access; write access is required to build and deploy."
+            exit 1
+          fi
+
+          HEAD_REPO=$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq '.head.repo.full_name')
+          if [ "$HEAD_REPO" != "$REPO" ]; then
+            echo "::error::PR #$PR_NUMBER is from a fork ($HEAD_REPO); building forks is not allowed."
+            exit 1
+          fi
+
+          echo "sha=$(gh api "repos/$REPO/pulls/$PR_NUMBER" --jq '.head.sha')" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: resolve-pr
+    uses: ./.github/workflows/build-designmanual.yml
+    with:
+      git-sha: ${{ needs.resolve-pr.outputs.sha }}
+
+  package:
+    needs: [resolve-pr, build]
+    uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
+    secrets: inherit
+    with:
+      ecr-repo-name: designmanual
+      dockerfile: ./apps/designmanual-frontend/Dockerfile
+      # Restored at the repo root, which is the Docker build context
+      artifact-name: designmanual-build
+      artifact-path: .
+      git-sha: ${{ needs.resolve-pr.outputs.sha }}
+
   deploy-to-test:
+    needs: package
     if: github.event.issue.pull_request && startsWith(github.event.comment.body, '.deploy')
     uses: nsbno/platform-actions/.github/workflows/deployment.branch-deploy.on-comment.yml@v2
     secrets: inherit
@@ -14,6 +68,7 @@ jobs:
       skip-static-files-deployment: true
 
   preview-comment:
+    needs: package
     if: ${{ github.event.issue.pull_request && startsWith(github.event.comment.body, '.preview') }}
     secrets: inherit
     uses: nsbno/platform-actions/.github/workflows/deployment.preview.on-comment.yml@v2

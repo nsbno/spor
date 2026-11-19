@@ -22,9 +22,13 @@
     "design-system"
   ],
   "dependencies": {
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
     "@modelcontextprotocol/sdk": "catalog:",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "zod": "^3.23.0"
   },
   "devDependencies": {

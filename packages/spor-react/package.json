@@ -38,7 +38,6 @@
   "dependencies": {
     "@ark-ui/react": "^4.9.2",
     "@chakra-ui/cli": "catalog:",
-    "@chakra-ui/react": "catalog:",
     "@internationalized/date": "^3.6.0",
     "@react-types/datepicker": "^3.10.0",
     "@react-types/shared": "catalog:",
@@ -53,6 +52,7 @@
     "usehooks-ts": "catalog:"
   },
   "devDependencies": {
+    "@chakra-ui/react": "catalog:",
     "@emotion/react": "catalog:",
     "@storybook/react": "catalog:",
     "@testing-library/jest-dom": "catalog:",
@@ -72,6 +72,7 @@
     "vitest": "catalog:"
   },
   "peerDependencies": {
+    "@chakra-ui/react": "^3.38.0",
     "@emotion/react": "^11.14.0",
     "react": ">=19.0.0",
     "react-dom": ">=19.0.0"

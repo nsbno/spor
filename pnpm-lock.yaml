@@ -734,19 +734,6 @@ importers:
         specifier: 1.89.0
         version: 1.89.0
 
-  packages/sidespor-config:
-    dependencies:
-      '@vygruppen/spor-react':
-        specifier: workspace:*
-        version: link:../spor-react
-    devDependencies:
-      tsup:
-        specifier: 'catalog:'
-        version: 8.5.1(jiti@2.7.0)(postcss@8.5.26)(supports-color@8.1.1)(tsx@4.23.9)(typescript@5.9.3)(yaml@2.9.0)
-      typescript:
-        specifier: 'catalog:'
-        version: 5.9.3
-
   packages/spor-codemods:
     dependencies:
       jscodeshift:

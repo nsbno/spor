@@ -84,8 +84,8 @@ export const ServiceAlert = ({
       collapsible={collapsible}
       css={{ ...styles.root, ...css }}
       ref={ref}
-      {...rest}
       className="light"
+      {...rest}
     >
       <Accordion.Item value={defaultValue}>
         <Accordion.ItemTrigger css={styles.itemTrigger}>
@@ -98,12 +98,12 @@ export const ServiceAlert = ({
             <HStack as={headingLevel} alignItems="center" gap="1">
               {variant === "service" ? (
                 <ServiceFill24Icon
-                  color="icon.service"
+                  color="outline.warning.highlight"
                   aria-label={t(texts.service)}
                 />
               ) : (
                 <WarningFill24Icon
-                  color="icon.warning"
+                  color="outline.warning.highlight"
                   aria-label={t(texts["global-deviation"])}
                 />
               )}
@@ -127,7 +127,7 @@ export const ServiceAlert = ({
                 </Text>
               )}
               <Accordion.ItemIndicator>
-                <DropdownDownFill24Icon color="icon.service" />
+                <DropdownDownFill24Icon color="icon.service.inverted" />
               </Accordion.ItemIndicator>
             </Flex>
           </HStack>

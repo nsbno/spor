@@ -1,18 +1,18 @@
 "use client";
 import { BoxProps, useFieldContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
-import { TimeValue } from "@react-types/datepicker";
 import {
   DropdownLeftFill18Icon,
   DropdownLeftFill24Icon,
   DropdownRightFill18Icon,
   DropdownRightFill24Icon,
 } from "@vygruppen/spor-icon-react";
-import { useTimeFieldState } from "react-stately";
+import { TimeValue, useTimeFieldState } from "react-stately";
 
+import { IconButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
 import { Field, FieldBaseProps } from "@/input/Field";
 
-import { createTexts, IconButton, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";

@@ -1,11 +1,11 @@
-import urlBuilderBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 import { VITE_SANITY_SECRET } from "~/utils/sanity/config";
 
 import { sanityConfig } from "./config";
 
 /** Builds URLs hosted on Sanity */
-export const urlBuilder = urlBuilderBuilder(sanityConfig);
+export const urlBuilder = createImageUrlBuilder(sanityConfig);
 
 export const isValidPreviewRequest = (request: Request) => {
   const requestUrl = new URL(request?.url);

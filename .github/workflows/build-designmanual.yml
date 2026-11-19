@@ -1,0 +1,37 @@
+name: Build designmanual
+
+# Builds what apps/designmanual-frontend/Dockerfile packages. The build runs on the runner,
+# which has the tools the icon zip needs, instead of inside the alpine image.
+# Callers hand the result to package.docker.yml with
+#   artifact-name: designmanual-build
+#   artifact-path: .
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: Build designmanual
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      # typegen for spor-react needs the design tokens built first
+      - run: pnpm --filter @vygruppen/spor-design-tokens build
+      - run: pnpm --filter @vygruppen/spor-react typegen
+      - run: pnpm --filter "@vygruppen/designmanual-frontend..." build
+      - name: Upload build output
+        uses: actions/upload-artifact@v4
+        with:
+          name: designmanual-build
+          # Two paths, so the artifact keeps the repo-relative layout
+          path: |
+            apps/designmanual-frontend/build
+            packages/spor-icon/dist
+          if-no-files-found: error

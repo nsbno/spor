@@ -51,12 +51,8 @@ function getUrlWithIllustrationSearchParameters(url: URL): URL | null {
   return changed ? url : null;
 }
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const url = new URL(request.url);
-
-  const updatedUrl = getUrlWithIllustrationSearchParameters(
-    new URL(request.url),
-  );
+export const loader = async ({ url }: LoaderFunctionArgs) => {
+  const updatedUrl = getUrlWithIllustrationSearchParameters(new URL(url));
   if (updatedUrl) {
     return redirect(
       updatedUrl.pathname + "?" + updatedUrl.searchParams.toString(),

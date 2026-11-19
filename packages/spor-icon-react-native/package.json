@@ -26,25 +26,19 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@shopify/restyle": "^2.1.0",
-    "@svgr/core": "^6.2.0",
-    "@svgr/plugin-jsx": "^6.2.0",
-    "@svgr/plugin-svgo": "^6.2.0",
+    "@svgr/core": "catalog:",
+    "@svgr/plugin-jsx": "catalog:",
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "case": "^1.6.3",
-    "eslint": "^9.39.1",
-    "react": ">17.0.0",
-    "react-native": "^0.74.2",
-    "react-native-svg": "^12.3.0",
+    "case": "catalog:",
+    "eslint": "catalog:",
+    "react": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
-    "react-native-svg": "^12.3.0"
+    "react-native-svg": "^12.3.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
   }
 }

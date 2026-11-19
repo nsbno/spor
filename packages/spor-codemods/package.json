@@ -26,18 +26,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jscodeshift": "^17.3.0"
+    "jscodeshift": "catalog:"
   },
   "devDependencies": {
     "@vygruppen/eslint-config": "workspace:*",
-    "@vygruppen/spor-react": "workspace:*",
-    "@types/jscodeshift": "^0.11.11",
+    "@types/jscodeshift": "catalog:",
     "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
-    "tsup": "catalog:",
-    "typescript": "catalog:",
+    "eslint": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "tsup": "catalog:",
+    "typescript": "catalog:"
   }
 }

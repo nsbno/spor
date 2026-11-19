@@ -68,12 +68,10 @@ const config: StorybookConfig = {
           "@chakra-ui/react",
           "@emotion/react",
           "@internationalized/date",
-          "awesome-phonenumber",
-          "clsx",
+
           "lottie-react",
           "next-themes",
           "react-aria",
-          "react-icons/lu",
           "react-stately",
           "react-swipeable",
           "usehooks-ts",

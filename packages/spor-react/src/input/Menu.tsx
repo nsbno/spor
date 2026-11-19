@@ -21,15 +21,11 @@ import {
 import { ReactNode, Ref } from "react";
 import { createContext, useContext } from "react";
 
+import { Button, ButtonProps } from "@/button";
+import { DataColorProvider, useDataColor } from "@/data-color-context";
 import { SporStatusToken } from "@/theme/tokens/global-css";
 
-import {
-  Button,
-  ButtonProps,
-  Checkbox,
-  DataColorProvider,
-  useDataColor,
-} from "..";
+import { Checkbox } from "./Checkbox";
 
 type Variant = Pick<MenuRootProps, "variant">;
 

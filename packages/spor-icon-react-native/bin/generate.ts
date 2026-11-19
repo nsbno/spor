@@ -150,8 +150,8 @@ async function generateComponent(iconData: IconData) {
       expandProps: "end",
       ref: true,
       titleProp: false,
-      svgo: true,
       native: true,
+      plugins: ["@svgr/plugin-jsx"],
       replaceAttrValues: {
         "#2B2B2C": `{theme.colors[color] ?? "#2B2B2C"}`,
       },

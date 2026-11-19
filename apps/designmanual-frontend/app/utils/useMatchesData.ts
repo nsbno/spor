@@ -14,5 +14,5 @@ export function useMatchesData<
     [matchingRoutes, id],
   );
 
-  return route?.data as ReturnType;
+  return route?.loaderData as ReturnType;
 }

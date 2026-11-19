@@ -26,14 +26,14 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@svgr/core": "^6.2.0",
-    "@svgr/plugin-jsx": "^6.2.0",
+    "@svgr/core": "catalog:",
+    "@svgr/plugin-jsx": "catalog:",
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
     "case": "catalog:",
     "eslint": "catalog:",
-    "react": ">17.0.0",
+    "react": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   },

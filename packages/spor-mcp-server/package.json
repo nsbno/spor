@@ -29,7 +29,7 @@
     "@vygruppen/spor-react": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "zod": "^3.23.0"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

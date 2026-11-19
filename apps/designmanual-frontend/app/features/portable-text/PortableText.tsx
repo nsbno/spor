@@ -435,8 +435,7 @@ export const PortableText = ({
   components?: any;
 }) => {
   const rootData = useRouteLoaderData("root") as
-    | { isPreview?: boolean }
-    | undefined;
+    { isPreview?: boolean } | undefined;
   const isPreview = rootData?.isPreview ?? false;
 
   return (

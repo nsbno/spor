@@ -36,10 +36,9 @@
     "directory": "packages/spor-react"
   },
   "dependencies": {
-    "@ark-ui/react": "^4.9.2",
+    "@ark-ui/react": "catalog:",
     "@chakra-ui/cli": "catalog:",
-    "@internationalized/date": "^3.6.0",
-    "@react-types/datepicker": "^3.10.0",
+    "@internationalized/date": "catalog:",
     "@react-types/shared": "catalog:",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-icon-react": "workspace:*",
@@ -55,6 +54,7 @@
     "@chakra-ui/react": "catalog:",
     "@emotion/react": "catalog:",
     "@storybook/react": "catalog:",
+    "@testing-library/dom": "catalog:",
     "@testing-library/jest-dom": "catalog:",
     "@testing-library/react": "catalog:",
     "@testing-library/user-event": "catalog:",

@@ -16,7 +16,7 @@ export const bestPracticePanel = defineType({
         return props.renderDefault(props);
       }
       return (
-        <Grid columns={[1, 1, 2]} gap={2}>
+        <Grid gridTemplateColumns={[1, 1, 2]} gap={2}>
           {props.examples.map((example: any) => (
             <Card
               key={example._key}

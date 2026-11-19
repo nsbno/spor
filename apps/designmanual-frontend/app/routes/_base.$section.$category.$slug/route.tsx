@@ -147,11 +147,11 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   };
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  if (!data) {
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
+  if (!loaderData) {
     return [];
   }
-  const [article] = data.initialData;
+  const [article] = loaderData.initialData;
   const title = `${article.title} – ${article?.category?.title ?? "…"} – Spor`;
   const description = blockContentToPlainText(
     article.introduction ??

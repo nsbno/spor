@@ -34,13 +34,13 @@ import { getInitialSanityData } from "./utils/initialSanityData.server";
 import { previewContext } from "./utils/sanity/preview";
 import { urlBuilder } from "./utils/sanity/utils";
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => {
-  if (!data || !data.initialSanityData) {
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
+  if (!loaderData || !loaderData.initialSanityData) {
     return [];
   }
 
   const { title, description, keywords, socialImage } =
-    data.initialSanityData.siteSettings;
+    loaderData.initialSanityData.siteSettings;
 
   const meta = [
     { title },

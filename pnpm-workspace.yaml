@@ -19,8 +19,6 @@ peerDependencyRules:
     - "@sanity/workflow-blueprint"
 savePrefix: ""
 trustPolicy: no-downgrade
-trustPolicyExclude:
-  - semver@5.7.2 || 6.3.1
 trustPolicyExcludePrune: true
 
 # New install scripts fail the install until allowed or denied here.

@@ -1048,19 +1048,19 @@
           "highlight": {
             "DEFAULT": {
               "value": {
-                "_light": "colors.pine",
+                "_light": "colors.darkTeal",
                 "_dark": "colors.blueGreen"
               }
             },
             "hover": {
               "value": {
-                "_light": "colors.jungle",
+                "_light": "colors.night",
                 "_dark": "colors.azure"
               }
             },
             "active": {
               "value": {
-                "_light": "colors.darkTeal",
+                "_light": "colors.jungle",
                 "_dark": "colors.coralGreen"
               }
             }

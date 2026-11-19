@@ -18,7 +18,8 @@ export interface PasswordVisibilityProps {
 }
 
 export interface PasswordInputProps
-  extends InputProps, PasswordVisibilityProps {
+  extends InputProps,
+    PasswordVisibilityProps {
   rootProps?: InputProps;
 }
 

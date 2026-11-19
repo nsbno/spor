@@ -12,12 +12,20 @@ jobs:
     with:
       working-directory: ./apps/designmanual-frontend
 
+  # The Docker image only packages what this job builds
+  build:
+    uses: ./.github/workflows/build-designmanual.yml
+
   package:
+    needs: build
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
     with:
       ecr-repo-name: designmanual
       dockerfile: ./apps/designmanual-frontend/Dockerfile
+      # Restored at the repo root, which is the Docker build context
+      artifact-name: designmanual-build
+      artifact-path: .
 
   deploy:
     needs:

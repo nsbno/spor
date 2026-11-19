@@ -6,7 +6,9 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
-import { createTexts, MediaControllerVariantProps, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+
+import { MediaControllerVariantProps } from "./JumpButton";
 
 type PlayPauseButtonProps = BoxProps &
   PropsWithChildren<MediaControllerVariantProps> & {

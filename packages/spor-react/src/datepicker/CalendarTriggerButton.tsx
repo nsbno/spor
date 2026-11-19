@@ -8,12 +8,10 @@ import {
 import { PropsWithChildren } from "react";
 import { AriaButtonProps } from "react-aria";
 
-import {
-  createTexts,
-  DatePickerVariantProps,
-  IconButton,
-  useTranslation,
-} from "..";
+import { IconButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
+
+import { DatePickerVariantProps } from "./DatePicker";
 import { CalendarVariants } from "./types";
 
 type CalendarTriggerButtonProps = AriaButtonProps<"button"> &

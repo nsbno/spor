@@ -12,8 +12,9 @@
 !**/.env.example
 **/*.pem
 
-# Build output. The image builds its own. A stale local build would
-# otherwise be copied over the fresh one by the final stage's "ADD . .".
+# Build output. The workflow builds the designmanual and the icon zip before the
+# image is built, and the Dockerfile copies exactly those two folders. Any other
+# local build output stays out of the context.
 apps/*/build
 apps/*/dist
 apps/*/.react-router
@@ -23,6 +24,8 @@ packages/*/tmp
 packages/spor-design-tokens/react-native
 packages/spor-icon-react/react
 packages/spor-icon-react-native/react
+!apps/designmanual-frontend/build
+!packages/spor-icon/dist
 
 # Tooling and editor state
 .git

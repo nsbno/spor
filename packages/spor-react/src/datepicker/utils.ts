@@ -1,6 +1,6 @@
 import { CalendarDateTime, parseTime } from "@internationalized/date";
 
-import { useTranslation } from "..";
+import { useTranslation } from "@/i18n";
 
 /**
  * Returns the currently selected language as a BCF47 language tag.
@@ -30,7 +30,7 @@ export const useCurrentLocale = () => {
 /** Gets the current time as a Time object */
 export const getCurrentTime = () => {
   const now = new Date();
-  return parseTime(now.toTimeString().split(" ")[0]);
+  return parseTime(now.toTimeString().split(" ", 1)[0]);
 };
 
 /** Gets a readable timestamp from a given time object */

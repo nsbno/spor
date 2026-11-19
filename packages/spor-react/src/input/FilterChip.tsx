@@ -3,7 +3,7 @@ import { CheckboxCard, CheckboxCardRootProps, Span } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 
-type CheckBoxIcon = {
+type CheckboxIcon = {
   default: React.ReactNode;
   checked: React.ReactNode;
 };
@@ -12,7 +12,7 @@ export type FilterChipProps = Omit<
   CheckboxCardRootProps,
   "onCheckedChange" | "checked"
 > & {
-  icon?: CheckBoxIcon;
+  icon?: CheckboxIcon;
   onCheckedChange?: (checked: boolean) => void;
   checked?: boolean;
 };

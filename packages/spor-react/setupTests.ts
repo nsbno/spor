@@ -1,4 +1,4 @@
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 
 // jsdom doesn't implement window.matchMedia, which is required by next-themes.
 Object.defineProperty(globalThis, "matchMedia", {

@@ -5,6 +5,7 @@
   "exclude": ["dist", "build", "node_modules", "tmp"],
   "compilerOptions": {
     "rootDir": ".",
+    "types": ["node"],
     "jsx": "react"
   }
 }

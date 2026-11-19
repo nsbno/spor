@@ -14,28 +14,26 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@sanity/code-input": "^7.2.2",
-    "@sanity/table": "^3.1.4",
-    "@sanity/types": "^6.3.0",
-    "@sanity/ui": "^3.3.0",
-    "@sanity/vision": "^6.3.0",
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
+    "@sanity/code-input": "catalog:",
+    "@sanity/table": "catalog:",
+    "@sanity/ui": "catalog:",
+    "@sanity/vision": "catalog:",
     "@vygruppen/spor-icon-react": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "react-icons": "^5.5.0",
-    "sanity": "^6.3.0",
-    "sanity-plugin-iframe-pane": "^5.0.19",
-    "sanity-plugin-media": "^5.0.7",
-    "sanity-plugin-mux-input": "^4.1.2",
-    "styled-components": "^6.1.19"
+    "react-icons": "catalog:",
+    "sanity": "catalog:",
+    "sanity-plugin-media": "catalog:",
+    "sanity-plugin-mux-input": "catalog:",
+    "styled-components": "catalog:"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^6.0.0",
+    "@sanity/eslint-config-studio": "catalog:",
     "@types/react": "catalog:",
-    "@vygruppen/eslint-config": "workspace:*",
-    "canvas": "^3.2.3",
-    "eslint": "^9.39.1",
+    "eslint": "catalog:",
     "typescript": "catalog:"
   }
 }

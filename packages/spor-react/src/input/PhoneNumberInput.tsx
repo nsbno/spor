@@ -1,11 +1,12 @@
 "use client";
 import { useControllableState } from "@chakra-ui/react";
 
+import { createTexts, useTranslation } from "@/i18n";
 import { SporStatusToken } from "@/theme/tokens/global-css";
 
-import { createTexts, Input, InputProps, useTranslation } from "..";
 import { AttachedInputs } from "./AttachedInputs";
 import { CountryCodeSelect } from "./CountryCodeSelect";
+import { Input, InputProps } from "./Input";
 
 export type CountryCodeAndPhoneNumber = {
   countryCode: string;

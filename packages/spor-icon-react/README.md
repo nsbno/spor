@@ -10,6 +10,8 @@ $ yarn add @vygruppen/spor-icon-react
 $ pnpm install @vygruppen/spor-icon-react
 ```
 
+`react` 19 or newer is a peer dependency.
+
 ## Usage
 
 ```tsx

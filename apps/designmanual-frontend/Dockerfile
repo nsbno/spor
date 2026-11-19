@@ -1,83 +1,34 @@
-# Base node image
-FROM node:26.13.0-alpine AS base
+# Expects apps/designmanual-frontend/build and packages/spor-icon/dist in the
+# context. CI builds them in .github/workflows/build-designmanual.yml; locally, see the
+# build steps in that file.
 
-# Set environment variables
+FROM node:26.13.0-alpine AS production-deps
 ENV NODE_ENV=production
-
-# Install the pnpm version pinned in the root package.json "packageManager" field
-COPY package.json /tmp/package.json
-RUN npm install -g "$(node -p "require('/tmp/package.json').packageManager")" && rm /tmp/package.json
-
-# Install all node_modules, including dev dependencies
-FROM base AS deps
-
-RUN mkdir /app
 WORKDIR /app
 
-# Set NODE_ENV to development to install dev dependencies
-ENV NODE_ENV=development
-
-# Copy workspace-related files from the monorepo root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN npm install -g "$(node -p "require('./package.json').packageManager")"
+
 COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
+# Without it, --frozen-lockfile fails: spor-icon's lockfile entry has no dependencies,
+# and pnpm can't check it against a package.json that isn't there.
+COPY packages/spor-icon/package.json packages/spor-icon/
+RUN pnpm install --frozen-lockfile --ignore-scripts --prod
 
-# Install all dependencies (including devDependencies)
-RUN pnpm install --frozen-lockfile --prod=false --ignore-scripts
-
-# Setup production node_modules
-FROM base AS production-deps
+FROM node:26.13.0-alpine AS final
 ENV NODE_ENV=production
 
-
-WORKDIR /app
-
-# Copy only production dependencies
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
-
-RUN pnpm install --frozen-lockfile --ignore-scripts  --prod
-
-
-# Build the app
-FROM base AS build
-
-RUN mkdir /app
-WORKDIR /app
-
-# Copy dependencies
-ADD . . 
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --ignore-scripts
-
-
-# Build the application
-# Need to run typegen to generate types for spor-react, 
-# typegen is dependent on spor-design-tokens
-RUN pnpm --filter @vygruppen/spor-design-tokens build
-RUN pnpm --filter @vygruppen/spor-react typegen
-RUN pnpm --filter @vygruppen/designmanual-frontend... build
-
-# Finally, build the production image with minimal footprint
-FROM base AS final
-
-ENV NODE_ENV=production
-# pnpm 12 checks node_modules against the lockfile before "pnpm start" and reinstalls on a mismatch.
-# This image only has production dependencies, so without this it runs a full install at startup.
-ENV pnpm_config_verify_deps_before_run=false
-
-RUN mkdir /app
-WORKDIR /app
-
-# Get some secrets
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \
     chmod +x /usr/local/bin/aws-env
 
-# Corrected paths
-COPY --from=production-deps /app/node_modules /app/node_modules
-COPY --from=production-deps /app/apps/designmanual-frontend/node_modules /app/apps/designmanual-frontend/node_modules
-COPY --from=build /app/apps/designmanual-frontend/build/server /app/apps/designmanual-frontend/build/server
-COPY --from=build /app/apps/designmanual-frontend/build/client /app/apps/designmanual-frontend/build/client
-ADD . .
+WORKDIR /app/apps/designmanual-frontend
 
-# Start the application
-CMD ["pnpm", "--filter", "@vygruppen/designmanual-frontend", "start"]
+COPY --from=production-deps /app/node_modules /app/node_modules
+COPY --from=production-deps /app/apps/designmanual-frontend/node_modules ./node_modules
+COPY apps/designmanual-frontend/package.json ./
+COPY apps/designmanual-frontend/build ./build
+# Read at runtime by icons.server.ts
+COPY packages/spor-icon/svg /app/packages/spor-icon/svg
+COPY packages/spor-icon/dist /app/packages/spor-icon/dist
+
+CMD ["node_modules/.bin/react-router-serve", "./build/server/index.js"]

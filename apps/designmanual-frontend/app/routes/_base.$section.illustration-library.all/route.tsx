@@ -1,6 +1,4 @@
-import { PassThrough } from "node:stream";
-
-import Archiver from "archiver";
+import { strToU8, type Zippable, zipSync } from "fflate";
 import { LoaderFunctionArgs } from "react-router";
 
 import { urlBuilder } from "~/utils/sanity/utils";
@@ -21,10 +19,7 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
   console.info(
     `Found ${allIllustrations.length} illustrations. Downloading them in parallel…`,
   );
-  const zip = Archiver("zip");
-  const stream = new PassThrough();
-
-  zip.pipe(stream);
+  const files: Zippable = {};
 
   const promises = allIllustrations
     .flatMap((illustration) => {
@@ -58,18 +53,16 @@ export const loader = async (arguments_: LoaderFunctionArgs) => {
     })
     .map(async (illustration) => {
       const response = await fetch(illustration.url);
-      zip.append(await response.text(), { name: `${illustration.title}.svg` });
+      files[`${illustration.title}.svg`] = strToU8(await response.text());
     });
   await Promise.all(promises);
-  zip.finalize();
 
   const headers = new Headers();
   headers.set("Content-Type", "application/zip");
   headers.set("Content-Disposition", "attachment; filename=illustrations.zip");
   headers.set("Cache-Control", "max-age=60");
 
-  // oxlint-disable-next-line typescript/no-explicit-any
-  return new Response(stream as any, {
+  return new Response(zipSync(files), {
     status: 200,
     headers,
   });

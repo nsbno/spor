@@ -11,16 +11,10 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { ReactNode } from "react";
 
+import { Button, ButtonProps } from "@/button";
+import { DataColorProvider, useDataColor } from "@/data-color-context";
+import { StaticCard, StaticCardProps } from "@/layout";
 import { SporStatusToken } from "@/theme/tokens/global-css";
-
-import {
-  Button,
-  ButtonProps,
-  DataColorProvider,
-  StaticCard,
-  StaticCardProps,
-  useDataColor,
-} from "..";
 
 export const CardSelect = ({
   size = "md",

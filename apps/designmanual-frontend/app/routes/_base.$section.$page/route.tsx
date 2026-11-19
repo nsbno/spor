@@ -1,7 +1,6 @@
 import { Box, Flex } from "@vygruppen/spor-react";
 import groq from "groq";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
-import invariant from "tiny-invariant";
 
 import {
   resolveAccordionGroq,
@@ -26,8 +25,12 @@ import { getClient } from "~/utils/sanity/client";
 import { RightSidebar } from "../_base/right-sidebar/RightSidebar";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
-  invariant(params.section, "Expected params.section");
-  invariant(params.page, "Expected params.page");
+  if (!params.section) {
+    throw new Error("Expected params.section");
+  }
+  if (!params.page) {
+    throw new Error("Expected params.page");
+  }
   const draftId = new URL(request.url).searchParams.get("preview") ?? null;
   const draftMode =
     new URL(request.url).searchParams.get("sanity-preview-perspective") ===

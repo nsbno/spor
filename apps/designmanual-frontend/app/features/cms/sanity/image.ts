@@ -1,11 +1,11 @@
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 import { sanityConfig } from "~/utils/sanity/config";
 
 export const useImageUrlBuilder = (format: "svg" | "webp" = "webp") => {
   const baseUrl = "https://cdn.sanity.io";
 
-  const builder = imageUrlBuilder({
+  const builder = createImageUrlBuilder({
     ...sanityConfig,
   }).withOptions({ baseUrl: baseUrl });
 

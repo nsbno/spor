@@ -4,6 +4,7 @@
   "type": "module",
   "exports": {
     ".": {
+      "@vygruppen/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
@@ -22,7 +23,6 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

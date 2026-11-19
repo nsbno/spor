@@ -1,9 +1,0 @@
-{
-  "extends": "../../tsconfig.library.json",
-  "include": ["index.ts"],
-  "exclude": ["node_modules", "dist"],
-  "compilerOptions": {
-    "rootDir": ".",
-    "outDir": "dist"
-  }
-}

@@ -32,4 +32,9 @@ export {
   useToken,
   VisuallyHidden,
 } from "@chakra-ui/react";
-export { useIsClient, useMap, useOnClickOutside } from "usehooks-ts";
+export {
+  useDebounceCallback,
+  useIsClient,
+  useMap,
+  useOnClickOutside,
+} from "usehooks-ts";

@@ -5,6 +5,5 @@
   "linked": [],
   "access": "public",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": ["@vygruppen/designmanual", "@vygruppen/designmanual-frontend"]
+  "updateInternalDependencies": "patch"
 }

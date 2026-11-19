@@ -1,5 +1,6 @@
 "use client";
 import {
+  BoxProps,
   chakra,
   Input,
   RecipeVariantProps,
@@ -8,9 +9,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 
+import { IconButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
 import { SporStatusToken } from "@/theme/tokens/global-css";
+import { Text } from "@/typography";
 
-import { BoxProps, createTexts, IconButton, Text, useTranslation } from "..";
 import { numericStepperRecipe } from "../theme/slot-recipes/numeric-stepper";
 import { Field, FieldBaseProps } from "./Field";
 

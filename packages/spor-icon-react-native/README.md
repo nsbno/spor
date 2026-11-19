@@ -11,6 +11,8 @@ $ pnpm install @vygruppen/spor-icon-react-native
 
 ```
 
+`react` and `react-native-svg` (12.3 through 15) are peer dependencies. Your app needs to provide them.
+
 ## Usage
 
 ```tsx

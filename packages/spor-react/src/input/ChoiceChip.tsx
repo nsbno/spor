@@ -51,7 +51,7 @@ const ChoiceChipContext = createContext<Variant>({
 });
 const useChoiceChipContext = () => useContext(ChoiceChipContext);
 
-type CheckBoxIcon = {
+type CheckboxIcon = {
   default: React.ReactNode;
   checked: React.ReactNode;
 };
@@ -63,7 +63,7 @@ type RadioCardItemProps = Exclude<
   RadioCardVariantProps & {
     inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
     ariaLabel?: string;
-    icon?: CheckBoxIcon;
+    icon?: CheckboxIcon;
   };
 
 export const ChoiceChip = ({

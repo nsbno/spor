@@ -6,10 +6,10 @@ import {
   Tabs,
   TabsList,
   TabsTrigger,
+  useDebounceCallback,
 } from "@vygruppen/spor-react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { useDebouncedCallback } from "use-debounce";
 
 export const Filters = () => {
   const navigate = useNavigate();
@@ -53,12 +53,9 @@ export const Filters = () => {
     });
   };
 
-  const debouncedSearchNavigate = useDebouncedCallback(
-    (searchValue: string) => {
-      updateParameters({ searchValue });
-    },
-    500,
-  );
+  const debouncedSearchNavigate = useDebounceCallback((searchValue: string) => {
+    updateParameters({ searchValue });
+  }, 500);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchValue = event.target.value;

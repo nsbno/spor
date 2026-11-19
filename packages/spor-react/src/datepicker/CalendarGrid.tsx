@@ -42,9 +42,10 @@ export function CalendarGrid({
 
   // Get the number of weeks in the month so we can render the proper number of rows.
   const weeksInMonth = getWeeksInMonth(state.visibleRange.start, locale);
-  const weeksInMonthRange = Array.from({ length: weeksInMonth })
-    .fill(0)
-    .map((_, index) => index);
+  const weeksInMonthRange = Array.from(
+    { length: weeksInMonth },
+    (_, index) => index,
+  );
 
   const recipe = useSlotRecipe({
     key: "datePicker",

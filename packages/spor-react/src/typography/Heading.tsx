@@ -6,7 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { useId } from "react";
 
-import { slugify } from "..";
+import { slugify } from "@/util";
 
 export type HeadingProps = Omit<ChakraHeadingProps, "textStyle" | "as"> & {
   /** The heading level, e.g. h1, h2, h3... **/

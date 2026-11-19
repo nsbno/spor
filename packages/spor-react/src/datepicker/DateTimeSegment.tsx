@@ -4,7 +4,7 @@ import { PropsWithChildren, RefObject, useRef } from "react";
 import { useDateSegment } from "react-aria";
 import { DateFieldState, DateSegment } from "react-stately";
 
-import { DatePickerVariantProps } from "..";
+import { DatePickerVariantProps } from "./DatePicker";
 
 type DateTimeSegmentProps = PropsWithChildren<DatePickerVariantProps> & {
   segment: DateSegment;
@@ -67,8 +67,4 @@ export const DateTimeSegment = ({
 };
 
 const isPaddable = (segmentType: DateSegment["type"]) =>
-  segmentType === "month" ||
-  segmentType === "day" ||
-  segmentType === "hour" ||
-  segmentType === "minute" ||
-  segmentType === "second";
+  ["month", "day", "hour", "minute", "second"].includes(segmentType);

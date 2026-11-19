@@ -4,7 +4,9 @@ import {
 } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";
 
-import { ButtonVariantProps, ColorSpinner } from "..";
+import { ColorSpinner } from "@/loader";
+
+import { ButtonVariantProps } from "./Button";
 
 export type IconButtonProps = Exclude<
   ChakraIconButtonProps,

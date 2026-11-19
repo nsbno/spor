@@ -46,9 +46,7 @@
     "@types/node": "catalog:",
     "@vygruppen/eslint-config": "workspace:*",
     "eslint": "catalog:",
-    "json-to-ts": "^1.7.0",
     "style-dictionary": "catalog:",
-    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -1,7 +1,7 @@
 /* oxlint-disable simple-import-sort/imports */
 /* oxlint-disable typescript/no-explicit-any */
 import { ButtonProps } from "@chakra-ui/react";
-import { vercelStegaClean } from "@vercel/stega";
+import { stegaClean } from "@sanity/client/stega";
 import {
   PortableTextReactComponents,
   PortableText as SanityPortableText,
@@ -26,7 +26,7 @@ import {
   Text,
   TextLink,
 } from "@vygruppen/spor-react";
-import deepmerge from "deepmerge";
+import { defu } from "defu";
 import React from "react";
 import { Link } from "react-router";
 
@@ -441,8 +441,8 @@ export const PortableText = ({
 
   return (
     <SanityPortableText
-      value={isPreview ? value : vercelStegaClean(value)}
-      components={deepmerge(components, componentsOverrides)}
+      value={isPreview ? value : stegaClean(value)}
+      components={defu(componentsOverrides, components)}
     />
   );
 };

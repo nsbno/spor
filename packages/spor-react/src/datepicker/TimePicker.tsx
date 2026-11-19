@@ -10,9 +10,10 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { useTimeFieldState } from "react-stately";
 
+import { IconButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
 import { Field, FieldBaseProps } from "@/input/Field";
 
-import { createTexts, IconButton, useTranslation } from "..";
 import { StyledField } from "./StyledField";
 import { TimeField } from "./TimeField";
 import { getCurrentTime, useCurrentLocale } from "./utils";

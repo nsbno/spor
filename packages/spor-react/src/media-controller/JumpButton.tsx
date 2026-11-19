@@ -11,7 +11,8 @@ import {
 } from "@vygruppen/spor-icon-react";
 import { PropsWithChildren } from "react";
 
-import { createTexts, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+
 import { mediaControllerSlotRecipe } from "../theme/slot-recipes/media-controller-button";
 
 export type MediaControllerVariantProps = RecipeVariantProps<

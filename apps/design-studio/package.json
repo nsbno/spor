@@ -16,7 +16,6 @@
   "dependencies": {
     "@sanity/code-input": "catalog:",
     "@sanity/table": "catalog:",
-    "@sanity/types": "^6.3.0",
     "@sanity/ui": "catalog:",
     "@sanity/vision": "catalog:",
     "@vygruppen/spor-icon-react": "workspace:*",
@@ -25,7 +24,6 @@
     "react-dom": "catalog:",
     "react-icons": "catalog:",
     "sanity": "catalog:",
-    "sanity-plugin-iframe-pane": "^5.0.19",
     "sanity-plugin-media": "catalog:",
     "sanity-plugin-mux-input": "catalog:",
     "styled-components": "catalog:"
@@ -33,8 +31,6 @@
   "devDependencies": {
     "@sanity/eslint-config-studio": "catalog:",
     "@types/react": "catalog:",
-    "@vygruppen/eslint-config": "workspace:*",
-    "canvas": "^3.2.3",
     "eslint": "catalog:",
     "typescript": "catalog:"
   }

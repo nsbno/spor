@@ -1,4 +1,3 @@
-"use client";
 import {
   Flex,
   RadioCard as ChakraRadioCard,

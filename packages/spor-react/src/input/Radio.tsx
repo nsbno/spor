@@ -1,4 +1,3 @@
-"use client";
 import { RecipeVariantProps } from "@chakra-ui/react";
 import { RadioGroup as ChakraRadioGroup } from "@chakra-ui/react";
 import React, { PropsWithChildren } from "react";

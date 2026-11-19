@@ -1,4 +1,3 @@
-"use client";
 import { BoxProps, useFieldContext } from "@chakra-ui/react";
 import { CalendarDateTime } from "@internationalized/date";
 import {

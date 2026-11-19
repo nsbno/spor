@@ -1,4 +1,3 @@
-"use client";
 import {
   Badge as ChakraBadge,
   BadgeProps as ChakraBadgeProps,

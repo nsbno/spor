@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Portal, Tooltip as ChakraTooltip } from "@chakra-ui/react";
 
 import { DataColorProvider, useDataColor } from "./data-color-context";

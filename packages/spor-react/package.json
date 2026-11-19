@@ -6,20 +6,18 @@
     ".": {
       "@vygruppen/source": "./src/index.tsx",
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "default": "./dist/index.js"
     },
     "./icons": {
       "@vygruppen/source": "./src/icons/index.tsx",
       "types": "./dist/icons/index.d.ts",
-      "import": "./dist/icons/index.mjs",
-      "require": "./dist/icons/index.cjs"
+      "default": "./dist/icons/index.js"
     }
   },
   "license": "MIT",
   "sideEffects": false,
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "dev": "chakra typegen src/theme/index.ts --watch",
     "postinstall": "chakra typegen src/theme/index.ts",
     "typegen": "chakra typegen src/theme/index.ts",
@@ -67,7 +65,7 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "storybook": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:"
   },

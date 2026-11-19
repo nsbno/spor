@@ -14,7 +14,7 @@
     "./transforms/*": "./transforms/*"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
@@ -34,7 +34,7 @@
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
-    "tsup": "catalog:",
+    "tsdown": "catalog:",
     "typescript": "catalog:"
   }
 }

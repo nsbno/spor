@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Separator as ChakraSeparator,
   SeparatorProps as ChakraSeparatorProps,

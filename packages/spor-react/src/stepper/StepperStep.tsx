@@ -1,4 +1,3 @@
-"use client";
 import { Box, useSlotRecipe } from "@chakra-ui/react";
 import { DropdownRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren } from "react";

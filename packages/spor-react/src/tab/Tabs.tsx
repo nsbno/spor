@@ -1,4 +1,3 @@
-"use client";
 import {
   RecipeVariantProps,
   Tabs as ChakraTabs,

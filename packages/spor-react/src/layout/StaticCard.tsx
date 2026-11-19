@@ -1,4 +1,3 @@
-"use client";
 import { Box, BoxProps, useRecipe } from "@chakra-ui/react";
 
 /**

@@ -1,4 +1,3 @@
-"use client";
 import { chakra, useSlotRecipe } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 

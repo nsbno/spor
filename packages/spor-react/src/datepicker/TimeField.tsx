@@ -1,4 +1,3 @@
-"use client";
 import { Box, Field as ChakraField, Flex } from "@chakra-ui/react";
 import { CalendarDateTime, Time } from "@internationalized/date";
 import { useRef } from "react";

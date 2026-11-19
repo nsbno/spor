@@ -1,5 +1,3 @@
-"use client";
-
 import { Alert as ChakraAlert, HStack, useDisclosure } from "@chakra-ui/react";
 import { IconComponent } from "@vygruppen/spor-icon-react";
 

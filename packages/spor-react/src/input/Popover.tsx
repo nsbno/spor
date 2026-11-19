@@ -1,4 +1,3 @@
-"use client";
 import { Box } from "@chakra-ui/react";
 import React, { useLayoutEffect, useRef } from "react";
 import {

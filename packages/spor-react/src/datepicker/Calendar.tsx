@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, SystemStyleObject, useSlotRecipe } from "@chakra-ui/react";
 import { createCalendar } from "@internationalized/date";
 import {

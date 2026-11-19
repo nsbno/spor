@@ -1,5 +1,3 @@
-"use client";
-
 import {
   CloseOutline18Icon,
   CloseOutline24Icon,

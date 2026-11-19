@@ -13,7 +13,7 @@ Spor is Vy's open-source design system: published packages in `packages/`, plus 
 
 ## Workflow
 
-- After code changes (not prose), run `pnpm lint` and `pnpm typecheck`, and fix.
+- After code changes (not prose), run `pnpm format:fix`, `pnpm lint`, and `pnpm typecheck`, and fix.
 - Changes under `packages/` need a changeset. `pnpm changeset` is interactive, so write `.changeset/<name>.md` by hand, then check with `pnpm changeset status --since main`:
 
   ```md

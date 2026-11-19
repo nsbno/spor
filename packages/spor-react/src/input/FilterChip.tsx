@@ -1,4 +1,3 @@
-"use client";
 import { CheckboxCard, CheckboxCardRootProps, Span } from "@chakra-ui/react";
 import { CloseOutline24Icon } from "@vygruppen/spor-icon-react";
 import React from "react";

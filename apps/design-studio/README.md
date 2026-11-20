@@ -9,7 +9,7 @@ The studio has two workspaces, each with its own dataset in the Sanity project:
 
 ## Prerequisites
 
-- **Node.js 22** is required (Sanity Studio v6 dropped Node 20, which is end-of-life). pnpm installs the exact version pinned in the root `package.json` (`devEngines.runtime`) and uses it for `pnpm` scripts.
+- **Node.js 26** is required. pnpm installs the exact version pinned in the root `package.json` (`devEngines.runtime`) and uses it for `pnpm` scripts.
 
 ## Setup
 

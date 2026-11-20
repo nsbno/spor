@@ -64,5 +64,13 @@ export const Heading = function Heading({
     return typeof rest.children === "string" ? slugify(rest.children) : reactId;
   }
 
-  return <Text as={as} textStyle={variant} id={getId()} ref={ref} {...rest} />;
+  return (
+    <Text
+      as={as}
+      textStyle={variant + "-heading"}
+      id={getId()}
+      ref={ref}
+      {...rest}
+    />
+  );
 };

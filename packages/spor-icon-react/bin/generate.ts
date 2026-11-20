@@ -2,9 +2,9 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { transform } from "@svgr/core";
-import Case from "case";
 
 import { componentTemplate } from "./componentTemplate.ts";
+import { createComponentName } from "./createComponentName.ts";
 import { typeDefinitionTemplate } from "./typeDefinitionTemplate.ts";
 
 const SVG_PATH = "../spor-icon/svg";
@@ -107,14 +107,6 @@ function getPixelSizeOrFallback(size: string) {
   return sizeInPixelsRegex.test(size) ? size.slice(0, 2) : size;
 }
 
-/** Creates the lookup key for a given icon */
-function createComponentName({
-  name = "",
-  modifier = "",
-  size = "",
-}: IconMetadata) {
-  return Case.pascal(`${name} ${modifier} ${size} Icon`);
-}
 
 async function generateComponents(icons: IconData[]) {
   await Promise.all(icons.map((element) => generateComponent(element)));

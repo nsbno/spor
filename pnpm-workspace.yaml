@@ -88,7 +88,6 @@ catalog:
   "@types/jscodeshift": 17.3.0
   "@vitejs/plugin-react": 6.2.0
   babel-plugin-react-compiler: 1.0.0
-  case: 1.6.3
   defu: 6.1.7
   eslint: 9.39.5
   eslint-config-prettier: 10.1.8

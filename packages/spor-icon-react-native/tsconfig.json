@@ -6,6 +6,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "types": ["node"],
-    "jsx": "react"
+    "jsx": "react",
+    "rewriteRelativeImportExtensions": true
   }
 }

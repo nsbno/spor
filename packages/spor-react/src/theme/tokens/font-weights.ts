@@ -1,31 +1,10 @@
 import { defineTokens } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const fontWeights = defineTokens.fontWeights({
-  thin: {
-    value: 100,
-  },
-  extralight: {
-    value: 200,
-  },
-  light: {
-    value: 300,
-  },
-  normal: {
-    value: 400,
-  },
-  medium: {
-    value: 500,
-  },
-  semibold: {
-    value: 600,
-  },
-  bold: {
-    value: 700,
-  },
-  extrabold: {
-    value: 800,
-  },
-  black: {
-    value: 900,
-  },
+  light: { value: tokens.size["font-weight"]["light"] },
+  normal: { value: tokens.size["font-weight"]["normal"] },
+  medium: { value: tokens.size["font-weight"]["medium"] },
+  semibold: { value: tokens.size["font-weight"]["semibold"] },
+  bold: { value: tokens.size["font-weight"]["bold"] },
 });

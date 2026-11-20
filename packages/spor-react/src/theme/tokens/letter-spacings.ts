@@ -1,19 +1,8 @@
 import { defineTokens } from "@chakra-ui/react";
+import tokens from "@vygruppen/spor-design-tokens";
 
 export const letterSpacings = defineTokens.letterSpacings({
-  tighter: {
-    value: "-0.05em",
-  },
-  tight: {
-    value: "-0.025em",
-  },
-  wide: {
-    value: "0.025em",
-  },
-  wider: {
-    value: "0.05em",
-  },
-  widest: {
-    value: "0.1em",
-  },
+  wide: { value: tokens.size["letter-spacing"]["wide"] },
+  wider: { value: tokens.size["letter-spacing"]["wider"] },
+  widest: { value: tokens.size["letter-spacing"]["widest"] },
 });

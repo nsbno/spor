@@ -1,6 +1,6 @@
 import "./styles/style-overrides.css";
 
-import { withEmotionCache } from "@emotion/react";
+import { Global, withEmotionCache } from "@emotion/react";
 import { Brand, Language, SporProvider, themes } from "@vygruppen/spor-react";
 import { type ReactNode } from "react";
 import {
@@ -22,6 +22,7 @@ import {
 
 import { useInjectStyles } from "./emotion/emotion-client";
 import { SanityVisualEditing } from "./features/SanityVisualEditing";
+import { fontFaces } from "./root/layout/font-faces";
 import { RootLayout } from "./root/layout/RootLayout";
 import { SkipToContent } from "./root/layout/SkipToContent";
 import { PageNotFound } from "./root/PageNotFound";
@@ -78,12 +79,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 };
 
 export const links: LinksFunction = () => {
-  const fontNames = [
-    "VyDisplay-Medium",
-    "VySans-Regular",
-    "VySans-Light",
-    "VySans-Bold",
-  ];
+  const fontNames = ["VyDisplay-Medium", "VySansVariable-Regular"];
 
   const fonts = fontNames.map((fontName) => ({
     rel: "preconnect",
@@ -206,7 +202,9 @@ const Document = withEmotionCache(
           <SporProvider
             language={Language.NorwegianBokmal}
             theme={themes[brand ?? "VyDigital"]}
+            useSporFonts={false}
           >
+            <Global styles={fontFaces} />
             <SkipToContent />
             {children}
           </SporProvider>

@@ -1,5 +1,20 @@
 # @vygruppen/spor-mcp-server
 
+## 2.2.14
+
+### Patch Changes
+
+- 05241b0: Install `react`, `react-dom`, `@chakra-ui/react` and `@emotion/react`, which `@vygruppen/spor-react` needs as peers. The server imports spor-react to list its exports.
+- Updated dependencies [05241b0]
+- Updated dependencies [07c6223]
+- Updated dependencies [d53572a]
+- Updated dependencies [b1e9c10]
+- Updated dependencies [07c6223]
+- Updated dependencies [07c6223]
+- Updated dependencies [07c6223]
+  - @vygruppen/spor-react@15.0.0
+  - @vygruppen/spor-design-tokens@8.1.0
+
 ## 2.2.13
 
 ### Patch Changes

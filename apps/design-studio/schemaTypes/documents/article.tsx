@@ -1,6 +1,6 @@
 import { MdAddLink, MdArticle } from "react-icons/md";
 import { defineField, defineType } from "sanity";
-import { API_VERSION } from "../../sanity.config";
+import { API_VERSION } from "../../constants";
 
 // This is the ID of the components category
 // It's used to filter out a few fields when editing an article that's a

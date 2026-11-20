@@ -21,7 +21,6 @@ const VyLogoTest = lazy(() =>
 );
 
 const projectId = "r4xpzxak";
-export const API_VERSION = "2024-07-25";
 
 const resolve: PresentationPluginOptions["resolve"] = {
   locations: {

@@ -1,6 +1,6 @@
 import { MdAutoStories } from "react-icons/md";
 import { defineField, defineType } from "sanity";
-import { API_VERSION } from "../../sanity.config";
+import { API_VERSION } from "../../constants";
 
 export const page = defineType({
   name: "page",

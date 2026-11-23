@@ -1,6 +1,7 @@
 /** Uppercases the first letter of every word, then joins it into PascalCase. */
 const toPascalCase = (input: string): string =>
   input
+    // Split on runs of non-letter/non-number characters, including Unicode letters.
     .split(/[^\p{L}\p{N}]+/u)
     .filter(Boolean)
     .map((word) => {

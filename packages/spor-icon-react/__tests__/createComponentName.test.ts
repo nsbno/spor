@@ -6,6 +6,7 @@ describe("createComponentName", () => {
   test.each([
     [{ name: "vy", size: "30" }, "Vy30Icon"],
     [{ name: "cafe", modifier: "fill", size: "18" }, "CafeFill18Icon"],
+    [{ name: "ærnes-båt", size: "18" }, "ÆrnesBåt18Icon"],
     [
       {
         name: "backward",

@@ -2,7 +2,7 @@
 # context. CI builds them in .github/workflows/build-designmanual.yml; locally, see the
 # build steps in that file.
 
-FROM node:26.13.0-alpine AS production-deps
+FROM node:26.13.1-alpine AS production-deps
 ENV NODE_ENV=production
 WORKDIR /app
 
@@ -15,7 +15,7 @@ COPY apps/designmanual-frontend/package.json apps/designmanual-frontend/
 COPY packages/spor-icon/package.json packages/spor-icon/
 RUN pnpm install --frozen-lockfile --ignore-scripts --prod
 
-FROM node:26.13.0-alpine AS final
+FROM node:26.13.1-alpine AS final
 ENV NODE_ENV=production
 
 RUN wget -O /usr/local/bin/aws-env https://github.com/telia-oss/aws-env/releases/download/v0.3.0/aws-env-linux-amd64 && \

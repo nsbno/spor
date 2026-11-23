@@ -1,4 +1,3 @@
-
 export type ComponentNameMetadata = {
   name?: string;
   modifier?: string;

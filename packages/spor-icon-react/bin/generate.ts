@@ -107,7 +107,6 @@ function getPixelSizeOrFallback(size: string) {
   return sizeInPixelsRegex.test(size) ? size.slice(0, 2) : size;
 }
 
-
 async function generateComponents(icons: IconData[]) {
   await Promise.all(icons.map((element) => generateComponent(element)));
   await generateIndexFiles(icons);

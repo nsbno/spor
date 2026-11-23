@@ -116,6 +116,17 @@ export const lineIconSlotRecipe = defineSlotRecipe({
         },
       },
     },
+    disabled: {
+      true: {
+        iconContainer: {
+          backgroundColor: "surface.disabled",
+          color: "icon.disabled",
+        },
+        icon: {
+          color: "icon.disabled",
+        },
+      },
+    },
   },
   defaultVariants: {
     size: "md",

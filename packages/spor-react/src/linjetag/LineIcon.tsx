@@ -66,7 +66,6 @@ export const LineIcon = function LineIcon({
   ref,
   variant,
   size = "md",
-  foregroundColor,
   disabled,
   style,
   target = "lineIcon",
@@ -76,7 +75,7 @@ export const LineIcon = function LineIcon({
   ref?: React.Ref<HTMLDivElement>;
 }) {
   const recipe = useSlotRecipe({ key: "lineIcon" });
-  const styles = recipe({ variant, size, ...rest });
+  const styles = recipe({ variant, size, disabled, ...rest });
 
   const targetPadding = () => {
     return target === "travelTag" ? 0.5 : 1;
@@ -85,12 +84,6 @@ export const LineIcon = function LineIcon({
   const borderContainer = () => {
     return variant === "walk" && target === "travelTag" ? 0 : "1px";
   };
-
-  if (foregroundColor) {
-    styles.iconContainer.backgroundColor = disabled
-      ? "surface.disabled"
-      : foregroundColor;
-  }
 
   function getIconVariant() {
     if (variant === "custom") {
@@ -111,7 +104,7 @@ export const LineIcon = function LineIcon({
       aria-label={label}
       ref={ref}
       className={
-        variant === "walk"
+        variant === "walk" || disabled
           ? undefined
           : ["light", rest.className].filter(Boolean).join(" ")
       }

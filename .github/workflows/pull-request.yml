@@ -4,13 +4,21 @@ on:
     types: [opened, synchronize, closed]
 
 jobs:
+  build:
+    if: ${{ github.event.action != 'closed' }}
+    uses: ./.github/workflows/build-designmanual.yml
+
   package:
     if: ${{ github.event.action != 'closed' }}
+    needs: build
     uses: nsbno/platform-actions/.github/workflows/package.docker.yml@v2
     secrets: inherit
     with:
       ecr-repo-name: designmanual
       dockerfile: ./apps/designmanual-frontend/Dockerfile
+      # Restored at the repo root, which is the Docker build context
+      artifact-name: designmanual-build
+      artifact-path: .
 
   terraform-plan:
     if: ${{ github.event.action != 'closed' }}

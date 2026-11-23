@@ -11,17 +11,16 @@ import {
 import { ArrowRightFill18Icon } from "@vygruppen/spor-icon-react";
 import React, { PropsWithChildren, useEffect, useState } from "react";
 
+import { Button } from "@/button";
+import { useColorMode } from "@/color-mode";
+import { createTexts, useTranslation } from "@/i18n";
 import {
-  Button,
-  createTexts,
   Popover,
   PopoverContent,
   PopoverProps,
   PopoverTrigger,
-  ProgressIndicator,
-  useColorMode,
-  useTranslation,
-} from "..";
+} from "@/popover";
+import { ProgressIndicator } from "@/progress-indicator";
 
 const EXPIRATION_DELAY_MS = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
 

@@ -33,7 +33,7 @@ export function ArticleHeaderSerializer({
   for (const match of matches) {
     mergedLoaderData = {
       ...mergedLoaderData,
-      ...(match.data as object),
+      ...(match.loaderData as object),
     };
   }
 

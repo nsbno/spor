@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-mcp-server",
-  "version": "2.2.11",
+  "version": "2.2.13",
   "description": "MCP server for Spor Design System",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,8 @@
     "dev": "tsc --watch",
     "start": "node dist/index.js",
     "test:smoke": "pnpm build && node dist/sdk-client.js",
-    "inspect": "pnpm build && pnpm dlx @modelcontextprotocol/inspector node dist/index.js"
+    "inspect": "pnpm build && pnpm dlx @modelcontextprotocol/inspector node dist/index.js",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "mcp",
@@ -21,10 +22,14 @@
     "design-system"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@chakra-ui/react": "catalog:",
+    "@emotion/react": "catalog:",
+    "@modelcontextprotocol/sdk": "catalog:",
     "@vygruppen/spor-design-tokens": "workspace:*",
     "@vygruppen/spor-react": "workspace:*",
-    "zod": "^3.23.0"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

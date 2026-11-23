@@ -1,5 +1,15 @@
 # @vygruppen/spor-icon-react
 
+## 5.2.0
+
+### Minor Changes
+
+- 3cb26f9: Add "send" icon
+
+### Patch Changes
+
+- 1983ec0: Build with tsup 8 and target ES2024. The output was previously built for `node16` (`spor-icon-react`: ES2017, `spor-icon-react-native`: ES2020).
+
 ## 5.1.2
 
 ### Patch Changes

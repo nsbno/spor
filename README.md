@@ -35,7 +35,7 @@ Spor follows a **monorepo** structure, containing multiple **packages** and **ap
 
 ### 🚀 Applications
 
-- **`designmanual-frontend`** – A Remix app for documentation and demos (this site).
+- **`designmanual-frontend`** – A React Router app for documentation and demos (this site).
 - **`design-studio`** – A Sanity Studio app for managing documentation ([vydesignmanual.sanity.studio](https://vydesignmanual.sanity.studio)).
 
 ### 📦 Key Packages

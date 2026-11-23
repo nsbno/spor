@@ -5,6 +5,7 @@ const meta = {
   title: "Components/Alert",
   component: Alert,
   args: {
+    "data-color": "info",
     title: "Traffic update",
     children: "Track work may affect departures this afternoon.",
   },
@@ -39,7 +40,6 @@ export const Overview: Story = {
 
 export const Closable: Story = {
   args: {
-    variant: "info",
     closable: true,
     title: "Dismissible message",
     children: "This alert can be closed by the user.",

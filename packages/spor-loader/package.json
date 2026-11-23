@@ -1,9 +1,10 @@
 {
   "name": "@vygruppen/spor-loader",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "type": "module",
   "exports": {
     ".": {
+      "@vygruppen/source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
@@ -22,11 +23,10 @@
   },
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@vygruppen/tsconfig": "workspace:*",
-    "tsup": "^7.2.0",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

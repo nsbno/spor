@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react",
-  "version": "5.1.2",
+  "version": "5.2.0",
   "type": "module",
   "exports": {
     ".": {
@@ -26,28 +26,25 @@
     "clean": "rm -rf tmp dist react",
     "prebuild": "pnpm run clean",
     "build": "node bin/generate.ts && tsup",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": ">=19.0.0",
-    "react-dom": ">=19.0.0"
+    "react": ">=19.0.0"
   },
   "devDependencies": {
     "@chakra-ui/react": "catalog:",
-    "@svgr/core": "^8.1.0",
-    "@svgr/plugin-jsx": "^8.1.0",
-    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/core": "catalog:",
+    "@svgr/plugin-jsx": "catalog:",
+    "@svgr/plugin-svgo": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "case": "^1.6.3",
-    "eslint": "^9.39.1",
+    "case": "catalog:",
+    "eslint": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:",
-    "tsup": "^8.3.6",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -7,8 +7,10 @@ import {
   SearchOutline24Icon,
 } from "@vygruppen/spor-icon-react";
 
-import { createTexts, Input, InputProps, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+
 import { IconButton } from "../button/IconButton";
+import { Input, InputProps } from "./Input";
 
 export type SearchInputProps = InputProps & {
   /** Callback for when the clear button is clicked */

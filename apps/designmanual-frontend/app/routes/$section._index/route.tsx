@@ -12,7 +12,6 @@ import {
 } from "@vygruppen/spor-react";
 import groq from "groq";
 import { LoaderFunctionArgs, useLoaderData } from "react-router";
-import invariant from "tiny-invariant";
 
 import { resolveLinkGroq, SanityImage } from "~/features/cms/sanity/query";
 import { ResponsiveImage } from "~/features/portable-text/components/ResponsiveImage";
@@ -23,7 +22,9 @@ import { sanitizeInternalHref } from "~/utils/sanitize";
 import { getClient } from "~/utils/sanity/client";
 
 export const loader = async ({ request, params }: LoaderFunctionArgs) => {
-  invariant(params.section, "Expected params.section");
+  if (!params.section) {
+    throw new Error("Expected params.section");
+  }
   const url = new URL(request.url);
   const draftId = url.searchParams.get("preview") ?? null;
   const draftMode =

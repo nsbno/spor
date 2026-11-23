@@ -1,6 +1,6 @@
 {
   "name": "@vygruppen/spor-icon-react-native",
-  "version": "2.17.1",
+  "version": "2.18.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/types.d.ts",
@@ -22,29 +22,23 @@
     "build": "pnpm build:step-1 && pnpm build:step-2",
     "build:step-1": "node bin/generate.ts",
     "build:step-2": "tsup",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@shopify/restyle": "^2.1.0",
-    "@svgr/core": "^6.2.0",
-    "@svgr/plugin-jsx": "^6.2.0",
-    "@svgr/plugin-svgo": "^6.2.0",
+    "@svgr/core": "catalog:",
+    "@svgr/plugin-jsx": "catalog:",
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
-    "@vygruppen/tsconfig": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "case": "^1.6.3",
-    "eslint": "^9.39.1",
-    "react": ">17.0.0",
-    "react-native": "^0.74.2",
-    "react-native-svg": "^12.3.0",
-    "tsup": "^7.2.0",
+    "case": "catalog:",
+    "eslint": "catalog:",
+    "react": "catalog:",
+    "tsup": "catalog:",
     "typescript": "catalog:"
   },
   "peerDependencies": {
-    "@shopify/restyle": "^2.1.0",
     "react": ">17.0.0",
-    "react-native": "^0.74.2",
-    "react-native-svg": "^12.3.0"
+    "react-native-svg": "^12.3.0 || ^13.0.0 || ^14.0.0 || ^15.0.0"
   }
 }

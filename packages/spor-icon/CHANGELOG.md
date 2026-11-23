@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 4.1.0
+
+### Minor Changes
+
+- 3cb26f9: Add "send" icon
+
 ## 4.0.2
 
 ### Patch Changes

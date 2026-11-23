@@ -1,7 +1,7 @@
 # The Spor Documentation website
 
 This package contains the code for the Vy Spor documentation website.
-It's based on [Remix Route V7](https://remix.run/docs), [TypeScript](https://typescriptlang.org) and [Chakra UI](https://chakra-ui.com/), as well as the Spor design system itself.
+It's based on [React Router](https://reactrouter.com), [TypeScript](https://typescriptlang.org) and [Chakra UI](https://chakra-ui.com/), as well as the Spor design system itself.
 
 ## Setup
 

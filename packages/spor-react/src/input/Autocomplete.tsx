@@ -11,10 +11,10 @@ import { CheckmarkFill18Icon } from "@vygruppen/spor-icon-react";
 import React from "react";
 
 import { CloseButton } from "@/button";
+import { createTexts, useTranslation } from "@/i18n";
 import { ColorSpinner } from "@/loader";
 import { SporStatusToken } from "@/theme/tokens/global-css";
 
-import { createTexts, useTranslation } from "..";
 import { FieldProps } from "./Field";
 import { Input } from "./Input";
 

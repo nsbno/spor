@@ -95,8 +95,7 @@ export const Table = ({
   };
 
   const dataColor = (rest as Record<string, unknown>)["data-color"] as
-    | string
-    | undefined;
+    string | undefined;
 
   const recipe = useSlotRecipe({ key: "table" });
   const styles = recipe({ variant, size, striped });

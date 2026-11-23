@@ -13,7 +13,9 @@ import {
 } from "@vygruppen/spor-icon-react";
 import * as React from "react";
 
-import { createTexts, List, ListItem, useTranslation } from "..";
+import { createTexts, useTranslation } from "@/i18n";
+import { List, ListItem } from "@/list";
+
 import { ButtonVariantContext, PaginationRootProps } from "./types";
 
 /**

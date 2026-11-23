@@ -33,7 +33,7 @@ const config: StorybookConfig = {
           // Rollup can process the module graph without getting stuck.
           name: "strip-rsc-directives",
           enforce: "pre",
-          transform(code, id) {
+          transform(code: string, id: string) {
             if (!id.includes("node_modules")) return null;
             const cleaned = code.replace(
               /^(['"])use (client|server)\1;?\s*\n?/m,
@@ -68,12 +68,10 @@ const config: StorybookConfig = {
           "@chakra-ui/react",
           "@emotion/react",
           "@internationalized/date",
-          "awesome-phonenumber",
-          "clsx",
+
           "lottie-react",
           "next-themes",
           "react-aria",
-          "react-icons/lu",
           "react-stately",
           "react-swipeable",
           "usehooks-ts",

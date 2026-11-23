@@ -7,16 +7,17 @@ updates:
       day: monday
       time: "06:00"
       timezone: Europe/Oslo
-    open-pull-requests-limit: 10
-    reviewers:
-      - nsbno/team-kanaler
+    # 0 disables version updates; security updates are unaffected
+    open-pull-requests-limit: 0
+    # Reviewers are assigned via .github/CODEOWNERS (`reviewers` is no longer supported here)
     labels:
       - dependencies
     commit-message:
       prefix: chore
       include: scope
     groups:
-      minor-and-patch:
+      security-minor-and-patch:
+        applies-to: security-updates
         update-types:
           - minor
           - patch
@@ -28,9 +29,7 @@ updates:
       day: monday
       time: "06:00"
       timezone: Europe/Oslo
-    open-pull-requests-limit: 5
-    reviewers:
-      - nsbno/team-kanaler
+    open-pull-requests-limit: 0
     labels:
       - dependencies
       - github-actions
@@ -38,7 +37,8 @@ updates:
       prefix: chore
       include: scope
     groups:
-      actions-minor-and-patch:
+      actions-security-minor-and-patch:
+        applies-to: security-updates
         update-types:
           - minor
           - patch

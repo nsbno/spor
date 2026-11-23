@@ -16,6 +16,7 @@ packages/*/tmp
 *.pem
 .idea/
 doc
+.turbo/
 
 # react router
 apps/*/.react-router/
@@ -35,9 +36,9 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
-
 # Terraform
 .terraform/
 .react-router/
+
+# pnpm pack output
+*.tgz

@@ -60,6 +60,16 @@ export const infoTagSlotRecipe = defineSlotRecipe({
         },
       },
     },
+    disabled: {
+      true: {
+        title: {
+          color: "text.disabled",
+        },
+        description: {
+          color: "text.disabled",
+        },
+      },
+    },
   },
   defaultVariants: {
     size: "md",

@@ -26,6 +26,9 @@ export const travelTagSlotRecipe = defineSlotRecipe({
           boxShadow: "none",
         },
       },
+      _disabled: {
+        color: "text.disabled",
+      },
     },
     textContainer: {
       color: "text",

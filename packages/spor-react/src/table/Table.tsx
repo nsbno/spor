@@ -319,7 +319,9 @@ export const ExpandableTableRow = ({
         />
         <TableCell colSpan={columnCount}>
           <Collapsible.Root open={isOpen}>
-            <Collapsible.Content>{content}</Collapsible.Content>
+            <Collapsible.Content contain="inline-size">
+              {content}
+            </Collapsible.Content>
           </Collapsible.Root>
         </TableCell>
       </ChakraTable.Row>

@@ -1,0 +1,82 @@
+name: Prerelease Snapshot (Alpha/Beta)
+
+on:
+  push:
+    branches:
+      - prerelase # ← change to your branch name, or use '**' carefully
+      # - 'feature/**'    # optional: also run on feature branches
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "npm dist-tag to publish to (alpha, beta, next, ...)"
+        required: true
+        default: "alpha"
+      snapshot_suffix:
+        description: "Optional custom suffix (defaults to short commit sha)"
+        required: false
+      description:
+        description: "Short description of this prerelease (used in commit message)"
+        required: false
+
+jobs:
+  snapshot:
+    name: Build → Snapshot Version → Publish Prerelease
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # needed to commit version bump + tag (if any)
+      pull-requests: write # optional, if you want to comment on PRs
+
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history needed for changeset snapshot
+
+      - name: ⚙️ Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Optional: build your packages if needed before publish
+      - name: 🛠 Build
+        run: pnpm build # ← adjust to your build script
+
+      - name: 🔖 Create & Publish Snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          SUFFIX="${{ inputs.snapshot_suffix || github.sha }}"
+          SUFFIX_SHORT=$(echo $SUFFIX | cut -c1-8)
+
+          TAG="${{ inputs.channel || 'alpha' }}"
+
+          # Optional: nice commit message with description
+          MSG="chore: snapshot prerelease ${{ inputs.description && format('({0})', inputs.description) || '' }} [ci skip]"
+
+          # Run snapshot version + publish in one go
+          # --snapshot=VALUE → custom suffix (commit-sha, timestamp, custom string, etc.)
+          pnpm exec changeset version --snapshot=$SUFFIX_SHORT
+          git add .
+          git commit -m "$MSG" || echo "No changes to commit (already up-to-date?)"
+          git push origin HEAD --follow-tags || true
+
+          # Publish to npm with the tag, no permanent git tags
+          pnpm exec changeset publish --tag $TAG --no-git-tag
+
+      - name: 📝 Optional – Create summary / comment
+        if: always()
+        run: |
+          echo "📦 Published snapshot to npm @ ${{ inputs.channel || 'alpha' }}"
+          echo "Version suffix used: ${{ inputs.snapshot_suffix || github.sha }}"
+          if [ -n "${{ inputs.description }}" ]; then
+            echo "Description: ${{ inputs.description }}"
+          fi
+        shell: bash

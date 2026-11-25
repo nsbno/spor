@@ -1,0 +1,3 @@
+{
+  "extends": ["local>nsbno/digitalekanaler-renovate"]
+}

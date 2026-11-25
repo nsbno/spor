@@ -23,6 +23,7 @@
     "build:step-1": "node bin/generate.ts",
     "build:step-2": "tsup",
     "lint": "eslint .",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
@@ -31,11 +32,11 @@
     "@types/node": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "case": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "react": ">17.0.0",

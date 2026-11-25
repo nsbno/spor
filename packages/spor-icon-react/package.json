@@ -27,6 +27,7 @@
     "prebuild": "pnpm run clean",
     "build": "node bin/generate.ts && tsup",
     "lint": "eslint .",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
@@ -41,10 +42,10 @@
     "@types/react": "catalog:",
     "@vygruppen/spor-icon": "workspace:*",
     "@vygruppen/eslint-config": "workspace:*",
-    "case": "catalog:",
     "eslint": "catalog:",
     "react": "catalog:",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "catalog:"
   }
 }

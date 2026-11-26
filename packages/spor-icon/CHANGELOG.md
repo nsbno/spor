@@ -1,5 +1,11 @@
 # @vygruppen/spor-icon
 
+## 4.2.0
+
+### Minor Changes
+
+- 38ddc31: Add icons for alt transport fallback
+
 ## 4.1.0
 
 ### Minor Changes

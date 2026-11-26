@@ -59,20 +59,20 @@
         "neutral": {
           "DEFAULT": {
             "value": {
-              "_light": "colors.darkGrey",
-              "_dark": "colors.lightGrey"
+              "_light": "colors.umbra",
+              "_dark": "colors.mint"
             }
           },
           "subtle": {
             "value": {
-              "_light": "colors.iron",
-              "_dark": "colors.silver"
+              "_light": "colors.darkGrey",
+              "_dark": "colors.coralGreen"
             }
           },
           "inverted": {
             "value": {
               "_light": "colors.lightGrey",
-              "_dark": "colors.raven"
+              "_dark": "colors.night"
             }
           }
         },
@@ -276,7 +276,7 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.umbra",
-              "_dark": "colors.lightGrey"
+              "_dark": "colors.mint"
             }
           },
           "highlight": {
@@ -524,13 +524,13 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.carbon",
-              "_dark": "colors.silver"
+              "_dark": "colors.coralGreen"
             }
           },
           "highlight": {
             "value": {
               "_light": "colors.dimGrey",
-              "_dark": "colors.osloGrey"
+              "_dark": "colors.azure"
             }
           }
         },
@@ -750,38 +750,38 @@
           "DEFAULT": {
             "value": {
               "_light": "colors.platinum",
-              "_dark": "colors.carbon"
+              "_dark": "colors.darkTeal"
             }
           },
           "hover": {
             "value": {
               "_light": "colors.silver",
-              "_dark": "colors.iron"
+              "_dark": "colors.pine"
             }
           },
           "active": {
             "value": {
               "_light": "colors.lightGrey",
-              "_dark": "colors.darkGrey"
+              "_dark": "colors.jungle"
             }
           },
           "highlight": {
             "DEFAULT": {
               "value": {
                 "_light": "colors.iron",
-                "_dark": "colors.steel"
+                "_dark": "colors.blueGreen"
               }
             },
             "hover": {
               "value": {
                 "_light": "colors.darkGrey",
-                "_dark": "colors.osloGrey"
+                "_dark": "colors.azure"
               }
             },
             "active": {
               "value": {
                 "_light": "colors.carbon",
-                "_dark": "colors.silver"
+                "_dark": "colors.coralGreen"
               }
             }
           }

@@ -93,8 +93,11 @@ const ResizeHandle = ({
       bottom="0.4rem"
       width="2.4rem"
       height="2.4rem"
+      display="flex"
+      alignItems="flex-end"
+      justifyContent="flex-end"
       cursor="ns-resize"
-      color="text"
+      color="outline.core"
       style={{ touchAction: "none" }}
       onPointerDown={(event) => {
         const textarea = textareaRef.current;
@@ -115,7 +118,7 @@ const ResizeHandle = ({
         drag.current = null;
       }}
     >
-      <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+      <svg viewBox="0 0 24 24" width="1.6rem" height="1.6rem" fill="none">
         <path
           d="M20 10 10 20M20 16l-4 4"
           stroke="currentColor"

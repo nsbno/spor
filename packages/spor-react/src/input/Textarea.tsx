@@ -14,6 +14,7 @@ import React, {
   useLayoutEffect,
   useRef,
   useState,
+  useSyncExternalStore,
 } from "react";
 
 import { textareaRecipe } from "../theme/recipes/textarea";
@@ -56,6 +57,76 @@ const useLabelHeight = (label: ReactNode | undefined) => {
   return { labelRef, labelHeight };
 };
 
+/** iOS (incl. iPadOS) doesn't render the native textarea resize handle. */
+const noop = () => {};
+const subscribe = () => noop;
+const getIsIOS = () => {
+  const { userAgent, maxTouchPoints } = navigator;
+  return (
+    /iPad|iPhone|iPod/.test(userAgent) ||
+    (userAgent.includes("Macintosh") && maxTouchPoints > 1)
+  );
+};
+const getServerIsIOS = () => false;
+const useIsIOS = () =>
+  useSyncExternalStore(subscribe, getIsIOS, getServerIsIOS);
+
+const ResizeHandle = ({
+  textareaRef,
+}: {
+  textareaRef: React.RefObject<HTMLTextAreaElement | null>;
+}) => {
+  const drag = useRef<{ startY: number; startHeight: number } | null>(null);
+
+  const resizeBy = (delta: number) => {
+    const textarea = textareaRef.current;
+    if (!textarea || !drag.current) return;
+    const minHeight = Number.parseFloat(getComputedStyle(textarea).minHeight) || 0;
+    textarea.style.height = `${Math.max(minHeight, drag.current.startHeight + delta)}px`;
+  };
+
+  return (
+    <Box
+      aria-hidden="true"
+      position="absolute"
+      right="0.4rem"
+      bottom="0.4rem"
+      width="2.4rem"
+      height="2.4rem"
+      cursor="ns-resize"
+      color="text"
+      style={{ touchAction: "none" }}
+      onPointerDown={(event) => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+        event.currentTarget.setPointerCapture(event.pointerId);
+        drag.current = {
+          startY: event.clientY,
+          startHeight: textarea.offsetHeight,
+        };
+      }}
+      onPointerMove={(event) => {
+        if (drag.current) resizeBy(event.clientY - drag.current.startY);
+      }}
+      onPointerUp={() => {
+        drag.current = null;
+      }}
+      onPointerCancel={() => {
+        drag.current = null;
+      }}
+    >
+      <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none">
+        <path
+          d="M20 10 10 20M20 16l-4 4"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    </Box>
+  );
+};
+
 export const Textarea = ({
   ref,
   ...props
@@ -92,6 +163,7 @@ export const Textarea = ({
     });
 
   const labelId = useId();
+  const isIOS = useIsIOS();
 
   return (
     <Field
@@ -110,19 +182,26 @@ export const Textarea = ({
       }
       id={restProps.id}
     >
-      <ChakraTextarea
-        {...restProps}
-        css={styles}
-        className="peer"
-        ref={inputRef}
-        value={isControlled ? props.value : undefined}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onChange={handleChange}
-        style={{ "--label-height": `${labelHeight}px` } as React.CSSProperties}
-        placeholder=" "
-        aria-labelledby={labelId}
-      />
+      <Box position="relative" width="100%">
+        <ChakraTextarea
+          {...restProps}
+          css={styles}
+          className="peer"
+          ref={inputRef}
+          value={isControlled ? props.value : undefined}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={handleChange}
+          style={
+            { "--label-height": `${labelHeight}px` } as React.CSSProperties
+          }
+          placeholder=" "
+          aria-labelledby={labelId}
+        />
+        {isIOS && !restProps.disabled && !readOnly && (
+          <ResizeHandle textareaRef={inputRef} />
+        )}
+      </Box>
     </Field>
   );
 };

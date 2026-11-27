@@ -81,8 +81,12 @@ const ResizeHandle = ({
   const resizeBy = (delta: number) => {
     const textarea = textareaRef.current;
     if (!textarea || !drag.current) return;
-    const minHeight = Number.parseFloat(getComputedStyle(textarea).minHeight) || 0;
-    textarea.style.height = `${Math.max(minHeight, drag.current.startHeight + delta)}px`;
+    const minHeight =
+      Number.parseFloat(getComputedStyle(textarea).minHeight) || 0;
+    textarea.style.height = `${Math.max(
+      minHeight,
+      drag.current.startHeight + delta,
+    )}px`;
   };
 
   return (
@@ -196,14 +200,20 @@ export const Textarea = ({
           onBlur={handleBlur}
           onChange={handleChange}
           style={
-            { "--label-height": `${labelHeight}px` } as React.CSSProperties
+            {
+              ...restProps.style,
+              "--label-height": `${labelHeight}px`,
+            } as React.CSSProperties
           }
           placeholder=" "
           aria-labelledby={labelId}
         />
-        {isIOS && !restProps.disabled && !readOnly && (
-          <ResizeHandle textareaRef={inputRef} />
-        )}
+        {isIOS &&
+          !restProps.disabled &&
+          !readOnly &&
+          restProps.resize !== "none" && (
+            <ResizeHandle textareaRef={inputRef} />
+          )}
       </Box>
     </Field>
   );

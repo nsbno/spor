@@ -13,7 +13,8 @@ export type Variant =
   | "subway"
   | "tram"
   | "alt-transport"
-  | "walk";
+  | "walk"
+  | "unknown";
 
 export type Size = "sm" | "md" | "lg";
 

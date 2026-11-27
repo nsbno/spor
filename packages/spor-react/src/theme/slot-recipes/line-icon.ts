@@ -84,6 +84,11 @@ export const lineIconSlotRecipe = defineSlotRecipe({
           color: "darkGrey",
         },
       },
+      unknown: {
+        iconContainer: {
+          backgroundColor: "linjetag.ukjent",
+        },
+      },
       walk: {
         title: {
           color: "text",

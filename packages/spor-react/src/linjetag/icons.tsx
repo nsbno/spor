@@ -1,5 +1,8 @@
 import { Box, SystemStyleObject } from "@chakra-ui/react";
 import {
+  AltTransportFallbackFill18Icon,
+  AltTransportFallbackFill24Icon,
+  AltTransportFallbackFill30Icon,
   AltTransportFill18Icon,
   AltTransportFill24Icon,
   AltTransportFill30Icon,
@@ -75,6 +78,11 @@ const icons: Record<Variant, Record<Size, React.ComponentType>> = {
     lg: AltTransportFill30Icon,
   },
   walk: { sm: WalkFill18Icon, md: WalkFill24Icon, lg: WalkFill30Icon },
+  unknown: {
+    sm: AltTransportFallbackFill18Icon,
+    md: AltTransportFallbackFill24Icon,
+    lg: AltTransportFallbackFill30Icon,
+  },
 };
 
 type GetCorrectIconArguments = {

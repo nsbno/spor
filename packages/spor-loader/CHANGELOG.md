@@ -1,5 +1,11 @@
 # @vygruppen/spor-loader
 
+## 0.7.2
+
+### Patch Changes
+
+- 07c6223: Internal modules import each other directly instead of through the package index, and `package.json` exports gain a `@vygruppen/source` condition for the Spor monorepo's dev server. Nothing changes for consumers.
+
 ## 0.7.1
 
 ### Patch Changes

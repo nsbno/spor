@@ -1,5 +1,17 @@
 # @vygruppen/eslint-config
 
+## 3.1.0
+
+### Minor Changes
+
+- e12d7cb: `eslint` and `typescript` are now peer dependencies, so the config uses your project's copies instead of its own.
+
+  Supported ranges: `eslint` `^9.38.0` and `typescript` `>=4.8.4 <6.1.0` (the range `typescript-eslint` supports).
+
+### Patch Changes
+
+- b1e9c10: Updated patch and minor tooling dependencies to the latest compatible versions.
+
 ## 3.0.0
 
 ### Major Changes

@@ -1,5 +1,40 @@
 # @vygruppen/spor-react
 
+## 15.0.0
+
+### Major Changes
+
+- 05241b0: `@chakra-ui/react` is now a peer dependency (`^3.38.0`), so your app and Spor share one copy. Chakra's provider and theme live in React context, so two copies break theming.
+
+  npm and pnpm install peers automatically. On Yarn, or if your app uses a Chakra version below 3.38, install or upgrade it yourself:
+
+  ```sh
+  npm install @chakra-ui/react@^3.38.0
+  ```
+
+### Minor Changes
+
+- d53572a: Add new default train variant for line tags
+
+### Patch Changes
+
+- 07c6223: Internal modules import each other directly instead of through the package index, and `package.json` exports gain a `@vygruppen/source` condition for the Spor monorepo's dev server. Nothing changes for consumers.
+- b1e9c10: Updated patch and minor tooling dependencies to the latest compatible versions.
+- 07c6223: `CountryCodeSelect` now has its calling codes built in, so `awesome-phonenumber` is no longer a dependency.
+- 56933bf: Dialog and Drawer: add a outline.floating and adjust the boxshadow to be a bit smaller
+- 07c6223: - Drop the `react-icons` dependency. `ColorModeButton` now uses the Spor `ThemeOutline24Icon` and `ThemeFill24Icon` instead of `LuSun` and `LuMoon`.
+  - Add `useDebounceCallback` (from `usehooks-ts`) to the exports.
+- 7d632d4: TravelTag, InfoTag, and LineIcon: Improve styling in disabled state.
+- Updated dependencies [38ddc31]
+- Updated dependencies [07c6223]
+- Updated dependencies [07c6223]
+- Updated dependencies [07c6223]
+- Updated dependencies [8db9d43]
+- Updated dependencies [0d96b03]
+  - @vygruppen/spor-icon-react@5.3.0
+  - @vygruppen/spor-loader@0.7.2
+  - @vygruppen/spor-design-tokens@8.1.0
+
 ## 14.2.1
 
 ### Patch Changes

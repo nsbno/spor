@@ -97,7 +97,7 @@ const ResizeHandle = ({
       alignItems="flex-end"
       justifyContent="flex-end"
       cursor="ns-resize"
-      color="outline.core"
+      color="icon.subtle"
       style={{ touchAction: "none" }}
       onPointerDown={(event) => {
         const textarea = textareaRef.current;
@@ -122,7 +122,7 @@ const ResizeHandle = ({
         <path
           d="M20 10 10 20M20 16l-4 4"
           stroke="currentColor"
-          strokeWidth="1.5"
+          strokeWidth="1"
           strokeLinecap="round"
         />
       </svg>

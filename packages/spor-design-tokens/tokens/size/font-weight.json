@@ -1,0 +1,26 @@
+{
+  "size": {
+    "font-weight": {
+      "light": {
+        "value": 300,
+        "unit": "none"
+      },
+      "normal": {
+        "value": 400,
+        "unit": "none"
+      },
+      "medium": {
+        "value": 550,
+        "unit": "none"
+      },
+      "semibold": {
+        "value": 600,
+        "unit": "none"
+      },
+      "bold": {
+        "value": 700,
+        "unit": "none"
+      }
+    }
+  }
+}

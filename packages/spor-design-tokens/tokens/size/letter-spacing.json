@@ -1,0 +1,21 @@
+{
+  "size": {
+    "letter-spacing": {
+      "default": {
+        "value": "0"
+      },
+      "wide": {
+        "value": "0.0125",
+        "unit": "em"
+      },
+      "wider": {
+        "value": "0.0125",
+        "unit": "em"
+      },
+      "widest": {
+        "value": "0.025",
+        "unit": "em"
+      }
+    }
+  }
+}

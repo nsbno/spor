@@ -9,7 +9,7 @@ import { VyLogo } from "./VyLogo";
 
 export const VyLogoTest = () => {
   return (
-    <SporProvider language={Language.English}>
+    <SporProvider language={Language.English} useSporFonts={false}>
       <Flex gap={1}>
         <VyLogo />
         <Box marginLeft={2}>

@@ -84,7 +84,6 @@ export const filterChipSlotRecipe = defineSlotRecipe({
         },
         label: {
           fontSize: { base: "mobile.sm", sm: "desktop.sm" },
-          fontWeight: "medium",
         },
       },
       sm: {
@@ -97,7 +96,6 @@ export const filterChipSlotRecipe = defineSlotRecipe({
         },
         label: {
           fontSize: { base: "mobile.sm", sm: "desktop.sm" },
-          fontWeight: "bold",
         },
       },
       md: {
@@ -110,7 +108,6 @@ export const filterChipSlotRecipe = defineSlotRecipe({
         },
         label: {
           fontSize: { base: "mobile.md", sm: "desktop.md" },
-          fontWeight: "bold",
         },
       },
       lg: {
@@ -123,7 +120,6 @@ export const filterChipSlotRecipe = defineSlotRecipe({
         },
         label: {
           fontSize: { base: "mobile.md", sm: "desktop.md" },
-          fontWeight: "bold",
         },
       },
     },
